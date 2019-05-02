@@ -1,0 +1,18 @@
+{
+  "name": "travel-planner",
+  "version": "1.0.0",
+  "description": "A trip planner for future travels",
+  "main": "index.js",
+  "repository": "https://github.com/cherise-tan/travel-planner.git",
+  "author": "Cherise <cherisetan@live.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "nodemon": "^1.19.0"
+  },
+  "scripts": {
+    "dev": "nodemon index",
+    "start": "node index"
+  }
+}
