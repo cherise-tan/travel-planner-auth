@@ -9,10 +9,13 @@
   "dependencies": {
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
-    "nodemon": "^1.19.0"
+    "knex": "^0.16.5",
+    "nodemon": "^1.19.0",
+    "sqlite3": "^4.0.6"
   },
   "scripts": {
     "dev": "nodemon index",
-    "start": "node index"
+    "start": "node index",
+    "knex": "knex"
   }
 }
