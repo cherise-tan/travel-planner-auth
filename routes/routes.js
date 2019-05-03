@@ -18,10 +18,22 @@ router.get("/", (req, res) => {
     .catch(err => {
       res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
     });
-
 });
 
+// set up add route
+router.get("/add", (req, res) => {
+  res.render("add");
+});
 
+router.post("/add", (req, res) => {
+  db.addDestinations(req.body) // add new destination to the database
+  .then(destinations => {
+    res.redirect("/"); // take them back to the homepage which will display all the information
+  })
+  .catch(err => {
+    res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
+  });
+});
 
 // export the router so we can use it elsewhere if needed (i.e. within the express module)
 module.exports = router;

@@ -1,23 +1,21 @@
-<div class="container">
+<div class="container body-container">
 
-  <div class="destination-container">
-    <div class="row">
-      {{#each destinations}}
-        <div class="col-lg-4 col-md-6">
-          <div class="card mb-5 mx-auto destination-card">
-            <div class="card-img-top p-3">
-              <img class="img-size" src="{{imageUrl}}" alt="destination-img">
-            </div>
-            <div class="card-body pt-0">
-              <h2 class="card-title">{{city}}</h2>
-              <h5 class="card-title">{{country}}</h5>
-              <hr />
-              <p class="card-text">{{inboundArrivalDate}} - {{outboundDepartureDate}}</p>
-            </div>
+  <div class="row">
+    {{#each destinations}}
+      <div class="col-lg-4 col-md-6">
+        <div class="card mb-5 mx-auto destination-card light-background">
+          <div class="card-img-top p-3">
+            <img class="img-size" src="{{imageUrl}}" alt="destination-img">
+          </div>
+          <div class="card-body pt-0">
+            <h2 class="card-title">{{city}}</h2>
+            <h5 class="card-title">{{country}}</h5>
+            <hr />
+            <p class="card-text">{{inboundArrivalDate}} - {{outboundDepartureDate}}</p>
           </div>
         </div>
-      {{/each}}
-    </div>
+      </div>
+    {{/each}}
   </div>
 
 </div>
