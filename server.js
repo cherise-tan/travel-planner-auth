@@ -9,8 +9,11 @@ const destinationRoutes = require("./routes/routes"); //import the routes folder
 const server = express();
 
 // middleware setup for handlebars (copied from Leslie's project)
-server.engine("hbs", hbs({ extname: "hbs" }));
+server.set('views', './views');
+
+server.engine("hbs", hbs({defaultLayout: "main", extname: ".hbs" }));
 server.set("view engine", "hbs");
+
 server.use(express.urlencoded({ extended: true }));
 
 // set up routes

@@ -10,8 +10,10 @@ const db = require("../db");
 const router = express.Router();
 
 // set up home route
-router.get("/", (req, res) => res.send("Hello hi"));
-
+// router.get("/", (req, res) => res.send("Hello hi"));
+router.get("/", (req, res) => {
+  res.render("index");
+});
 
 
 
