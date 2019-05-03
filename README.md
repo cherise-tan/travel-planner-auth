@@ -3,21 +3,25 @@ A trip planner for my future travels
 
 ## Planning
 ### Database
-* Image
-* Country name
+* Image (need to work out how to upload image to database; need a default image if one is not provided)
+* City name (required field)
+* Country name (required field)
 * Dates
 * Arrival info
 * Departure info
-* Accommodation
-* Things to do
 
 ### Future ideas
+* "Accommodation" section (separate table in database) - due to potential one-to-many relationship
+* "Things to do" section (separate table in database) - due to one-to-many relationship
+* Validation (e.g. validating city/country name are actual places)
+* ?Google search to find an image of the city, rather than requiring the user to provide one themselves
 * API integration: Maps, Weather
-* Login: allows other individuals to also add trips (would each require a customer id)
+* Login: allows other individuals to also add trips (would each require a unique customer id)
 
 ## Learning
 * Learnt how to initialise and set up yarn to install dependencies
 * Learnt how to add 'scripts' into package.json to run certain commands (e.g. 'yarn dev' will run 'nodemon index')
+* Learnt about the express router (an isolated instance of middleware and routes - can be used as an argument to an "app.use()" method - can add middleware and HTTP method routes to the router object)
 
 ## Challenges to complete
 ### Handlebars
