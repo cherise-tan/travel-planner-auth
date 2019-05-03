@@ -10,6 +10,9 @@ A trip planner for my future travels
 * Arrival info
 * Departure info
 
+### Colour Palette
+* https://colorhunt.co/palette/144191
+
 ### Future ideas
 * Upload images using cloudinary and multer (https://medium.freecodecamp.org/how-to-allow-users-to-upload-images-with-node-express-mongoose-and-cloudinary-84cefbdff1d9) (https://medium.com/@joeokpus/uploading-images-to-cloudinary-using-multer-and-expressjs-f0b9a4e14c54)
 * "Accommodation" section (separate table in database) - due to potential one-to-many relationship

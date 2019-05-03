@@ -4,26 +4,26 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable("destinations", table => {
     table.increments("id").primary();
     // images
-    table.string("imgurl");
-    table.string("imgid");
+    table.string("imageUrl");
+    table.string("imageId");
     table.string("city");
     table.string("country");
     // arrival information
-    table.string("arrcity");
-    table.string("arrcountry");
-    table.string("arrdeptdate");
-    table.string("arrdepttime");
-    table.string("arrtransport");
-    table.string("arrarrdate");
-    table.string("arrarrtime");
+    table.string("fromCity");
+    table.string("fromCountry");
+    table.string("inboundDepartureDate");
+    table.string("inboundDepartureTime");
+    table.string("inboundTransport");
+    table.string("inboundArrivalDate");
+    table.string("inboundArrivalTime");
     // departure information
-    table.string("deptcity");
-    table.string("deptcountry");
-    table.string("deptdeptdate");
-    table.string("deptdepttime");
-    table.string("depttransport");
-    table.string("deptarrdate");
-    table.string("deptarrtime");
+    table.string("toCity");
+    table.string("toCountry");
+    table.string("outboundDepartureDate");
+    table.string("outboundDepartureTime");
+    table.string("outboundTransport");
+    table.string("outboundArrivalDate");
+    table.string("outboundArrivalTime");
   });
 };
 
