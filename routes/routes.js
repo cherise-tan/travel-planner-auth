@@ -10,22 +10,16 @@ const db = require("../db");
 const router = express.Router();
 
 // set up home route
-// router.get("/", (req, res) => res.send("Hello hi"));
 router.get("/", (req, res) => {
-  res.render("index");
+  db.getDestinations()
+    .then(destinations => {
+      res.render("index", { destinations: destinations });
+    })
+    .catch(err => {
+      res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
+    });
+
 });
-
-
-
-// router.get("/", (req, res) => {
-//   db.getDrugs() // go to the database and get us the data
-//     .then(drugs => {
-//       res.render("index", { drugs: drugs }); // render the simple html based index.hbs page and inject the data into it (the drugs from the database!)
-//     })
-//     .catch(err => {
-//       res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
-//     });
-// });
 
 
 

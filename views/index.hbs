@@ -1,1 +1,27 @@
-<h1>Hello My Name Is Cherise</h1>
+<div class="background">
+  <div class="destination-container">
+
+{{#each destinations}}
+    <img src="{{imgurl}}" alt="destination-img">
+
+    <h2>{{country}}</h2>
+    <h3>{{city}}</h3>
+    <p>{{arrarrdate}} - {{arrarrtime}} </p>
+{{/each}}
+  </div>
+</div>
+
+<!-- Deliberately not displayed -->
+<!-- NEVER DISPLAY: id, imgid -->
+<!-- <li> {{arrcity}} </li>
+<li> {{arrcountry}} </li>
+<li> {{arrdeptdate}} </li>
+<li> {{arrdepttime}} </li>
+<li> {{arrtransport}} </li>
+<li> {{arrarrtime}} </li>
+<li> {{deptcity}} </li>
+<li> {{deptcountry}} </li>
+<li> {{deptdepttime}} </li>
+<li> {{depttransport}} </li>
+<li> {{deptarrdate}} </li>
+<li> {{deptarrtime}} </li> -->
