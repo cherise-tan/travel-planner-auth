@@ -29,6 +29,7 @@ A trip planner for my future travels
 * - Good info about Migrations (including adding/dropping columns) and seeds: https://gist.github.com/NigelEarle/70db130cc040cc2868555b29a0278261
 * Using Knex.js with SQLite to make database queries
 * Used handlebars to set up a main template to render many page layouts, and also to display database information
+* Using express route parameters to query the database
 
 ## Challenges to complete
 ### Handlebars

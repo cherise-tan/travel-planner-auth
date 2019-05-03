@@ -10,7 +10,8 @@ module.exports = {
   getDestinations,
   addDestinations,
   selectDestination,
-  deleteDestination
+  deleteDestination,
+  updateDestination
 };
 
 function getDestinations(testConn) {
@@ -36,4 +37,11 @@ function deleteDestination(id, testConn) {
   return conn("destinations")
   .where("id", id)
   .delete(id); // delete destination from the database
+}
+
+function updateDestination(id, city, testConn) {
+  const conn = testConn || connection;
+  return conn("destinations")
+  .where({id: id})
+  .update({city: city});
 }

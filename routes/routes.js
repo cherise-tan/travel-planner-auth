@@ -47,9 +47,25 @@ router.get("/delete/:id", (req, res) => {
 });
 
 // set up update route
-// router.get("update/:id", (req, res) => {
-//
-// })
+router.get("/update/:id", (req, res) => {
+  db.selectDestination(req.params.id)
+  .then(destinations => {
+    res.render("update", {destinations: destinations});
+  })
+  .catch(err => {
+    res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
+  });
+});
+
+router.post("/update/:id", (req, res) => {
+  db.updateDestination(req.params.id, req.body.city)
+  .then(destinations => {
+    res.redirect("/"); // take them back to the homepage which will display all the information
+  })
+  .catch(err => {
+    res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
+  });
+});
 
 // export the router so we can use it elsewhere if needed (i.e. within the express module)
 module.exports = router;
