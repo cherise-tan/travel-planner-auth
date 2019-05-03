@@ -5,7 +5,6 @@ exports.up = function(knex, Promise) {
     table.increments("id").primary();
     // images
     table.string("imageUrl");
-    table.string("imageId");
     table.string("city");
     table.string("country");
     // arrival information

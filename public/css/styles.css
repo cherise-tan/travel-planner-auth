@@ -39,9 +39,14 @@ body{
   object-fit: cover;
 }
 
-/* ADD NEW TRIPS */
+/* ADD TRIP FORM */
 .add-trip-col{
   text-align: center;
+}
+
+.wide-text-field{
+  width: 100%;
+  min-width: 15rem;
 }
 
 .btn{
