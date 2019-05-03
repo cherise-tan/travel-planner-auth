@@ -1,10 +1,14 @@
+// this file is currently not being used
+
+
+
 <div class="container body-container">
 
   <div class="row">
-    {{#each destinations}}
 
       <div class="col-lg-4 col-md-6">
         <div class="card mb-5 mx-auto destination-card light-background">
+          {{#destinations}}
           <div class="card-img-top p-3">
             <img class="img-size" src="{{imageUrl}}" alt="destination-img">
           </div>
@@ -14,14 +18,12 @@
             <hr />
             <p class="card-text">{{inboundArrivalDate}} - {{outboundDepartureDate}}</p>
             <hr />
-            <a href="/update/{{id}}">Update Trip</a> <br />
-            <a href="/delete/{{id}} ">Delete Trip</a>
+            <!-- <a href="/delete{{id}}">Delete Trip</a> -->
+            {{/destinations}}
           </div>
         </div>
       </div>
 
-
-    {{/each}}
   </div>
 
 </div>

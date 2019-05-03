@@ -8,7 +8,9 @@ const connection = require('knex')(config);              // connect to DB via kn
 module.exports = {
   // we export so we can call these functions over in routes.js above
   getDestinations,
-  addDestinations
+  addDestinations,
+  selectDestination,
+  deleteDestination
 };
 
 function getDestinations(testConn) {
@@ -20,4 +22,18 @@ function addDestinations(destination, testConn) {
   const conn = testConn || connection;
   return conn("destinations")
   .insert(destination);
+}
+
+function selectDestination(id, testConn) {
+  const conn = testConn || connection;
+  return conn("destinations")
+  .where("id", id)
+  .first();
+}
+
+function deleteDestination(id, testConn) {
+  const conn = testConn || connection;
+  return conn("destinations")
+  .where("id", id)
+  .delete(id); // delete destination from the database
 }
