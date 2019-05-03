@@ -23,9 +23,9 @@ A trip planner for my future travels
 * Learnt how to initialise and set up yarn to install dependencies
 * Learnt how to add 'scripts' into package.json to run certain commands (e.g. 'yarn dev' will run 'nodemon index')
 * Learnt about the express router (an isolated instance of middleware and routes - can be used as an argument to an "app.use()" method - can add middleware and HTTP method routes to the router object)
-* Using knex.js to set up a database (including Migrations & Seeding. Migrations are a way to make database changes/updates via generated scripts, like creating or dropping tables, or updating a table with new columns.)
+* Using Knex.js to set up a SQLite database (including Migrations & Seeding. Migrations are a way to make database changes/updates via generated scripts, like creating or dropping tables, or updating a table with new columns)
 * - Good info about Migrations (including adding/dropping columns) and seeds: https://gist.github.com/NigelEarle/70db130cc040cc2868555b29a0278261
-* Using SQLite
+* Using Knex.js with SQLite to make database queries
 
 ## Challenges to complete
 ### Handlebars
