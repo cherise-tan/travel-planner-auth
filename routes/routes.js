@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
 
 // set up add route
 router.get("/add", (req, res) => {
-  res.render("add");
+  res.render("update");
 });
 
 router.post("/add", (req, res) => {
@@ -50,7 +50,7 @@ router.get("/delete/:id", (req, res) => {
 router.get("/update/:id", (req, res) => {
   db.selectDestination(req.params.id)
   .then(destinations => {
-    res.render("add", {destinations: destinations});
+    res.render("update", {destinations: destinations});
   })
   .catch(err => {
     res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
@@ -58,11 +58,7 @@ router.get("/update/:id", (req, res) => {
 });
 
 router.post("/update/:id", (req, res) => {
-  console.log(req.body);
-
-
-
-  db.updateDestination(req.params.id, req.body.city)
+  db.updateDestination(req.params.id, req.body)
   .then(destinations => {
     res.redirect("/"); // take them back to the homepage which will display all the information
   })

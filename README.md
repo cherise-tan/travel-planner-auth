@@ -32,20 +32,20 @@ A trip planner for my future travels
 * Using express route parameters to query the database
 
 ## Challenges to complete
-### Handlebars
+### Handlebars (COMPLETED)
 * Use handlebars to create a main template which can render many page layouts (e.g. the 'add' and 'delete' pages)
 * For inspiration, view the views folder here: https://github.com/leslie-alldridge/hbs-practice
 * Note: the {{{body}}} tells handlebars to implant the current view into the html body.
 * Note: the default layout configuration requires you to add something in server.js file to set up the middleware set up for handlebars (see the above repo)
 
-#### Add images/URLs
+#### Add images/URLs (COMPLETED - with links)
 * Use {{these things}} inside html - E.g. ``` <img src="/pictures/{{id}}"/> ``` to render a specific picture on a page for each object
 * Practice the above with images and links
 
-### Dropdowns to select what database object to delete/update etc
+### Dropdowns to select what database object to delete/update etc (NOT REQUIRED)
 * The dropdowns will fix the most apparent bugs because it will force the user to choose out of what's available
 * Otherwise can consider using the ID to select these objects (ID's are a primary key in the database, whereas names are not)
 * Note: the data object from the database contains ids so you can type {{id}} into the html to use it.
 
-### Styling
+### Styling (COMPLETED)
 * Add styling to the website
