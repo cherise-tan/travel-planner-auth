@@ -49,7 +49,7 @@ router.get("/delete/:id", (req, res) => {
 });
 
 // set up update route
-router.get("/update/:id", (req, res) => {
+router.get("/update/:id/", (req, res) => {
   db.selectDestination(req.params.id)
     .then(destinations => {
       res.render("update", {
@@ -85,17 +85,14 @@ router.get("/activities/:id", (req, res) => {
 
 });
 
-router.get("/delete/activity/:id", (req, res) => {
+router.get("/delete/activity/:id/:destinationId", (req, res) => {
   db.deleteActivity(req.params.id)
-    .then(activities => {
-      db.selectDestination(req.params.id)
-        .then(destinations => {
-
-              res.render("activities");
-            });
-        });
-
-
+    .then(destinations => {
+      res.redirect("/activities/" + req.params.destinationId); // take them back to the homepage which will display all the information
+    })
+    .catch(err => {
+      res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
+    });
 });
 
 
