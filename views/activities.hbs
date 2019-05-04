@@ -2,12 +2,52 @@
   <div class="m-5">
 
     {{#destinations}}
-      <div class=" light-background">
-        <div class=" mx-auto p-4">
-          <div class="col-md-12 my-auto">
+      <div class=" light-background py-3">
+
+        <div class="row mx-auto p-4">
+          <div class="col-md-8 my-auto">
             <h1 class="mx-auto add-trip-col">{{city}}, {{country}}</h1>
           </div>
+          <div class="col-md-4 my-auto">
+            <a class="mx-auto add-trip-col nav-link h5 mb-0" data-toggle="collapse" href="#collapseForm" role="button">Add Activity <i class=" fas fa-plus-circle"></i></a>
+          </div>
         </div>
+
+        <div class=" collapse silver py-3 m-4" id="collapseForm">
+          <form class="pt-4" action="/activities/add/{{id}}" method="post">
+            <div class="row mx-auto px-4 py-2">
+              <div class="col-md-4 add-trip-col my-auto">
+                <h5>Name</h5>
+              </div>
+              <div class="col-md-8 my-auto add-trip-col ">
+                <input type="text" name="name" placeholder="Name Of Attraction" class="m-1 wide-text-field" required>
+              </div>
+            </div>
+
+            <div class="row mx-auto px-4 py-2">
+              <div class="col-md-4 add-trip-col  my-auto">
+                <h5>Website</h5>
+              </div>
+              <div class="col-md-8 my-auto add-trip-col ">
+                <input type="text" name="website" placeholder="Website" class="m-1 wide-text-field">
+              </div>
+            </div>
+
+            <div class="row mx-auto px-4 py-2">
+              <div class="col-md-4 add-trip-col  my-auto">
+                <h5>Notes</h5>
+              </div>
+              <div class="col-md-8 my-auto add-trip-col ">
+                <textarea rows="3" name="notes" placeholder="Notes" class="m-1 wide-text-field"></textarea>
+              </div>
+            </div>
+            
+            <div class="row">
+              <button type="submit" value="submit" class="btn btn-dark btn-lg mx-auto my-3">Add Activity</button>
+            </div>
+          </form>
+        </div>
+
       </div>
     {{/destinations}}
 

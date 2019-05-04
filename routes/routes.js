@@ -85,6 +85,16 @@ router.get("/activities/:id", (req, res) => {
 
 });
 
+router.post("/activities/add/:id", (req, res) => {
+  db.addActivity(req.body, req.params.id)
+  .then(activities => {
+    res.redirect("/activities/" + req.params.id);
+  })
+  .catch(err => {
+    res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
+  });
+});
+
 router.get("/delete/activity/:id/:destinationId", (req, res) => {
   db.deleteActivity(req.params.id)
     .then(destinations => {
