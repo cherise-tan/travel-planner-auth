@@ -11,7 +11,11 @@ module.exports = {
   addDestinations,
   selectDestination,
   deleteDestination,
-  updateDestination
+  updateDestination,
+
+  getActivities,
+  deleteActivity
+
 };
 
 function getDestinations(testConn) {
@@ -44,4 +48,19 @@ function updateDestination(id, destination, testConn) {
   return conn("destinations")
   .where("id", id)
   .update(destination); //update destination
+}
+
+// Activity queries
+function getActivities(id, testConn) {
+  const conn = testConn || connection;
+  return conn("activities")
+  .where("destinationId", id)
+  .select(); //get me all of the entries in the database (returns an array of objects)
+}
+
+function deleteActivity(id, testConn) {
+  const conn = testConn || connection;
+  return conn("activities")
+  .where("id", id)
+  .delete(id);
 }

@@ -30,7 +30,7 @@ A trip planner for my future travels
 * Using Knex.js with SQLite to make database queries
 * Used handlebars to set up a main template to render many page layouts, and also to display database information
 * Using express route parameters to query the database
-* Using Knex.js to create tables with a one-to-many relationship (using migrations + seeding)
+* Using Knex.js to create tables with a one-to-many relationship (using migrations + seeding) using foreign keys
 * - This article was very helpful: https://medium.com/@jaeger.rob/seed-knex-postgresql-database-with-json-data-3677c6e7c9bc
 
 ## Challenges to complete

@@ -57,3 +57,11 @@ body{
 .btn{
   background-color: #145374;
 }
+
+/* ACTIVITY CARDS */
+.activity-card{
+  width: 20rem;
+  text-align: center;
+  min-height: 20rem;
+  max-height: 30rem;
+}
