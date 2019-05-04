@@ -50,7 +50,7 @@ router.get("/delete/:id", (req, res) => {
 router.get("/update/:id", (req, res) => {
   db.selectDestination(req.params.id)
   .then(destinations => {
-    res.render("update", {destinations: destinations});
+    res.render("add", {destinations: destinations});
   })
   .catch(err => {
     res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
@@ -58,6 +58,10 @@ router.get("/update/:id", (req, res) => {
 });
 
 router.post("/update/:id", (req, res) => {
+  console.log(req.body);
+
+
+
   db.updateDestination(req.params.id, req.body.city)
   .then(destinations => {
     res.redirect("/"); // take them back to the homepage which will display all the information

@@ -1,52 +1,109 @@
-<div class="container body-container container-fluid">
+{{#if destinations}}
 
-  <div class="light-background py-4 px-2">
-    <form class="" action="/add" method="post">
+  {{#destinations}}
+    <div class="container body-container container-fluid">
+      <div class="light-background py-4 px-2">
+        <form class="" action="/update/{{id}}" method="post">
 
-      <div class="row mx-auto pb-3" >
-        <div class="col py-2 add-trip-col">
-          <h4 class="pt-3 pb-2">Destination</h4>
-          <input type="text" name="city" placeholder="City" class="m-1 wide-text-field" required>
-          <input type="text" name="country" placeholder="Country" class="m-1 wide-text-field" required>
-        </div>
-        <div class="col py-2 add-trip-col ">
-          <h4 class="pt-3 pb-2">Image</h4>
-          <input type="text" name="imageUrl" placeholder="Image URL" class="m-1 wide-text-field" required>
-        </div>
+          <div class="row mx-auto pb-3">
+            <div class="col py-2 add-trip-col">
+              <h4 class="pt-3 pb-2">Destination</h4>
+              <input type="text" name="city" value="{{city}}" class="m-1 wide-text-field">
+              <input type="text" name="country" value="{{country}}" class="m-1 wide-text-field">
+            </div>
+            <div class="col py-2 add-trip-col ">
+              <h4 class="pt-3 pb-2">Image</h4>
+              <input type="text" name="imageUrl" value="{{imageUrl}}" class="m-1 wide-text-field">
+            </div>
+          </div>
+
+          <div class="row mx-auto">
+            <div class="col pb-2 add-trip-col m-2 silver">
+              <h5 class="pt-3 pb-1">Inbound Trip</h5>
+              <input type="text" name="fromCity" value="{{fromCity}}" class="m-1">
+              <input type="text" name="fromCountry" value="{{fromCountry}}" class="m-1">
+              <input type="text" name="inboundTransport" value="{{inboundTransport}}" class="m-1">
+              <h6 class="pt-3 pb-1">Departure</h6>
+              <input type="date" name="inboundDepartureDate" value="{{inboundDepartureDate}}" class="m-1 grey">
+              <input type="time" name="inboundDepartureTime" value="{{inboundDepartureTime}}" class="m-1 grey">
+              <h6 class="pt-3 pb-1">Arrival</h6>
+              <input type="date" name="inboundArrivalDate" value="{{inboundArrivalDate}}" class="m-1 grey">
+              <input type="time" name="inboundArrivalTime" value="{{inboundArrivalTime}}" class="m-1 grey">
+            </div>
+            <div class="col pb-2 add-trip-col m-2 silver">
+              <h5 class="pt-3 pb-1">Outbound Trip</h5>
+              <input type="text" name="toCity" value="{{toCity}}" class="m-1">
+              <input type="text" name="toCountry" value="{{toCountry}}" class="m-1">
+              <input type="text" name="outboundTransport" value="{{outboundTransport}}" class="m-1">
+              <h6 class="pt-3 pb-1">Departure</h6>
+              <input type="date" name="outboundDepartureDate" value="{{outboundDepartureDate}}" class="m-1 grey">
+              <input type="time" name="outboundDepartureTime" value="{{outboundDepartureTime}}" class="m-1 grey">
+              <h6 class="pt-3 pb-1">Arrival</h6>
+              <input type="text" name="outboundArrivalDate" value="{{outboundArrivalDate}}" class="m-1 grey">
+              <input type="text" name="outboundArrivalTime" value="{{outboundArrivalTime}}" class="m-1 grey">
+            </div>
+          </div>
+
+          <div class="row">
+            <button type="submit" value="submit" class=" btn btn-dark btn-lg mx-auto my-4">Update Trip</button>
+          </div>
+
+        </form>
       </div>
+    </div>
+  {{/destinations}}
 
-      <div class="row mx-auto">
-        <div class="col pb-2 add-trip-col m-2" style="background-color: silver">
-          <h5 class="pt-3 pb-1">Inbound Trip</h5>
-          <input type="text" name="fromCity" placeholder="From City" class="m-1">
-          <input type="text" name="fromCountry" placeholder="From Country" class="m-1">
-          <input type="text" name="inboundTransport" placeholder="Mode of Transport" class="m-1">
-          <h6 class="pt-3 pb-1">Departure</h6>
-          <input type="date" name="inboundDepartureDate" placeholder="Date of Departure" class="m-1 grey">
-          <input type="time" name="inboundDepartureTime" placeholder="Time of Departure" class="m-1 grey">
-          <h6 class="pt-3 pb-1">Arrival</h6>
-          <input type="date" name="inboundArrivalDate" placeholder="Date of Arrival" class="m-1 grey">
-          <input type="time" name="inboundArrivalTime" placeholder="Time of Arrival" class="m-1 grey">
+{{else}}
+
+  <div class="container body-container container-fluid">
+    <div class="light-background py-4 px-2">
+      <form class="" action="/add" method="post">
+
+        <div class="row mx-auto pb-3">
+          <div class="col py-2 add-trip-col">
+            <h4 class="pt-3 pb-2">Destination</h4>
+            <input type="text" name="city" placeholder="City" class="m-1 wide-text-field" required>
+            <input type="text" name="country" placeholder="Country" class="m-1 wide-text-field" required>
+          </div>
+          <div class="col py-2 add-trip-col ">
+            <h4 class="pt-3 pb-2">Image</h4>
+            <input type="text" name="imageUrl" placeholder="Image URL" class="m-1 wide-text-field" required>
+          </div>
         </div>
-        <div class="col pb-2 add-trip-col m-2"  style="background-color: silver">
-          <h5 class="pt-3 pb-1">Outbound Trip</h5>
-          <input type="text" name="toCity" placeholder="To City" class="m-1">
-          <input type="text" name="toCountry" placeholder="To Country" class="m-1">
-          <input type="text" name="outboundTransport" placeholder="Mode of Transport" class="m-1">
-          <h6 class="pt-3 pb-1">Departure</h6>
-          <input type="date" name="outboundDepartureDate" placeholder="Date of Departure" class="m-1 grey">
-          <input type="time" name="outboundDepartureTime" placeholder="Time of Departure" class="m-1 grey">
-          <h6 class="pt-3 pb-1">Arrival</h6>
-          <input type="date" name="outboundArrivalDate" placeholder="Date of Arrival" class="m-1 grey">
-          <input type="time" name="outboundArrivalTime" placeholder="Time of Arrival" class="m-1 grey">
+
+        <div class="row mx-auto">
+          <div class="col pb-2 add-trip-col m-2 silver">
+            <h5 class="pt-3 pb-1">Inbound Trip</h5>
+            <input type="text" name="fromCity" placeholder="From City" class="m-1">
+            <input type="text" name="fromCountry" placeholder="From Country" class="m-1">
+            <input type="text" name="inboundTransport" placeholder="Mode of Transport" class="m-1">
+            <h6 class="pt-3 pb-1">Departure</h6>
+            <input type="date" name="inboundDepartureDate" placeholder="Date of Departure" class="m-1 grey">
+            <input type="time" name="inboundDepartureTime" placeholder="Time of Departure" class="m-1 grey">
+            <h6 class="pt-3 pb-1">Arrival</h6>
+            <input type="date" name="inboundArrivalDate" placeholder="Date of Arrival" class="m-1 grey">
+            <input type="time" name="inboundArrivalTime" placeholder="Time of Arrival" class="m-1 grey">
+          </div>
+          <div class="col pb-2 add-trip-col m-2 silver">
+            <h5 class="pt-3 pb-1">Outbound Trip</h5>
+            <input type="text" name="toCity" placeholder="To City" class="m-1">
+            <input type="text" name="toCountry" placeholder="To Country" class="m-1">
+            <input type="text" name="outboundTransport" placeholder="Mode of Transport" class="m-1">
+            <h6 class="pt-3 pb-1">Departure</h6>
+            <input type="date" name="outboundDepartureDate" placeholder="Date of Departure" class="m-1 grey">
+            <input type="time" name="outboundDepartureTime" placeholder="Time of Departure" class="m-1 grey">
+            <h6 class="pt-3 pb-1">Arrival</h6>
+            <input type="date" name="outboundArrivalDate" placeholder="Date of Arrival" class="m-1 grey">
+            <input type="time" name="outboundArrivalTime" placeholder="Time of Arrival" class="m-1 grey">
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <button type="submit" value="submit" class=" btn btn-dark btn-lg mx-auto my-4">Add Trip</button>
-      </div>
+        <div class="row">
+          <button type="submit" value="submit" class=" btn btn-dark btn-lg mx-auto my-4">Add Trip</button>
+        </div>
 
-    </form>
+      </form>
+    </div>
   </div>
 
-</div>
+{{/if}}

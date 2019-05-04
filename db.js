@@ -42,6 +42,6 @@ function deleteDestination(id, testConn) {
 function updateDestination(id, city, testConn) {
   const conn = testConn || connection;
   return conn("destinations")
-  .where({id: id})
+  .where("id", id)
   .update({city: city});
 }
