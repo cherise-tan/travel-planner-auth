@@ -105,6 +105,16 @@ router.get("/delete/activity/:id/:destinationId", (req, res) => {
     });
 });
 
+router.post("/activities/update/:id/:destinationId", (req, res) => {
+  db.updateActivity(req.params.id, req.body)
+  .then(activities => {
+    res.redirect("/activities/" + req.params.destinationId);
+  })
+  .catch(err => {
+    res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
+  });
+});
+
 
 // export the router so we can use it elsewhere if needed (i.e. within the express module)
 module.exports = router;

@@ -41,7 +41,7 @@
                 <textarea rows="3" name="notes" placeholder="Notes" class="m-1 wide-text-field"></textarea>
               </div>
             </div>
-            
+
             <div class="row">
               <button type="submit" value="submit" class="btn btn-dark btn-lg mx-auto my-3">Add Activity</button>
             </div>
@@ -72,11 +72,25 @@
           <div class="px-3 pb-4">
             <div class="row mx-auto">
               <div class="col px-0">
-                <a href="/update/activity/{{id}}">Update Activity</a>
+                <a data-toggle="collapse" href="#collapseUpdateForm{{id}}" role="button">Update Activity</a>
               </div>
               <div class="col px-0">
                 <a href="/delete/activity/{{id}}/{{destinationId}}">Delete Activity</a>
               </div>
+            </div>
+
+            <div class=" collapse silver p-1 m-1" id="collapseUpdateForm{{id}}">
+              <form class="pt-4 px-2" action="/activities/update/{{id}}/{{destinationId}}" method="post">
+                <h5>Name</h5>
+                <input type="text" name="name" placeholder="Name Of Attraction" value={{name}} class="mx-auto mb-3 wide-text-field" required>
+                <h5>Website</h5>
+                <input type="text" name="website" placeholder="Website" value={{website}} class="mx-auto mb-3 wide-text-field">
+                <h5>Notes</h5>
+                <textarea rows="3" name="notes" placeholder="Notes" class="mx-auto wide-text-field">{{notes}}</textarea>
+                <div class="row">
+                  <button type="submit" value="submit" class="btn btn-dark btn-medium mx-auto my-3">Update Activity</button>
+                </div>
+              </form>
             </div>
           </div>
 

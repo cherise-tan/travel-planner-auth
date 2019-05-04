@@ -15,7 +15,8 @@ module.exports = {
 
   getActivities,
   addActivity,
-  deleteActivity
+  deleteActivity,
+  updateActivity,
 
 };
 
@@ -70,4 +71,11 @@ function deleteActivity(id, testConn) {
   return conn("activities")
   .where("id", id)
   .delete(id);
+}
+
+function updateActivity(id, activity, testConn) {
+  const conn = testConn || connection;
+  return conn("activities")
+  .where("id", id)
+  .update({name: activity.name, website:activity.website, notes:activity.notes}); //update destination
 }
