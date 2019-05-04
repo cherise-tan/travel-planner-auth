@@ -1,0 +1,93 @@
+<div class="container body-container container-fluid">
+  <div class="light-background pt-4 pb-5 px-2">
+    {{#destinations}}
+      <div class="row mx-auto p-4">
+        <div class="col-md-8 my-auto">
+          <h1 class="mx-auto add-trip-col" >{{city}}, {{country}}</h1>
+        </div>
+        <div class="col-md-4 py-2 add-trip-col ">
+          <img class="img-size" src="{{imageUrl}}" alt="{{city}}_image">
+        </div>
+      </div>
+    {{/destinations}}
+    <!-- {{#if activities}}
+  {{#each activities}}
+          <div class="row mx-auto">
+            <div class="col pb-2 add-trip-col m-2 silver">
+              <h5 class="pt-3 pb-1">Inbound Trip</h5>
+              <input type="text" name="fromCity" placeholder="From City" value="{{fromCity}}" class="m-1">
+              <input type="text" name="fromCountry" placeholder="From Country" value="{{fromCountry}}" class="m-1">
+              <input type="text" name="inboundTransport" placeholder="Mode of Transport" value="{{inboundTransport}}" class="m-1">
+              <h6 class="pt-3 pb-1">Departure</h6>
+              <input type="date" name="inboundDepartureDate" placeholder="Date of Departure" value="{{inboundDepartureDate}}" class="m-1 grey">
+              <input type="time" name="inboundDepartureTime" placeholder="Time of Departure" value="{{inboundDepartureTime}}" class="m-1 grey">
+              <h6 class="pt-3 pb-1">Arrival</h6>
+              <input type="date" name="inboundArrivalDate" placeholder="Date of Arrival" value="{{inboundArrivalDate}}" class="m-1 grey">
+              <input type="time" name="inboundArrivalTime" placeholder="Time of Arrival" value="{{inboundArrivalTime}}" class="m-1 grey">
+            </div>
+          </div>
+
+          <div class="row">
+            <button type="submit" value="submit" class=" btn btn-dark btn-lg mx-auto my-4">Update Trip</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  {{/each}}
+{{/if}} -->
+<div class="silver py-4 pb-3 mx-3">
+  <form class="" action="/activities/{{id}}" method="post">
+    <div class="row mx-auto pt-3 pb-1">
+      <div class="col-md-4 add-trip-col my-auto">
+        <h5 >Name</h5>
+      </div>
+      <div class="col-md-8 my-auto add-trip-col ">
+        <input type="text" name="name" placeholder="Name Of Attraction" class="m-1 wide-text-field" required>
+      </div>
+    </div>
+    <div class="row mx-auto pt-3 pb-1">
+      <div class="col-md-4 add-trip-col  my-auto">
+        <h5>Website</h5>
+      </div>
+      <div class="col-md-8 my-auto add-trip-col ">
+        <input type="text" name="website" placeholder="Website" class="m-1 wide-text-field">
+      </div>
+    </div>
+    <div class="row mx-auto pt-3 pb-1">
+      <div class="col-md-4 add-trip-col  my-auto">
+        <h5>Notes</h5>
+      </div>
+      <div class="col-md-8 my-auto add-trip-col ">
+        <input type="text" name="notes" placeholder="Notes" class="m-1 wide-text-field">
+      </div>
+    </div>
+
+
+
+
+
+<!--
+      <div class="col pb-2 add-trip-col m-2 silver">
+        <h5 class="pt-3 pb-1">Inbound Trip</h5>
+        <input type="text" name="fromCity" placeholder="From City" class="m-1">
+        <input type="text" name="fromCountry" placeholder="From Country" class="m-1">
+        <input type="text" name="inboundTransport" placeholder="Mode of Transport" class="m-1">
+        <h6 class="pt-3 pb-1">Departure</h6>
+        <input type="date" name="inboundDepartureDate" placeholder="Date of Departure" class="m-1 grey">
+        <input type="time" name="inboundDepartureTime" placeholder="Time of Departure" class="m-1 grey">
+        <h6 class="pt-3 pb-1">Arrival</h6>
+        <input type="date" name="inboundArrivalDate" placeholder="Date of Arrival" class="m-1 grey">
+        <input type="time" name="inboundArrivalTime" placeholder="Time of Arrival" class="m-1 grey">
+      </div>
+    </div> -->
+
+    <div class="row">
+      <button type="submit" value="submit" class=" btn btn-dark btn-lg mx-auto my-4">Add Activities</button>
+    </div>
+
+  </form>
+</div>
+
+  </div>
+</div>

@@ -67,5 +67,15 @@ router.post("/update/:id", (req, res) => {
   });
 });
 
+router.get("/activities/:id", (req, res) => {
+  db.selectDestination(req.params.id)
+  .then(destinations => {
+    res.render("activities", {destinations: destinations});
+  })
+  .catch(err => {
+    res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
+  });
+});
+
 // export the router so we can use it elsewhere if needed (i.e. within the express module)
 module.exports = router;

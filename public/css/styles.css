@@ -29,10 +29,11 @@ body{
 .body-container{
   margin-top: 8rem;
   margin-bottom: 4rem;
+
 }
 
 .destination-card{
-  width: 18rem;
+  width: 20rem;
   text-align: center;
 
 }

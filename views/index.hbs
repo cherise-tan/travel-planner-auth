@@ -1,9 +1,9 @@
-<div class="container body-container">
+<div class="container body-container px-0">
 
   <div class="row">
     {{#each destinations}}
 
-      <div class="col-lg-4 col-md-6">
+      <div class="col-lg-4 col-md-6 px-0">
         <div class="card mb-5 mx-auto destination-card light-background">
           <div class="card-img-top p-3">
             <img class="img-size" src="{{imageUrl}}" alt="destination-img">
@@ -13,13 +13,27 @@
             <h5 class="card-title">{{country}}</h5>
             <hr />
             <p class="card-text">{{inboundArrivalDate}} - {{outboundDepartureDate}}</p>
-            <hr />
-            <a href="/update/{{id}}" class="px-3">Update Trip</a>
-            <a href="/delete/{{id}}" class="px-3">Delete Trip</a>
+          </div>
+          <div class="px-3 pb-4">
+            <div class="row mx-auto">
+              <div class="col px-0">
+                <a href="/update/{{id}}">Update Trip</a>
+              </div>
+              <div class="col px-0">
+                <a href="/update/{{id}}">Accommodation</a>
+              </div>
+            </div>
+            <div class="row mx-auto">
+              <div class="col px-0">
+                <a href="/delete/{{id}}">Delete Trip</a>
+              </div>
+              <div class="col px-0">
+                <a href="/activities/{{id}}">Activities</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
 
     {{/each}}
   </div>

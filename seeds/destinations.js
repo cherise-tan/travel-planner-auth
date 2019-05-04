@@ -1,20 +1,59 @@
-exports.seed = function(knex, Promise) {
-  return knex('destinations')
-    .del()   // first deletes ALL existing entries
-    .then(function() { // then inserts seed entries
-      return knex("destinations").insert([
-        // we are inserting an array of objects here
-        { id: 1, imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Westerkerk_Amsterdam.jpg/220px-Westerkerk_Amsterdam.jpg",
-        city: "Amsterdam", country: "Netherlands", fromCity: "Wellington", fromCountry: "New Zealand", inboundDepartureDate: "2019-06-07",
-        inboundDepartureTime: "16:45", inboundTransport: "plane", inboundArrivalDate: "2019-06-08", inboundArrivalTime: "11:50", toCity: "Bocholt",
-        toCountry: "Germany", outboundDepartureDate: "2019-06-09", outboundDepartureTime: "18:15", outboundTransport: "bus",
-        outboundArrivalDate: "2019-06-09", outboundArrivalTime: "20:15"},
+// jshint esversion:6
 
-        { id: 2, imageUrl: "https://media-cdn.tripadvisor.com/media/photo-s/05/4a/d9/38/stadtwald-bocholt.jpg",
-        city: "Bocholt", country: "Germany", fromCity: "Amsterdam", fromCountry: "Netherlands", inboundDepartureDate: "2019-06-09",
-        inboundDepartureTime: "18:15", inboundTransport: "bus", inboundArrivalDate: "2019-06-09", inboundArrivalTime: "20:15", toCity: "Dusseldorf",
-        toCountry: "Germany", outboundDepartureDate: "2019-06-13", outboundDepartureTime: "00:00", outboundTransport: "car",
-        outboundArrivalDate: "2019-06-13", outboundArrivalTime: "00:00"}
-      ]);
+const activitiesData = require("../data/activitiesdata.js");
+const destinationsData = require("../data/destinationsdata.js");
+const accommodationsData = require("../data/accommodationsdata.js");
+
+exports.seed = function(knex, Promise) {
+  return knex('activities').del() // first deletes ALL existing entries
+    .then(() => {
+      return knex('accommodations').del();
+    })
+    .then(() => {
+      return knex('destinations').del();
+    })
+    .then(() => { // then inserts seed entries
+      return knex("destinations").insert(destinationsData);
+    })
+    .then(() => {
+      let activityPromises = [];
+      activitiesData.forEach((activity) => {
+        let destination = activity.city;
+        activityPromises.push(createActivity(knex, activity, destination));
+      });
+      return Promise.all(activityPromises);
+    })
+    .then(() => {
+      let accommodationPromises = [];
+      accommodationsData.forEach((accommodation) => {
+        let destination = accommodation.city;
+        accommodationPromises.push(createAccommodation(knex, accommodation, destination));
+      });
+      return Promise.all(accommodationPromises);
+    });
+};
+
+const createActivity = (knex, activity, destination) => {
+  return knex("destinations").where('city', destination).first()
+    .then((destinationRecord) => {
+      return knex('activities').insert({
+        name: activity.name,
+        website: activity.website,
+        notes: activity.notes,
+        destinationId: destinationRecord.id
+      });
+    });
+};
+
+const createAccommodation = (knex, accommodation, destination) => {
+  return knex("destinations").where('city', destination).first()
+    .then((destinationRecord) => {
+      return knex('accommodations').insert({
+        name: accommodation.name,
+        address: accommodation.address,
+        website: accommodation.website,
+        notes: accommodation.notes,
+        destinationId: destinationRecord.id
+      });
     });
 };
