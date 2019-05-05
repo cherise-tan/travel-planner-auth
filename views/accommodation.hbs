@@ -20,7 +20,7 @@
                 <h5>Name</h5>
               </div>
               <div class="col-md-8 my-auto add-trip-col ">
-                <input type="text" name="name" placeholder="Name Of Accommodation" class="m-1 wide-text-field" required>
+                <input type="text" name="name" placeholder="Name Of Accommodation" class="m-1 wide-text-field required" required>
               </div>
             </div>
 
@@ -38,7 +38,7 @@
                 <h5>Website</h5>
               </div>
               <div class="col-md-8 my-auto add-trip-col ">
-                <input type="text" name="website" placeholder="Website" class="m-1 wide-text-field">
+                <input type="url" pattern="https?://.+" name="website" placeholder="Website" class="m-1 wide-text-field">
               </div>
             </div>
 
@@ -99,7 +99,7 @@
                 <h5>Address</h5>
                 <input type="text" name="address" placeholder="Address" value="{{address}}" class="mx-auto mb-3 wide-text-field">
                 <h5>Website</h5>
-                <input type="text" name="website" placeholder="Website" value={{website}} class="mx-auto mb-3 wide-text-field">
+                <input type="url" pattern="https?://.+"  placeholder="Website" value={{website}} class="mx-auto mb-3 wide-text-field">
                 <h5>Notes</h5>
                 <textarea rows="3" name="notes" placeholder="Notes" class="mx-auto wide-text-field">{{notes}}</textarea>
                 <div class="row">

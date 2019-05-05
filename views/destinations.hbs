@@ -13,7 +13,7 @@
             </div>
             <div class="col py-2 add-trip-col ">
               <h4 class="pt-3 pb-2">Image</h4>
-              <input type="text" name="imageUrl" value="{{imageUrl}}" class="m-1 wide-text-field">
+              <input type="url" pattern="https?://.+" name="imageUrl" value="{{imageUrl}}" class="m-1 wide-text-field">
             </div>
           </div>
 
@@ -68,7 +68,7 @@
           </div>
           <div class="col py-2 add-trip-col ">
             <h4 class="pt-3 pb-2">Image</h4>
-            <input type="text" name="imageUrl" placeholder="Image URL" class="m-1 wide-text-field" required>
+            <input type="url" pattern="https?://.+"  name="imageUrl" placeholder="Image URL" class="m-1 wide-text-field" required>
           </div>
         </div>
 

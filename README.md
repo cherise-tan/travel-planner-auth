@@ -2,13 +2,10 @@
 A trip planner for my future travels
 
 ## Planning
-### Database
-* Image (need to work out how to upload image to database; need a default image if one is not provided)
-* City name (required field)
-* Country name (required field)
-* Dates
-* Arrival info
-* Departure info
+### Database Information
+* Destination: Image (required), City name (required), Country name (required), Dates, Arrival info, Departure info
+* Activities: Name (required), Website, Notes
+* Accommodation: Name (required), Address, Website, Notes
 
 ### Colour Palette
 * https://colorhunt.co/palette/144191
@@ -16,9 +13,8 @@ A trip planner for my future travels
 ### Future ideas
 * DONE: "Accommodation" section (separate table in database) - due to potential one-to-many relationship
 * DONE: "Activities" section (separate table in database) - due to one-to-many relationship
-* Validation (e.g. validating city/country name are actual places, validating a url is a url, restricting dates (e.g. year))
-* ?Google search to find an image of the city, rather than requiring the user to provide one themselves
-* API integration: Maps, Weather
+* Have a default image available if a link isn't entered
+* - ?Google API search to find an image of the city, rather than requiring the user to provide one themselves
 * Login: allows other individuals to also add trips (would each require a unique customer id)
 
 ## Learning

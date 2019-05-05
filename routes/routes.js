@@ -13,7 +13,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   db.getDestinations()
     .then(destinations => {
-      res.render("index", {
+      res.render("home", {
         destinations: destinations
       });
     })
