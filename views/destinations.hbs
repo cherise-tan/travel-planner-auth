@@ -64,11 +64,13 @@
           <div class="col py-2 add-trip-col">
             <h4 class="pt-3 pb-2">Destination</h4>
             <input type="text" name="city" placeholder="City" class="m-1 wide-text-field" required>
-            <input type="text" name="country" placeholder="Country" class="m-1 wide-text-field" required>
+            <input type="text" id="Country" name="country" placeholder="Country" class="m-1 wide-text-field" required>
           </div>
+
           <div class="col py-2 add-trip-col ">
             <h4 class="pt-3 pb-2">Image</h4>
-            <input type="url" pattern="https?://.+"  name="imageUrl" placeholder="Image URL" class="m-1 wide-text-field" required>
+            <input type="url" pattern="https?://.+" id="ImageUrl" name="imageUrl" placeholder="Enter Image URL" class="m-1 wide-text-field" required>
+            <button class="btn  btn-dark btn-medium mx-auto" onClick="findImage()" type="button">Insert Default Image (Country-Specific)</button>
           </div>
         </div>
 
@@ -108,3 +110,5 @@
   </div>
 
 {{/if}}
+
+<script src="js/index.js"></script>

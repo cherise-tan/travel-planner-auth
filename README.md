@@ -13,8 +13,7 @@ A trip planner for my future travels
 ### Future ideas
 * DONE: "Accommodation" section (separate table in database) - due to potential one-to-many relationship
 * DONE: "Activities" section (separate table in database) - due to one-to-many relationship
-* Have a default image available if a link isn't entered
-* - ?Google API search to find an image of the city, rather than requiring the user to provide one themselves
+* DONE: API search to find an image of the city, if the user doesn't provide one themselves
 * Login: allows other individuals to also add trips (would each require a unique customer id)
 
 ## Learning
@@ -29,6 +28,7 @@ A trip planner for my future travels
 * Using Knex.js to create tables with a one-to-many relationship (using migrations + seeding) using foreign keys
 * - This article was very helpful: https://medium.com/@jaeger.rob/seed-knex-postgresql-database-with-json-data-3677c6e7c9bc
 * Making queries to multiple database tables simultaneously, and displaying the information on screen
+* Use the Unsplash Source API + JavaScript to search and display an image based on the user's chosen country input
 
 ## Challenges to complete
 ### Handlebars (COMPLETED)
@@ -37,7 +37,7 @@ A trip planner for my future travels
 * Note: the {{{body}}} tells handlebars to implant the current view into the html body.
 * Note: the default layout configuration requires you to add something in server.js file to set up the middleware set up for handlebars (see the above repo)
 
-#### Add images/URLs (COMPLETED - with links)
+#### Add images/URLs (COMPLETED (for links))
 * Use {{these things}} inside html - E.g. ``` <img src="/pictures/{{id}}"/> ``` to render a specific picture on a page for each object
 * Practice the above with images and links
 
