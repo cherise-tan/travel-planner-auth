@@ -2,6 +2,12 @@ body{
   background-color: #5588a3;
 }
 
+.btn-link{
+  background:none !important;
+  padding:0!important;
+  border: none;
+}
+
 .light-background{
     background-color: #e8e8e8;
 }

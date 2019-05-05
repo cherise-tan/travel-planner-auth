@@ -25,7 +25,11 @@
             </div>
             <div class="row mx-auto">
               <div class="col px-0">
-                <a href="/delete/{{id}}">Delete Trip</a>
+
+                <form action="/delete/{{id}}" method="post">
+                <button type="submit" value="submit" class="btn btn-link">Delete Trip</button>
+                </form>
+
               </div>
               <div class="col px-0">
                 <a href="/activities/{{id}}">Activities</a>

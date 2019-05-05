@@ -20,7 +20,8 @@ module.exports = {
 
   getAccommodations,
   addAccommodation,
-  deleteAccommodation
+  deleteAccommodation,
+  updateAccommodation
 
 };
 
@@ -103,4 +104,11 @@ function deleteAccommodation(id, testConn) {
   return conn("accommodations")
   .where("id", id)
   .delete(id);
+}
+
+function updateAccommodation(id, accommodation, testConn) {
+  const conn = testConn || connection;
+  return conn("accommodations")
+  .where("id", id)
+  .update({name: accommodation.name, address:accommodation.address, website:accommodation.website, notes:accommodation.notes}); //update destination
 }

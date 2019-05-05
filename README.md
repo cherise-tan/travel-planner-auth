@@ -14,9 +14,9 @@ A trip planner for my future travels
 * https://colorhunt.co/palette/144191
 
 ### Future ideas
-* "Accommodation" section (separate table in database) - due to potential one-to-many relationship
+* DONE: "Accommodation" section (separate table in database) - due to potential one-to-many relationship
 * DONE: "Activities" section (separate table in database) - due to one-to-many relationship
-* Validation (e.g. validating city/country name are actual places)
+* Validation (e.g. validating city/country name are actual places, validating a url is a url, restricting dates (e.g. year))
 * ?Google search to find an image of the city, rather than requiring the user to provide one themselves
 * API integration: Maps, Weather
 * Login: allows other individuals to also add trips (would each require a unique customer id)

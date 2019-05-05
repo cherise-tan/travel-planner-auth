@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
 
 // set up add route
 router.get("/add", (req, res) => {
-  res.render("update");
+  res.render("destinations");
 });
 
 router.post("/add", (req, res) => {
@@ -38,7 +38,7 @@ router.post("/add", (req, res) => {
 });
 
 // set up delete route
-router.get("/delete/:id", (req, res) => {
+router.post("/delete/:id", (req, res) => {
   db.deleteDestination(req.params.id) // delete destination according to id
     .then(destinations => {
       res.redirect("/"); // take them back to the homepage which will display all the information
@@ -52,7 +52,7 @@ router.get("/delete/:id", (req, res) => {
 router.get("/update/:id/", (req, res) => {
   db.selectDestination(req.params.id)
     .then(destinations => {
-      res.render("update", {
+      res.render("destinations", {
         destinations: destinations
       });
     })
@@ -77,7 +77,7 @@ router.get("/activities/:id", (req, res) => {
     .then(destinations => {
       db.getActivities(req.params.id)
         .then(activities => {
-          res.render("details", {
+          res.render("activities", {
             destinations: destinations,
             activities: activities
           });
@@ -95,7 +95,7 @@ router.post("/activities/add/:id", (req, res) => {
   });
 });
 
-router.get("/delete/activity/:id/:destinationId", (req, res) => {
+router.post("/delete/activity/:id/:destinationId", (req, res) => {
   db.deleteActivity(req.params.id)
     .then(destinations => {
       res.redirect("/activities/" + req.params.destinationId); // take them back to the homepage which will display all the information
@@ -121,7 +121,7 @@ router.get("/accommodation/:id", (req, res) => {
     .then(destinations => {
       db.getAccommodations(req.params.id)
         .then(accommodations => {
-          res.render("details", {
+          res.render("accommodation", {
             destinations: destinations,
             accommodations: accommodations
           });
@@ -139,7 +139,7 @@ router.post("/accommodation/add/:id", (req, res) => {
   });
 });
 
-router.get("/delete/accommodation/:id/:destinationId", (req, res) => {
+router.post("/delete/accommodation/:id/:destinationId", (req, res) => {
   db.deleteAccommodation(req.params.id)
     .then(accommodations => {
       res.redirect("/accommodation/" + req.params.destinationId); // take them back to the homepage which will display all the information
@@ -147,6 +147,16 @@ router.get("/delete/accommodation/:id/:destinationId", (req, res) => {
     .catch(err => {
       res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
     });
+});
+
+router.post("/accommodation/update/:id/:destinationId", (req, res) => {
+  db.updateAccommodation(req.params.id, req.body)
+  .then(accommodations => {
+    res.redirect("/accommodation/" + req.params.destinationId);
+  })
+  .catch(err => {
+    res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
+  });
 });
 
 // export the router so we can use it elsewhere if needed (i.e. within the express module)
