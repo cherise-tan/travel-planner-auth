@@ -139,7 +139,15 @@ router.post("/accommodation/add/:id", (req, res) => {
   });
 });
 
-
+router.get("/delete/accommodation/:id/:destinationId", (req, res) => {
+  db.deleteAccommodation(req.params.id)
+    .then(accommodations => {
+      res.redirect("/accommodation/" + req.params.destinationId); // take them back to the homepage which will display all the information
+    })
+    .catch(err => {
+      res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
+    });
+});
 
 // export the router so we can use it elsewhere if needed (i.e. within the express module)
 module.exports = router;

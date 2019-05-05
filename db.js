@@ -19,7 +19,8 @@ module.exports = {
   updateActivity,
 
   getAccommodations,
-  addAccommodation
+  addAccommodation,
+  deleteAccommodation
 
 };
 
@@ -95,4 +96,11 @@ function addAccommodation(accommodation, destinationId, testConn) {
   const conn = testConn || connection;
   return conn("accommodations")
   .insert({name: accommodation.name, address:accommodation.address, website:accommodation.website, notes:accommodation.notes, destinationId: destinationId});
+}
+
+function deleteAccommodation(id, testConn) {
+  const conn = testConn || connection;
+  return conn("accommodations")
+  .where("id", id)
+  .delete(id);
 }
