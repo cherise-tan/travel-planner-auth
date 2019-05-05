@@ -18,6 +18,9 @@ module.exports = {
   deleteActivity,
   updateActivity,
 
+  getAccommodations,
+  addAccommodation
+
 };
 
 function getDestinations(testConn) {
@@ -78,4 +81,18 @@ function updateActivity(id, activity, testConn) {
   return conn("activities")
   .where("id", id)
   .update({name: activity.name, website:activity.website, notes:activity.notes}); //update destination
+}
+
+// ACCOMMODATION QUERIES
+function getAccommodations(id, testConn) {
+  const conn = testConn || connection;
+  return conn("accommodations")
+  .where("destinationId", id)
+  .select(); //get me all of the entries in the database (returns an array of objects)
+}
+
+function addAccommodation(accommodation, destinationId, testConn) {
+  const conn = testConn || connection;
+  return conn("accommodations")
+  .insert({name: accommodation.name, address:accommodation.address, website:accommodation.website, notes:accommodation.notes, destinationId: destinationId});
 }

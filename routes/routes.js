@@ -71,18 +71,18 @@ router.post("/update/:id", (req, res) => {
     });
 });
 
+// ACTIVITIES ROUES
 router.get("/activities/:id", (req, res) => {
   db.selectDestination(req.params.id)
     .then(destinations => {
       db.getActivities(req.params.id)
         .then(activities => {
-          res.render("activities", {
+          res.render("details", {
             destinations: destinations,
             activities: activities
           });
         });
     });
-
 });
 
 router.post("/activities/add/:id", (req, res) => {
@@ -114,6 +114,31 @@ router.post("/activities/update/:id/:destinationId", (req, res) => {
     res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
   });
 });
+
+// ACCOMMODATIONS ROUTES
+router.get("/accommodation/:id", (req, res) => {
+  db.selectDestination(req.params.id)
+    .then(destinations => {
+      db.getAccommodations(req.params.id)
+        .then(accommodations => {
+          res.render("details", {
+            destinations: destinations,
+            accommodations: accommodations
+          });
+        });
+    });
+});
+
+router.post("/accommodation/add/:id", (req, res) => {
+  db.addAccommodation(req.body, req.params.id)
+  .then(accommodations => {
+    res.redirect("/accommodation/" + req.params.id);
+  })
+  .catch(err => {
+    res.status(500).send("DATABASE ERROR: " + err.message); // something broke!
+  });
+});
+
 
 
 // export the router so we can use it elsewhere if needed (i.e. within the express module)

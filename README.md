@@ -15,7 +15,7 @@ A trip planner for my future travels
 
 ### Future ideas
 * "Accommodation" section (separate table in database) - due to potential one-to-many relationship
-* "Things to do" section (separate table in database) - due to one-to-many relationship
+* DONE: "Activities" section (separate table in database) - due to one-to-many relationship
 * Validation (e.g. validating city/country name are actual places)
 * ?Google search to find an image of the city, rather than requiring the user to provide one themselves
 * API integration: Maps, Weather
@@ -32,6 +32,7 @@ A trip planner for my future travels
 * Using express route parameters to query the database
 * Using Knex.js to create tables with a one-to-many relationship (using migrations + seeding) using foreign keys
 * - This article was very helpful: https://medium.com/@jaeger.rob/seed-knex-postgresql-database-with-json-data-3677c6e7c9bc
+* Making queries to multiple database tables simultaneously, and displaying the information on screen
 
 ## Challenges to complete
 ### Handlebars (COMPLETED)
