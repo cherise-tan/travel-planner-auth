@@ -1,18 +1,22 @@
 // jshint esversion:6
 
+// require the following data files so they can be used in our seed
 const activitiesData = require("../data/activitiesdata.js");
 const destinationsData = require("../data/destinationsdata.js");
 const accommodationsData = require("../data/accommodationsdata.js");
 
 exports.seed = function(knex, Promise) {
-  return knex('activities').del() // first deletes ALL existing entries
+  // first delete ALL existing entries across all three tables
+  return knex('activities').del()
     .then(() => {
       return knex('accommodations').del();
     })
     .then(() => {
       return knex('destinations').del();
     })
-    .then(() => { // then inserts seed entries
+
+    // then insert seed entries
+    .then(() => {
       return knex("destinations").insert(destinationsData);
     })
     .then(() => {

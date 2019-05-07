@@ -1,11 +1,6 @@
+/* COLOURS */
 body{
   background-color: #5588a3;
-}
-
-.btn-link{
-  background:none !important;
-  padding:0!important;
-  border: none;
 }
 
 .light-background{
@@ -20,28 +15,37 @@ body{
   color: grey;
 }
 
-/* NAVBAR */
-.navbar-dark{
-  background-color: #145374;
-}
-
+/* ICONS */
 .fa-plus-circle{
   padding: 0 0.25rem;
   margin-bottom: 0;
 }
 
+/* BUTTONS */
+.btn{
+  background-color: #145374;
+}
+
+.btn-link{
+  background:none !important;
+  padding:0!important;
+  border: none;
+}
+
+/* NAVBAR */
+.navbar-dark{
+  background-color: #145374;
+}
 
 /* DESTINATION CARDS */
 .body-container{
   margin-top: 8rem;
   margin-bottom: 4rem;
-
 }
 
 .destination-card{
   width: 20rem;
   text-align: center;
-
 }
 
 .img-size{
@@ -50,7 +54,7 @@ body{
   object-fit: cover;
 }
 
-/* ADD TRIP FORM */
+/* ADD/UPDATE TRIP FORM */
 .add-trip-col{
   text-align: center;
 }
@@ -60,14 +64,9 @@ body{
   min-width: 15rem;
 }
 
-.btn{
-  background-color: #145374;
-}
-
 /* ACTIVITY CARDS */
 .activity-card{
   width: 20rem;
   text-align: center;
   min-height: 20rem;
-
 }

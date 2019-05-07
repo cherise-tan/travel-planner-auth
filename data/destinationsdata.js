@@ -1,6 +1,7 @@
+// this supplies the seed destinations
 module.exports = [
   {
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Westerkerk_Amsterdam.jpg/220px-Westerkerk_Amsterdam.jpg",
+    imageUrl: "https://source.unsplash.com/weekly?Netherlands",
     city: "Amsterdam",
     country: "Netherlands",
     fromCity: "Wellington",
@@ -19,7 +20,7 @@ module.exports = [
     outboundArrivalTime: "20:15"
   },
   {
-    imageUrl: "https://media-cdn.tripadvisor.com/media/photo-s/05/4a/d9/38/stadtwald-bocholt.jpg",
+    imageUrl: "https://source.unsplash.com/weekly?Germany",
     city: "Bocholt",
     country: "Germany",
     fromCity: "Amsterdam",
