@@ -1,6 +1,20 @@
 # travel-planner
 A trip planner for my future travels
 
+## Instructions
+1. Navigate to the projects directory and type 'yarn' into the terminal, to install all of the packages
+2. Run the database migrations
+```
+yarn knex migrate:latest
+```
+3. Seed the database with dummy database
+```
+yarn knex seed:run
+```
+4. View the data using db sqlite browser, and opening up the 'dev.sqlite3' file in the project folder
+5. Type 'yarn start' into the terminal to run the server, and navigate to localhost:3000 in your local browser
+6. Destinations, activities and accommodation can be viewed/added/updated and deleted
+
 ## Planning
 ### Database Information
 * Destination: Image (required), City name (required), Country name (required), Dates, Arrival info, Departure info
