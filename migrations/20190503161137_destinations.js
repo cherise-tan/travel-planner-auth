@@ -44,7 +44,7 @@ exports.up = function(knex, Promise) {
       table.string("notes");
       table.integer("destinationId").unsigned()
       table.foreign("destinationId") // sets up the foreign key
-      .references("destinatons.id"); // foreign key references the destinations id
+      .references("destinations.id"); // foreign key references the destinations id
     })
   ]);
 };
