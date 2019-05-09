@@ -1,35 +1,33 @@
-// boilerplate set up for knex - taken from Leslie's project
+require('dotenv').config();
 
 module.exports = {
   development: {
-    client: "sqlite3",
+    client: 'pg',
     connection: {
-      filename: "./dev.sqlite3"
+      host: '127.0.0.1',
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB,
+      charset: 'utf8'
     },
-    useNullAsDefault: true
-  },
-
-  test: {
-    client: "sqlite3",
-    connection: {
-      filename: ":memory:"
+      migrations: {
+      directory: './migrations'
+    },
+    seeds: {
+      directory: './seeds'
     },
     useNullAsDefault: true
   },
 
   production: {
-    client: "postgresql",
-    connection: {
-      database: "my_db",
-      user: "username",
-      password: "password"
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
     migrations: {
-      tableName: "knex_migrations"
-    }
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds/production'
+    },
+    useNullAsDefault: true
   }
-};
+}
