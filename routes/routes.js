@@ -9,8 +9,12 @@ const db = require("../db");
 // set up express router
 const router = express.Router();
 
+router.get("/", (req, res) => {
+  res.render("welcome");
+});
+
 // DESTINATIONS ROUTES
-router.get("/", (req, res) => { // set up index route
+router.get("/destinations", (req, res) => {
   db.getDestinations()
     .then(destinations => {
       res.render("home", {
