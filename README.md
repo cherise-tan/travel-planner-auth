@@ -58,11 +58,11 @@ yarn knex seed:run
 ### Authentication
 * Set up users router which contains its own authorisation ROUTES
 * Set up users pages (Welcome, Login, Register)
+* Register users
+	* Set up user with POST /users/register route
+	* Validate required fields (see users.js - passport must be 6+ characters, passwords must match)
 
 
-
-* Create user with POST /auth/signup (when user POSTS to /auth/signup, this will post their info to the server; can check POST routes with Postman)
-	* Validate required fields (see validUser() function inside auth/index.js)
 	* Check if email is unique (see above file + user.js)
 	* [ ] hash password with bcrypt
 	* [ ] insert into db

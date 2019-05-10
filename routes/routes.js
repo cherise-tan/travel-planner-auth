@@ -33,7 +33,7 @@ router.get("/add", (req, res) => { // set up add route
 router.post("/add", (req, res) => {
   db.addDestinations(req.body) // add new destination to the database
     .then(destinations => {
-      res.redirect("/"); // take them back to the homepage which will display all the information
+      res.redirect("/destinations"); // take them back to the homepage which will display all the information
     })
     .catch(err => {
       res.status(500).send("DATABASE ERROR: " + err.message);
@@ -43,7 +43,7 @@ router.post("/add", (req, res) => {
 router.post("/delete/:id", (req, res) => { // set up delete route
   db.deleteDestination(req.params.id) // delete destination according to id
     .then(destinations => {
-      res.redirect("/"); // take them back to the homepage which will display all the information
+      res.redirect("/destinations"); // take them back to the homepage which will display all the information
     })
     .catch(err => {
       res.status(500).send("DATABASE ERROR: " + err.message);
@@ -65,7 +65,7 @@ router.get("/update/:id/", (req, res) => { // set up update route
 router.post("/update/:id", (req, res) => {
   db.updateDestination(req.params.id, req.body) // update the destination by its id, passing in the information from the form
     .then(destinations => {
-      res.redirect("/"); // take them back to the homepage which will display all the information
+      res.redirect("/destinations"); // take them back to the homepage which will display all the information
     })
     .catch(err => {
       res.status(500).send("DATABASE ERROR: " + err.message);
