@@ -57,8 +57,29 @@ router.post("/register", (req, res) => {
     });
   } else {
     // Validation passed
-
     // Check whether email is unique
+    db.getUser(email)
+      .then(users => {
+        if (users) {
+          // User exists
+          errors.push({
+            msg: "Email is already registered"
+          });
+          var unsuccessfulLogin = {
+            errors,
+            name,
+            email,
+            password,
+            password2
+          };
+          res.render("register", {
+            unsuccessfulLogin: unsuccessfulLogin
+          });
+        } else {
+
+        }
+      });
+
 
 
   }
