@@ -9,12 +9,15 @@ const db = require("../db");
 // set up express router
 const router = express.Router();
 
+const {ensureAuthenticated} = require("../config/auth");
+
+
 router.get("/", (req, res) => {
   res.render("welcome");
 });
 
 // DESTINATIONS ROUTES
-router.get("/destinations", (req, res) => {
+router.get("/destinations", ensureAuthenticated, (req, res) => {
   db.getDestinations()
     .then(destinations => {
       res.render("home", {

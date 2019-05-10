@@ -72,7 +72,7 @@ yarn knex seed:run
 	* Check if email is in database
 		* Compare password with hashed password in db
 		* Set a cookie with userId (serializeUser and deserializeUser)
-
+* Protect routes by implementing ``` ensureAuthenticated() ``` function (auth.js)
 
 
 
