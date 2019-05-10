@@ -11,9 +11,8 @@ yarn knex migrate:latest
 ```
 yarn knex seed:run
 ```
-4. View the data using db sqlite browser, and opening up the 'dev.sqlite3' file in the project folder
-5. Type 'yarn start' into the terminal to run the server, and navigate to localhost:3000 in your local browser
-6. Destinations, activities and accommodation can be viewed/added/updated and deleted
+4. Type 'yarn start' into the terminal to run the server, and navigate to localhost:3000 in your local browser
+5. Destinations, activities and accommodation can be viewed/added/updated and deleted
 
 ## Planning
 ### Database Information
@@ -44,21 +43,55 @@ yarn knex seed:run
 * Making queries to multiple database tables simultaneously, and displaying the information on screen
 * Use the Unsplash Source API + JavaScript to search and display an image based on the user's chosen country input
 
-## Challenges to complete
-### Handlebars (COMPLETED)
-* Use handlebars to create a main template which can render many page layouts (e.g. the 'add' and 'delete' pages)
-* For inspiration, view the views folder here: https://github.com/leslie-alldridge/hbs-practice
-* Note: the {{{body}}} tells handlebars to implant the current view into the html body.
-* Note: the default layout configuration requires you to add something in server.js file to set up the middleware set up for handlebars (see the above repo)
 
-#### Add images/URLs (COMPLETED (for links))
-* Use {{these things}} inside html - E.g. ``` <img src="/pictures/{{id}}"/> ``` to render a specific picture on a page for each object
-* Practice the above with images and links
+## Authentication and Authorisation with Node, Express, Postgres
+Add form-based cookie authentication to a CRUD app with a users table.
+Based on tutorials by 'Coding Garden with CJ': https://www.youtube.com/watch?v=H7qkTzxk_0I&t=3s
 
-### Dropdowns to select what database object to delete/update etc (NOT REQUIRED)
-* The dropdowns will fix the most apparent bugs because it will force the user to choose out of what's available
-* Otherwise can consider using the ID to select these objects (ID's are a primary key in the database, whereas names are not)
-* Note: the data object from the database contains ids so you can type {{id}} into the html to use it.
+#### We will have 3 types of users:
+* Visitors - can only view the homepage
+* Logged In User - can only view the their page
+* Admin User - can view any page; can de-activate users;
 
-### Styling (COMPLETED)
-* Add styling to the website
+### Authentication
+* Add auth router (auth folder with index.js file, which defines and exports router; contains its own authorisation routes)
+* Create user with POST /auth/signup (when user POSTS to /auth/signup, this will post their info to the server; can check POST routes with Postman)
+	* Validate required fields (see validUser() function inside auth/index.js)
+	* Check if email is unique (see above file + user.js)
+	* [ ] hash password with bcrypt
+	* [ ] insert into db
+* [ ] Login user with POST /auth/login
+	* [ ] check if email in db
+		* [ ] compare password with hashed password in db
+		* [ ] Set a cookie with user_id after creating user
+			* [ ] Best Practices
+			* [ ] Cross origin cookie!
+* [ ] Create login form; show errors; redirect;
+ 	* [ ] validate required fields
+* [ ] Create sign up form; show errors; redirect;
+	* [ ] Validate required fields
+
+#### Authorization:
+* [ ] Visitors can only see the homepage
+	* [ ] isLoggedIn middleware
+		* [ ] user_id cookie must be set
+		* [ ] send an unauthorized error message
+	* [ ] redirect to login form
+* [ ] Logged in users can only see their page
+	* [ ] allowAccess middleware
+		* [ ] id in url must match user_id in cookie
+ 		* [ ] send an unauthorized error message
+	* [ ] redirect to user page if they visit the homepage
+		* [ ] set user_id in localStorage after login/signup
+* [ ] Add GET /auth/logout to clear user_id cookie
+	* [ ] redirect to login page
+
+### Admin Page:
+* [ ] Admin page that lists all users
+	* [ ] admin table with user_id (unique constraint)
+	* [ ] de-activate users
+* [ ] Admin can see any page on site
+
+### Other ways to auth:
+* [ ] Use sessions instead of cookies!
+* [ ] Use JWTs instead of sessions!

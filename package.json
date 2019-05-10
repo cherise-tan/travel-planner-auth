@@ -12,8 +12,7 @@
     "express-handlebars": "^3.0.2",
     "knex": "^0.16.5",
     "nodemon": "^1.19.0",
-    "pg": "^7.10.0",
-    "sqlite3": "^4.0.6"
+    "pg": "^7.10.0"
   },
   "scripts": {
     "dev": "nodemon index",

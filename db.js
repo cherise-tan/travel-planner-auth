@@ -40,21 +40,21 @@ function addDestinations(destination, testConn) {
 function selectDestination(id, testConn) {
   const conn = testConn || connection;
   return conn("destinations")
-  .where("id", id)
+  .where("destinationId", id)
   .first(); // select the first destination by that id from the database
 }
 
 function deleteDestination(id, testConn) {
   const conn = testConn || connection;
   return conn("destinations")
-  .where("id", id)
-  .delete(id); // delete destination from the database according to id
+  .where("destinationId", id)
+  .delete(); // delete destination from the database according to id
 }
 
 function updateDestination(id, destination, testConn) {
   const conn = testConn || connection;
   return conn("destinations")
-  .where("id", id)
+  .where("destinationId", id)
   .update(destination); //update destination according to id
 }
 
@@ -76,14 +76,14 @@ function addActivity(activity, destinationId, testConn) {
 function deleteActivity(id, testConn) {
   const conn = testConn || connection;
   return conn("activities")
-  .where("id", id)
-  .delete(id); // delete the activity according to id
+  .where("activityId", id)
+  .delete(); // delete the activity according to id
 }
 
 function updateActivity(id, activity, testConn) {
   const conn = testConn || connection;
   return conn("activities")
-  .where("id", id)
+  .where("activityId", id)
   .update({name: activity.name, website:activity.website, notes:activity.notes});
   // update the activity in the database according to its id and information from the form
 }
@@ -106,14 +106,14 @@ function addAccommodation(accommodation, destinationId, testConn) {
 function deleteAccommodation(id, testConn) {
   const conn = testConn || connection;
   return conn("accommodations")
-  .where("id", id)
-  .delete(id); // delete the accommodation according to id
+  .where("accommodationId", id)
+  .delete(); // delete the accommodation according to id
 }
 
 function updateAccommodation(id, accommodation, testConn) {
   const conn = testConn || connection;
   return conn("accommodations")
-  .where("id", id)
+  .where("accommodationId", id)
   .update({name: accommodation.name, address:accommodation.address, website:accommodation.website, notes:accommodation.notes});
   // update the accommodation in the database according to its id and information from the form
 }

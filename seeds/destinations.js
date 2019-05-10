@@ -44,7 +44,7 @@ const createActivity = (knex, activity, destination) => {
         name: activity.name,
         website: activity.website,
         notes: activity.notes,
-        destinationId: destinationRecord.id
+        destinationId: destinationRecord.destinationId
       });
     });
 };
@@ -57,7 +57,7 @@ const createAccommodation = (knex, accommodation, destination) => {
         address: accommodation.address,
         website: accommodation.website,
         notes: accommodation.notes,
-        destinationId: destinationRecord.id
+        destinationId: destinationRecord.destinationId
       });
     });
 };
