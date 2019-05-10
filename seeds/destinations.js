@@ -4,6 +4,7 @@
 const activitiesData = require("../data/activitiesdata.js");
 const destinationsData = require("../data/destinationsdata.js");
 const accommodationsData = require("../data/accommodationsdata.js");
+const usersData = require("../data/usersdata.js");
 
 exports.seed = function(knex, Promise) {
   // first delete ALL existing entries across all three tables
@@ -14,8 +15,14 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('destinations').del();
     })
+    .then(() => {
+      return knex('users').del();
+    })
 
     // then insert seed entries
+    .then(() => {
+      return knex("users").insert(usersData);
+    })
     .then(() => {
       return knex("destinations").insert(destinationsData);
     })

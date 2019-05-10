@@ -45,6 +45,13 @@ exports.up = function(knex, Promise) {
       table.integer("destinationId").unsigned()
       table.foreign("destinationId") // sets up the foreign key
       .references("destinations.destinationId"); // foreign key references the destinations id
+    }),
+    knex.schema.createTable("users", (table) => { // create the accommodations table
+      table.increments("userId").primary(); // sets up the primary id which will auto-increment
+      table.string("name").notNullable();
+      table.string("email").notNullable();
+      table.string("password").notNullable();
+      table.timestamp("createdAt").defaultTo(knex.fn.now());
     })
   ]);
 };
@@ -54,6 +61,7 @@ exports.down = function(knex, Promise) {
   return Promise.all([
     knex.schema.dropTable("activities"),
     knex.schema.dropTable("accommodations"),
-    knex.schema.dropTable("destinations")
+    knex.schema.dropTable("destinations"),
+    knex.schema.dropTable("users")
   ]);
 };

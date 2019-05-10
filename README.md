@@ -54,12 +54,13 @@ yarn knex seed:run
 
 ### Setup
 * Install dependencies: bcryptjs, passport, passport-local, connect-flash, express-session, (express)
-* Set up users routes
-
-
 
 ### Authentication
-* Add auth router (auth folder with index.js file, which defines and exports router; contains its own authorisation routes)
+* Set up users router which contains its own authorisation ROUTES
+* Set up users pages (Welcome, Login, Register)
+
+
+
 * Create user with POST /auth/signup (when user POSTS to /auth/signup, this will post their info to the server; can check POST routes with Postman)
 	* Validate required fields (see validUser() function inside auth/index.js)
 	* Check if email is unique (see above file + user.js)
