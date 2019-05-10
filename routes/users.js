@@ -3,14 +3,10 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 // Require the db file so functions can be called from it
 const db = require("../db");
-
-// Login page
-router.get("/login", (req, res) => {
-  res.render("login");
-});
 
 // Register page
 router.get("/register", (req, res) => {
@@ -92,8 +88,9 @@ router.post("/register", (req, res) => {
               // Save the user
               db.addUser(newUser)
                 .then(users => {
+                  req.flash("successMsg", "You are now registered and can log in");
                   res.redirect("/users/login");
-                      })
+                })
                 .catch(err => {
                   res.status(500).send("DATABASE ERROR: " + err.message);
                 });
@@ -103,5 +100,18 @@ router.post("/register", (req, res) => {
   }
 });
 
+// Login page
+router.get("/login", (req, res) => {
+  res.render("login");
+});
+
+// Login handle
+router.post("/login", (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: "/destinations",
+    failureRedirect: "/users/login",
+    failureFlash: true
+  })(req, res, next);
+});
 
 module.exports = router;

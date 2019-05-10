@@ -8,6 +8,7 @@ const connection = require('knex')(config);        // connect to DB via knex usi
 // export functions so they can be used in routes.js
 module.exports = {
   getUser,
+  getUserById,
   addUser,
 
   getDestinations,
@@ -33,6 +34,14 @@ function getUser(email, testConn) {
   return conn("users")
   .select()
   .where("email", email)
+  .first();
+}
+
+function getUserById(id, testConn) {
+  const conn = testConn || connection;
+  return conn("users")
+  .select()
+  .where("userId", id)
   .first();
 }
 

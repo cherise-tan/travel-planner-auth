@@ -34,14 +34,19 @@ yarn knex seed:run
 * Learnt how to add 'scripts' into package.json to run certain commands (e.g. 'yarn dev' will run 'nodemon index')
 * Learnt about the express router (an isolated instance of middleware and routes - can be used as an argument to an "app.use()" method - can add middleware and HTTP method routes to the router object)
 * Using Knex.js to set up a SQLite database (including Migrations & Seeding. Migrations are a way to make database changes/updates via generated scripts, like creating or dropping tables, or updating a table with new columns)
-* - Good info about Migrations (including adding/dropping columns) and seeds: https://gist.github.com/NigelEarle/70db130cc040cc2868555b29a0278261
+	* Good info about Migrations (including adding/dropping columns) and seeds: https://gist.github.com/NigelEarle/70db130cc040cc2868555b29a0278261
 * Using Knex.js with SQLite to make database queries
 * Used handlebars to set up a main template to render many page layouts, and also to display database information
 * Using express route parameters to query the database
 * Using Knex.js to create tables with a one-to-many relationship (using migrations + seeding) using foreign keys
-* - This article was very helpful: https://medium.com/@jaeger.rob/seed-knex-postgresql-database-with-json-data-3677c6e7c9bc
+	* This article was very helpful: https://medium.com/@jaeger.rob/seed-knex-postgresql-database-with-json-data-3677c6e7c9bc
 * Making queries to multiple database tables simultaneously, and displaying the information on screen
 * Use the Unsplash Source API + JavaScript to search and display an image based on the user's chosen country input
+* Learn how to use flash messages: stores message in a session and then displays it after the redirect
+	* Set up middleware for express-session and connect-flash (app.js)
+	* Custom middleware so we can add colours to messages (app.js)
+	* Create flash message (e.g. ``` req.flash("successMsg", "You are now registered and can log in"); ``` (app.js))
+
 
 
 ## Authentication and Authorisation
@@ -63,19 +68,13 @@ yarn knex seed:run
 	* Validate required fields (see users.js - passport must be 6+ characters, passwords must match)
 	* Check if email is unique (see users.js)
 	* Hash password with bcrypt and then insert the new user into the database (see users.js)
+* Login user with POST /users/login route (see passport.js, app.js, users.js)
+	* Check if email is in database
+		* Compare password with hashed password in db
+		* Set a cookie with userId (serializeUser and deserializeUser)
 
 
 
-* [ ] Login user with POST /auth/login
-	* [ ] check if email in db
-		* [ ] compare password with hashed password in db
-		* [ ] Set a cookie with user_id after creating user
-			* [ ] Best Practices
-			* [ ] Cross origin cookie!
-* [ ] Create login form; show errors; redirect;
- 	* [ ] validate required fields
-* [ ] Create sign up form; show errors; redirect;
-	* [ ] Validate required fields
 
 #### Authorization:
 * [ ] Visitors can only see the homepage
