@@ -62,10 +62,10 @@ yarn knex seed:run
 	* Set up user with POST /users/register route
 	* Validate required fields (see users.js - passport must be 6+ characters, passwords must match)
 	* Check if email is unique (see users.js)
+	* Hash password with bcrypt and then insert the new user into the database (see users.js)
 
 
-	* [ ] hash password with bcrypt
-	* [ ] insert into db
+
 * [ ] Login user with POST /auth/login
 	* [ ] check if email in db
 		* [ ] compare password with hashed password in db

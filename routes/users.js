@@ -2,6 +2,7 @@
 
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
 
 // Require the db file so functions can be called from it
 const db = require("../db");
@@ -76,12 +77,29 @@ router.post("/register", (req, res) => {
             unsuccessfulLogin: unsuccessfulLogin
           });
         } else {
+          const newUser = {
+            name,
+            email,
+            password
+          };
 
+          // Hash password
+          bcrypt.genSalt(10, (err, salt) =>
+            bcrypt.hash(password, salt, (err, hash) => {
+              if (err) throw err;
+              // Set password to hashed
+              newUser.password = hash;
+              // Save the user
+              db.addUser(newUser)
+                .then(users => {
+                  res.redirect("/users/login");
+                      })
+                .catch(err => {
+                  res.status(500).send("DATABASE ERROR: " + err.message);
+                });
+            }));
         }
       });
-
-
-
   }
 });
 
