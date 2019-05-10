@@ -44,14 +44,19 @@ yarn knex seed:run
 * Use the Unsplash Source API + JavaScript to search and display an image based on the user's chosen country input
 
 
-## Authentication and Authorisation with Node, Express, Postgres
-Add form-based cookie authentication to a CRUD app with a users table.
-Based on tutorials by 'Coding Garden with CJ': https://www.youtube.com/watch?v=H7qkTzxk_0I&t=3s
+## Authentication and Authorisation
+* Helpful youtube video by Traversy Media (node, express, mongodb/mongoose, ejs, passport): https://www.youtube.com/watch?v=6FOq4cUdH8k
 
 #### We will have 3 types of users:
 * Visitors - can only view the homepage
 * Logged In User - can only view the their page
 * Admin User - can view any page; can de-activate users;
+
+### Setup
+* Install dependencies: bcryptjs, passport, passport-local, connect-flash, express-session, (express)
+* Set up users routes
+
+
 
 ### Authentication
 * Add auth router (auth folder with index.js file, which defines and exports router; contains its own authorisation routes)

@@ -6,21 +6,23 @@ const hbs = require("express-handlebars");
 
 // import the routes folder, and name it 'destinationRoutes' (saves it as a variable)
 const destinationRoutes = require("./routes/routes");
+const usersRoutes = require("./routes/users");
 
 // save express() as a variable for ongoing use
-const server = express();
+const app = express();
 
 // middleware setup for handlebars (copied from Leslie's project)
-server.set('views', './views');
-server.engine("hbs", hbs({defaultLayout: "main", extname: ".hbs" }));
-server.set("view engine", "hbs");
+app.set('views', './views');
+app.engine("hbs", hbs({defaultLayout: "main", extname: ".hbs" }));
+app.set("view engine", "hbs");
 
 // set up for express
-server.use(express.urlencoded({ extended: true }));
-server.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 // set up routes
-server.use("/", destinationRoutes);
+app.use("/", destinationRoutes);
+app.use("/users", usersRoutes);
 
-// export 'server' for use elsewhere (particulalry index.js file)
-module.exports = server;
+// export 'app' for use elsewhere (particulalry index.js file)
+module.exports = app;
