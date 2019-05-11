@@ -12,7 +12,8 @@ yarn knex migrate:latest
 yarn knex seed:run
 ```
 4. Type 'yarn start' into the terminal to run the server, and navigate to localhost:3000 in your local browser
-5. Destinations, activities and accommodation can be viewed/added/updated and deleted
+5. Users can register an account and log in
+6. Destinations, activities and accommodation can be viewed/added/updated and deleted
 
 ## Planning
 ### Database Information
@@ -27,7 +28,8 @@ yarn knex seed:run
 * DONE: "Accommodation" section (separate table in database) - due to potential one-to-many relationship
 * DONE: "Activities" section (separate table in database) - due to one-to-many relationship
 * DONE: API search to find an image of the city, if the user doesn't provide one themselves
-* Login: allows other individuals to also add trips (would each require a unique customer id)
+* DONE: Authentication - users can register an account and log in
+* Authorisation - individuals can only see their own trips
 
 ## Learning
 * Learnt how to initialise and set up yarn to install dependencies
@@ -46,8 +48,7 @@ yarn knex seed:run
 	* Set up middleware for express-session and connect-flash (app.js)
 	* Custom middleware so we can add colours to messages (app.js)
 	* Create flash message (e.g. ``` req.flash("successMsg", "You are now registered and can log in"); ``` (app.js))
-
-
+* Authentication + Authorisation using bcrypt and passport (see below)
 
 ## Authentication and Authorisation
 * Helpful youtube video by Traversy Media (node, express, mongodb/mongoose, ejs, passport): https://www.youtube.com/watch?v=6FOq4cUdH8k

@@ -6,13 +6,8 @@ const router = express.Router();
 // Require the db file so functions can be called from it
 const db = require("../db");
 
-// Pull in ensureAuthenticated to protect routes
-const {ensureAuthenticated} = require("../config/auth");
-
-
-
 // DESTINATIONS ROUTES
-router.get("/", ensureAuthenticated, (req, res) => {
+router.get("/", (req, res) => {
   db.getDestinations()
     .then(destinations => {
       res.render("home", {

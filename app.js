@@ -51,12 +51,15 @@ app.use((req, res, next) => {
   next();
 });
 
+// Pull in ensureAuthenticated to protect routes
+const {ensureAuthenticated} = require("./config/auth");
+
 // set up routes
 app.use("/", routes);
 app.use("/users", usersRoutes);
-app.use("/destinations", destinationRoutes);
-app.use("/accommodation", accommodationRoutes);
-app.use("/activities", activitiesRoutes);
+app.use("/destinations", ensureAuthenticated, destinationRoutes);
+app.use("/accommodation", ensureAuthenticated, accommodationRoutes);
+app.use("/activities", ensureAuthenticated, activitiesRoutes);
 
 // export 'app' for use elsewhere (particulalry index.js file)
 module.exports = app;
