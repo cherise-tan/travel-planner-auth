@@ -23,9 +23,21 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex("users").insert(usersData);
     })
+
+    // .then(() => {
+    //   return knex("destinations").insert(destinationsData);
+    // })
+
     .then(() => {
-      return knex("destinations").insert(destinationsData);
+      let destinationPromises = [];
+      destinationsData.forEach((destination) => {
+        let user = destination.userName;
+        destinationPromises.push(createDestination(knex, destination, user));
+      });
+      return Promise.all(destinationPromises);
     })
+
+
     .then(() => {
       let activityPromises = [];
       activitiesData.forEach((activity) => {
@@ -43,6 +55,36 @@ exports.seed = function(knex, Promise) {
       return Promise.all(accommodationPromises);
     });
 };
+
+const createDestination = (knex, destination, user) => {
+      return knex("users").where("name", user).first()
+      .then((userRecord) => {
+        return knex('destinations').insert({
+          userName: destination.userName,
+          imageUrl: destination.imageUrl,
+          city: destination.city,
+          country: destination.country,
+          fromCity: destination.fromCity,
+          fromCountry: destination.fromCountry,
+          inboundDepartureDate: destination.inboundDepartureDate,
+          inboundDepartureTime: destination.inboundDepartureTime,
+          inboundTransport: destination.inboundTransport,
+          inboundArrivalDate: destination.inboundArrivalDate,
+          inboundArrivalTime: destination.inboundArrivalTime,
+          toCity: destination.toCity,
+          toCountry: destination.toCountry,
+          outboundDepartureDate: destination.outboundDepartureDate,
+          outboundDepartureTime: destination.outboundDepartureTime,
+          outboundTransport: destination.outboundTransport,
+          outboundArrivalDate: destination.outboundArrivalDate,
+          outboundArrivalTime: destination.outboundArrivalTime,
+          userId: userRecord.userId
+        })
+      });
+};
+
+
+
 
 const createActivity = (knex, activity, destination) => {
   return knex("destinations").where('city', destination).first()

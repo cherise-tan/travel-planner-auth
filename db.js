@@ -53,10 +53,11 @@ function addUser(user, testConn) {
 
 
 // DESTINATION QUERIES
-function getDestinations(testConn) {
+function getDestinations(id, testConn) {
   const conn = testConn || connection;
   return conn("destinations")
-  .select(); //get me all of the entries in the database (returns an array of objects)
+  .select()
+  .where("userId", id);
 }
 
 function addDestinations(destination, testConn) {

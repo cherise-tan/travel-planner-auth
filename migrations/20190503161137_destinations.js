@@ -4,8 +4,16 @@
 
 exports.up = function(knex, Promise) {
   return Promise.all([
+    knex.schema.createTable("users", (table) => { // create the accommodations table
+      table.increments("userId").primary(); // sets up the primary id which will auto-increment
+      table.string("name").notNullable();
+      table.string("email").notNullable();
+      table.string("password").notNullable();
+      table.timestamp("createdAt").defaultTo(knex.fn.now());
+    }),
     knex.schema.createTable("destinations", (table) => { // create the 'destinations' table
       table.increments("destinationId").primary(); // sets up the primary id which will auto-increment
+      table.string("userName");
       // IMAGES/DESTINATION INFO
       table.string("imageUrl");
       table.string("city");
@@ -26,6 +34,9 @@ exports.up = function(knex, Promise) {
       table.string("outboundTransport");
       table.string("outboundArrivalDate");
       table.string("outboundArrivalTime");
+      table.integer("userId").unsigned()
+      table.foreign("userId") // sets up the foreign key
+        .references("users.userId"); // foreign key references the destinations id
     }),
     knex.schema.createTable("activities", (table) => { // create the activities table
       table.increments("activityId").primary(); // sets up the primary id which will auto-increment
@@ -45,14 +56,8 @@ exports.up = function(knex, Promise) {
       table.integer("destinationId").unsigned()
       table.foreign("destinationId") // sets up the foreign key
       .references("destinations.destinationId"); // foreign key references the destinations id
-    }),
-    knex.schema.createTable("users", (table) => { // create the accommodations table
-      table.increments("userId").primary(); // sets up the primary id which will auto-increment
-      table.string("name").notNullable();
-      table.string("email").notNullable();
-      table.string("password").notNullable();
-      table.timestamp("createdAt").defaultTo(knex.fn.now());
     })
+
   ]);
 };
 

@@ -1,6 +1,7 @@
 // this supplies the seed destinations
 module.exports = [
   {
+    userName: "Cherise",
     imageUrl: "https://source.unsplash.com/weekly?Netherlands",
     city: "Amsterdam",
     country: "Netherlands",
@@ -20,6 +21,7 @@ module.exports = [
     outboundArrivalTime: "20:15"
   },
   {
+    userName: "Guido",
     imageUrl: "https://source.unsplash.com/weekly?Germany",
     city: "Bocholt",
     country: "Germany",

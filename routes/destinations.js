@@ -8,7 +8,7 @@ const db = require("../db");
 
 // DESTINATIONS ROUTES
 router.get("/", (req, res) => {
-  db.getDestinations()
+  db.getDestinations(req.session.passport.user)
     .then(destinations => {
       res.render("home", {
         destinations: destinations

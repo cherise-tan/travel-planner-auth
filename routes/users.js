@@ -108,7 +108,7 @@ router.get("/login", (req, res) => {
 // Login handle
 router.post("/login", (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: "/destinations",
+    successRedirect: "/destinations/",
     failureRedirect: "/users/login",
     failureFlash: true
   })(req, res, next);
