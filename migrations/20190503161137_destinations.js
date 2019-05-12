@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
     }),
     knex.schema.createTable("destinations", (table) => { // create the 'destinations' table
       table.increments("destinationId").primary(); // sets up the primary id which will auto-increment
-      table.string("userName");
+
       // IMAGES/DESTINATION INFO
       table.string("imageUrl");
       table.string("city");

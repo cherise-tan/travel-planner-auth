@@ -24,10 +24,6 @@ exports.seed = function(knex, Promise) {
       return knex("users").insert(usersData);
     })
 
-    // .then(() => {
-    //   return knex("destinations").insert(destinationsData);
-    // })
-
     .then(() => {
       let destinationPromises = [];
       destinationsData.forEach((destination) => {
@@ -60,7 +56,7 @@ const createDestination = (knex, destination, user) => {
       return knex("users").where("name", user).first()
       .then((userRecord) => {
         return knex('destinations').insert({
-          userName: destination.userName,
+
           imageUrl: destination.imageUrl,
           city: destination.city,
           country: destination.country,
@@ -79,7 +75,7 @@ const createDestination = (knex, destination, user) => {
           outboundArrivalDate: destination.outboundArrivalDate,
           outboundArrivalTime: destination.outboundArrivalTime,
           userId: userRecord.userId
-        })
+        });
       });
 };
 

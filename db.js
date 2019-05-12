@@ -60,10 +60,29 @@ function getDestinations(id, testConn) {
   .where("userId", id);
 }
 
-function addDestinations(destination, testConn) {
+function addDestinations(destination, userId, testConn) {
   const conn = testConn || connection;
   return conn("destinations")
-  .insert(destination); // insert a destination into the destinations table
+  .insert({
+    imageUrl: destination.imageUrl,
+    city: destination.city,
+    country: destination.country,
+    fromCity: destination.fromCity,
+    fromCountry: destination.fromCountry,
+    inboundDepartureDate: destination.inboundDepartureDate,
+    inboundDepartureTime: destination.inboundDepartureTime,
+    inboundTransport: destination.inboundTransport,
+    inboundArrivalDate: destination.inboundArrivalDate,
+    inboundArrivalTime: destination.inboundArrivalTime,
+    toCity: destination.toCity,
+    toCountry: destination.toCountry,
+    outboundDepartureDate: destination.outboundDepartureDate,
+    outboundDepartureTime: destination.outboundDepartureTime,
+    outboundTransport: destination.outboundTransport,
+    outboundArrivalDate: destination.outboundArrivalDate,
+    outboundArrivalTime: destination.outboundArrivalTime,
+    userId: userId
+  }); // insert a destination into the destinations table
 }
 
 function selectDestination(id, testConn) {

@@ -24,12 +24,14 @@ yarn knex seed:run
 ### Colour Palette
 * https://colorhunt.co/palette/144191
 
-### Future ideas
+### To Do
 * DONE: "Accommodation" section (separate table in database) - due to potential one-to-many relationship
 * DONE: "Activities" section (separate table in database) - due to one-to-many relationship
 * DONE: API search to find an image of the city, if the user doesn't provide one themselves
 * DONE: Authentication - users can register an account and log in
 * Authorisation - individuals can only see their own trips
+* Update Instructions
+* Display content in different layouts, depending on whether or not the user is logged in
 
 ## Learning
 * Learnt how to initialise and set up yarn to install dependencies
@@ -75,15 +77,15 @@ yarn knex seed:run
 		* Set a cookie with userId (serializeUser and deserializeUser)
 * Protect routes by implementing ``` ensureAuthenticated() ``` function (auth.js)
 
-
-
 #### Authorization:
-* [ ] Visitors can only see the homepage
-	* [ ] isLoggedIn middleware
-		* [ ] user_id cookie must be set
-		* [ ] send an unauthorized error message
-	* [ ] redirect to login form
-* [ ] Logged in users can only see their page
+* Visitors can only see the homepage
+	* ensureAuthenticated middleware
+		* Checks if user is authenticated
+		* Redirect to login form if user is not authenticated, and display an error message
+* Logged in users can only see their destinations
+
+
+
 	* [ ] allowAccess middleware
 		* [ ] id in url must match user_id in cookie
  		* [ ] send an unauthorized error message

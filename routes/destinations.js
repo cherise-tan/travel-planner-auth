@@ -24,7 +24,7 @@ router.get("/add", (req, res) => { // set up add route
 });
 
 router.post("/add", (req, res) => {
-  db.addDestinations(req.body) // add new destination to the database
+  db.addDestinations(req.body, req.session.passport.user) // add new destination to the database
     .then(destinations => {
       res.redirect("/destinations"); // take them back to the homepage which will display all the information
     })
