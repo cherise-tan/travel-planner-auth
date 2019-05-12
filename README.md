@@ -34,18 +34,7 @@ yarn knex seed:run
 * Display content in different layouts, depending on whether or not the user is logged in
 
 ## Learning
-* Learnt how to initialise and set up yarn to install dependencies
-* Learnt how to add 'scripts' into package.json to run certain commands (e.g. 'yarn dev' will run 'nodemon index')
-* Learnt about the express router (an isolated instance of middleware and routes - can be used as an argument to an "app.use()" method - can add middleware and HTTP method routes to the router object)
-* Using Knex.js to set up a SQLite database (including Migrations & Seeding. Migrations are a way to make database changes/updates via generated scripts, like creating or dropping tables, or updating a table with new columns)
-	* Good info about Migrations (including adding/dropping columns) and seeds: https://gist.github.com/NigelEarle/70db130cc040cc2868555b29a0278261
-* Using Knex.js with SQLite to make database queries
-* Used handlebars to set up a main template to render many page layouts, and also to display database information
-* Using express route parameters to query the database
-* Using Knex.js to create tables with a one-to-many relationship (using migrations + seeding) using foreign keys
-	* This article was very helpful: https://medium.com/@jaeger.rob/seed-knex-postgresql-database-with-json-data-3677c6e7c9bc
-* Making queries to multiple database tables simultaneously, and displaying the information on screen
-* Use the Unsplash Source API + JavaScript to search and display an image based on the user's chosen country input
+* Configuring PostgreSQL so I could use Knex to migrate/seed and perform CRUD actions on my local database
 * Learn how to use flash messages: stores message in a session and then displays it after the redirect
 	* Set up middleware for express-session and connect-flash (app.js)
 	* Custom middleware so we can add colours to messages (app.js)
@@ -83,12 +72,10 @@ yarn knex seed:run
 		* Checks if user is authenticated
 		* Redirect to login form if user is not authenticated, and display an error message
 * Logged in users can only see their destinations
+	* Only destinations with a destinationId matching the userId in the passport cookie will be displayed
 
 
 
-	* [ ] allowAccess middleware
-		* [ ] id in url must match user_id in cookie
- 		* [ ] send an unauthorized error message
 	* [ ] redirect to user page if they visit the homepage
 		* [ ] set user_id in localStorage after login/signup
 * [ ] Add GET /auth/logout to clear user_id cookie
