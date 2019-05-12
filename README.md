@@ -2,18 +2,29 @@
 A trip planner for my future travels
 
 ## Instructions
-1. Navigate to the projects directory and type 'yarn' into the terminal, to install all of the packages
-2. Run the database migrations
-```
-yarn knex migrate:latest
-```
-3. Seed the database with dummy database
-```
-yarn knex seed:run
-```
-4. Type 'yarn start' into the terminal to run the server, and navigate to localhost:3000 in your local browser
-5. Users can register an account and log in
-6. Destinations, activities and accommodation can be viewed/added/updated and deleted
+1. Navigate to the projects directory and type 'npm install' into the terminal, to install all of the packages
+2. Create PostgreSQL database using psql (command line prompt)
+	```
+	createdb <DATABASE_NAME>
+	```
+3. Configure the project to point at this database
+	* Set up a .env file, which should include the following information
+	```
+	DB_USER=<YOUR_USER_NAME_GOES_HERE>
+	DB_PASSWORD=<YOUR_PASSORD_GOES_HERE>
+	DB=<YOUR_DATABASE_NAME_GOES_HERE>
+	```
+3. Run the database migrations
+	```
+	knex migrate:latest
+	```
+4. Seed the database with dummy database
+	```
+	knex seed:run
+	```
+5. Type 'nodemon' into the terminal to run the server, and navigate to localhost:3000 in your local browser
+6. Users can register an account and log in
+7. Destinations, activities and accommodation can be viewed/added/updated/deleted
 
 ## Planning
 ### Database Information
@@ -29,9 +40,11 @@ yarn knex seed:run
 * DONE: "Activities" section (separate table in database) - due to one-to-many relationship
 * DONE: API search to find an image of the city, if the user doesn't provide one themselves
 * DONE: Authentication - users can register an account and log in
-* Authorisation - individuals can only see their own trips
-* Update Instructions
+* DONE: Authorisation - individuals can only see their own trips
+* Authorisation - individuals can only make changes to their own destinations/activities/accommodation
+* Redirect to the user's dashboard if a logged-in user visits the home route
 * Display content in different layouts, depending on whether or not the user is logged in
+* Update and test instructions
 
 ## Learning
 * Configuring PostgreSQL so I could use Knex to migrate/seed and perform CRUD actions on my local database
@@ -43,11 +56,6 @@ yarn knex seed:run
 
 ## Authentication and Authorisation
 * Helpful youtube video by Traversy Media (node, express, mongodb/mongoose, ejs, passport): https://www.youtube.com/watch?v=6FOq4cUdH8k
-
-#### We will have 3 types of users:
-* Visitors - can only view the homepage
-* Logged In User - can only view the their page
-* Admin User - can view any page; can de-activate users;
 
 ### Setup
 * Install dependencies: bcryptjs, passport, passport-local, connect-flash, express-session, (express)
@@ -65,6 +73,7 @@ yarn knex seed:run
 		* Compare password with hashed password in db
 		* Set a cookie with userId (serializeUser and deserializeUser)
 * Protect routes by implementing ``` ensureAuthenticated() ``` function (auth.js)
+* Logout user with /users/logout route, which will clear the userId passport cookie
 
 #### Authorization:
 * Visitors can only see the homepage
@@ -77,16 +86,3 @@ yarn knex seed:run
 
 
 	* [ ] redirect to user page if they visit the homepage
-		* [ ] set user_id in localStorage after login/signup
-* [ ] Add GET /auth/logout to clear user_id cookie
-	* [ ] redirect to login page
-
-### Admin Page:
-* [ ] Admin page that lists all users
-	* [ ] admin table with user_id (unique constraint)
-	* [ ] de-activate users
-* [ ] Admin can see any page on site
-
-### Other ways to auth:
-* [ ] Use sessions instead of cookies!
-* [ ] Use JWTs instead of sessions!
