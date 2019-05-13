@@ -1,13 +1,13 @@
-# travel-planner
-A trip planner for my future travels
+# travel-planner-auth
+This is a re-design of my previous travel-planner application, using the PostgreSQL database and Passport for authentication and authorisation.
 
 ## Instructions
 1. Navigate to the projects directory and type 'npm install' into the terminal, to install all of the packages
-2. Create PostgreSQL database using psql (command line prompt)
+2. Create PostgreSQL database using the command line
 	```
 	createdb <DATABASE_NAME>
 	```
-3. Configure the project to point at this database
+3. Configure the project to point at the database
 	* Set up a .env file, which should include the following information
 	```
 	DB_USER=<YOUR_USER_NAME_GOES_HERE>
@@ -23,19 +23,10 @@ A trip planner for my future travels
 	knex seed:run
 	```
 5. Type 'nodemon' into the terminal to run the server, and navigate to localhost:3000 in your local browser
-6. Users can register an account and log in
+6. Users can register an account and log in to view their planned trips
 7. Destinations, activities and accommodation can be viewed/added/updated/deleted
 
-## Planning
-### Database Information
-* Destination: Image (required), City name (required), Country name (required), Dates, Arrival info, Departure info
-* Activities: Name (required), Website, Notes
-* Accommodation: Name (required), Address, Website, Notes
-
-### Colour Palette
-* https://colorhunt.co/palette/144191
-
-### To Do
+## To Do
 * DONE: "Accommodation" section (separate table in database) - due to potential one-to-many relationship
 * DONE: "Activities" section (separate table in database) - due to one-to-many relationship
 * DONE: API search to find an image of the city, if the user doesn't provide one themselves
@@ -75,7 +66,7 @@ A trip planner for my future travels
 * Protect routes by implementing ``` ensureAuthenticated() ``` function (auth.js)
 * Logout user with /users/logout route, which will clear the userId passport cookie
 
-#### Authorization:
+### Authorization:
 * Visitors can only see the homepage
 	* ensureAuthenticated middleware
 		* Checks if user is authenticated
