@@ -10,7 +10,11 @@ const db = require("../db");
 
 // Register page
 router.get("/register", (req, res) => {
-  res.render("register", {layout: "home.hbs"});
+  if (req.user){ // redirect user to their destinations page if they are logged in
+    res.redirect("/destinations");
+  } else {
+    res.render("register", {layout: "home.hbs"});
+  }
 });
 
 // Register handle
@@ -104,7 +108,11 @@ router.post("/register", (req, res) => {
 
 // Login page
 router.get("/login", (req, res) => {
-  res.render("login", {layout: "home.hbs"});
+  if (req.user){ // redirect user to their destinations page if they are logged in
+    res.redirect("/destinations");
+  } else {
+    res.render("login", {layout: "home.hbs"});
+  }
 });
 
 // Login handle
