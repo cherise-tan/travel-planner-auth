@@ -53,11 +53,19 @@ function addUser(user, testConn) {
 
 
 // DESTINATION QUERIES
-function getDestinations(id, testConn) {
+function getDestinations(id, testConn) { // gets destination by user id
   const conn = testConn || connection;
   return conn("destinations")
   .select()
   .where("userId", id);
+}
+
+
+function selectDestination(id, testConn) {// gets destination by destination id
+  const conn = testConn || connection;
+  return conn("destinations")
+  .where("destinationId", id)
+  .first(); // select the first destination by that id from the database
 }
 
 function addDestinations(destination, userId, testConn) {
@@ -85,12 +93,7 @@ function addDestinations(destination, userId, testConn) {
   }); // insert a destination into the destinations table
 }
 
-function selectDestination(id, testConn) {
-  const conn = testConn || connection;
-  return conn("destinations")
-  .where("destinationId", id)
-  .first(); // select the first destination by that id from the database
-}
+
 
 function deleteDestination(id, testConn) {
   const conn = testConn || connection;

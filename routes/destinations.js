@@ -34,16 +34,26 @@ router.post("/add", (req, res) => {
 });
 
 router.post("/delete/:id", (req, res) => { // set up delete route
-  db.deleteDestination(req.params.id) // delete destination according to id
+  db.selectDestination(req.params.id)
     .then(destinations => {
-      res.redirect("/destinations"); // take them back to the homepage which will display all the information
+      if (destinations.userId === req.session.passport.user){
+        db.deleteDestination(req.params.id) // delete destination according to id
+          .then(destinations => {
+            res.redirect("/destinations"); // take them back to the homepage which will display all the information
+          })
+          .catch(err => {
+            res.status(500).send("DATABASE ERROR: " + err.message);
+          });
+      } else {
+        res.redirect("/destinations");
+      }
     })
     .catch(err => {
       res.status(500).send("DATABASE ERROR: " + err.message);
     });
 });
 
-router.get("/update/:id/", (req, res) => { // set up update route
+router.get("/update/:id", (req, res) => { // set up update route
   db.selectDestination(req.params.id) // select the destination by id
     .then(destinations => {
       res.render("destinations", { // then render the destinations file with data from the selected destination
