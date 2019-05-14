@@ -22,12 +22,14 @@ require("./config/passport")(passport);
 
 // middleware setup for handlebars (copied from Leslie's project)
 app.set('views', './views');
-app.engine("hbs", hbs({defaultLayout: "main", extname: ".hbs" }));
+app.engine("hbs", hbs({defaultLayout: "dashboard", extname: ".hbs" }));
 app.set("view engine", "hbs");
 
 // set up for express
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+
 
 // set up for express session
 app.use(session({

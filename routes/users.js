@@ -10,7 +10,7 @@ const db = require("../db");
 
 // Register page
 router.get("/register", (req, res) => {
-  res.render("register");
+  res.render("register", {layout: "home.hbs"});
 });
 
 // Register handle
@@ -49,8 +49,9 @@ router.post("/register", (req, res) => {
       password,
       password2
     };
-    res.render("register", {
-      unsuccessfulLogin: unsuccessfulLogin
+    res.render("register",  {
+      unsuccessfulLogin: unsuccessfulLogin,
+      layout: "home.hbs"
     });
   } else {
     // Validation passed
@@ -70,7 +71,8 @@ router.post("/register", (req, res) => {
             password2
           };
           res.render("register", {
-            unsuccessfulLogin: unsuccessfulLogin
+            unsuccessfulLogin: unsuccessfulLogin,
+            layout: "home.hbs"
           });
         } else {
           const newUser = {
@@ -102,7 +104,7 @@ router.post("/register", (req, res) => {
 
 // Login page
 router.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", {layout: "home.hbs"});
 });
 
 // Login handle
