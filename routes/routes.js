@@ -10,7 +10,11 @@ const db = require("../db");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("welcome");
+  if (req.user){ // redirect user to their destinations page if they are logged in
+    res.redirect("/destinations");
+  } else {
+      res.render("welcome");
+  }
 });
 
 // export the router so we can use it elsewhere if needed (i.e. within the express module)

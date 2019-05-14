@@ -33,7 +33,7 @@ This is a re-design of my previous travel-planner application, using the Postgre
 * DONE: Authentication - users can register an account and log in
 * DONE: Authorisation - individuals can only see their own trips
 * Authorisation - individuals can only make changes to their own destinations/activities/accommodation
-* Redirect to the user's dashboard if a logged-in user visits the home route
+* DONE: Redirect to the user's dashboard if a logged-in user visits the home route
 * Display content in different layouts, depending on whether or not the user is logged in
 * Update and test instructions
 
@@ -73,7 +73,4 @@ This is a re-design of my previous travel-planner application, using the Postgre
 		* Redirect to login form if user is not authenticated, and display an error message
 * Logged in users can only see their destinations
 	* Only destinations with a destinationId matching the userId in the passport cookie will be displayed
-
-
-
-	* [ ] redirect to user page if they visit the homepage
+	* Redirect logged in users to their ``` "/destinations" ``` page if they visit the home route
