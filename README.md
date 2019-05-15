@@ -24,7 +24,7 @@ This is a re-design of my previous travel-planner application, using the Postgre
 	```
 5. Type 'nodemon' into the terminal to run the server, and navigate to localhost:3000 in your local browser
 6. Users can register an account and log in to view their planned trips
-7. Destinations, activities and accommodation can be viewed/added/updated/deleted
+7. Destinations, activities and accommodation can be added/viewed/updated/deleted (CRUD)
 
 ## To Do
 * DONE: "Accommodation" section (separate table in database) - due to potential one-to-many relationship
@@ -32,13 +32,10 @@ This is a re-design of my previous travel-planner application, using the Postgre
 * DONE: API search to find an image of the city, if the user doesn't provide one themselves
 * DONE: Authentication - users can register an account and log in
 * DONE: Authorisation - individuals can only see their own trips
-* Authorisation - individuals can only make changes to their own destinations/activities/accommodation
-	* DONE: destination delete/update, activities R
-	* TO DO: activities CRUD, accommodation CRUD
+* DONE: Authorisation - individuals can only make changes to their own destinations/activities/accommodation
 * DONE: Redirect to the user's dashboard if a logged-in user visits the home route
 * DONE: Redirect to the user's dashboard if a logged-in user tries to visit the login/register pages
 * DONE: Display content in different layouts, depending on whether or not the user is logged in
-* Change activities/accommodation button links
 * Update and test instructions
 
 ## Learning
