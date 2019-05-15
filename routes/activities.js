@@ -30,14 +30,12 @@ router.get("/:id", (req, res) => { // set up ACTIVITIES get route, according to 
     .catch(err => {
       res.status(500).send("DATABASE ERROR: " + err.message);
     });
-
 });
 
 router.post("/add/:id", (req, res) => {
   db.selectDestination(req.params.id) // select the destination by its id
     .then(destinations => {
       if (destinations.userId === req.session.passport.user) { // check if logged in user owns this destination
-
         db.addActivity(req.body, req.params.id) // add the activity, based on the form information and the destination id
           .then(activities => {
             res.redirect("/activities/" + req.params.id); // take them back to the activities page which will display all the activities
@@ -45,7 +43,6 @@ router.post("/add/:id", (req, res) => {
           .catch(err => {
             res.status(500).send("DATABASE ERROR: " + err.message);
           });
-
       } else {
         res.redirect("/unauthorised");
       }
@@ -53,27 +50,38 @@ router.post("/add/:id", (req, res) => {
 });
 
 router.post("/delete/:id/:destinationId", (req, res) => {
-  db.deleteActivity(req.params.id) // delete the activity based on id
+  db.selectDestination(req.params.destinationId) // select the destination by its id
     .then(destinations => {
-      res.redirect("/activities/" + req.params.destinationId); // take them back to the activities page which will display all the activities
-    })
-    .catch(err => {
-      res.status(500).send("DATABASE ERROR: " + err.message);
+      if (destinations.userId === req.session.passport.user) { // check if logged in user owns this destination
+        db.deleteActivity(req.params.id) // delete the activity based on id
+          .then(destinations => {
+            res.redirect("/activities/" + req.params.destinationId); // take them back to the activities page which will display all the activities
+          })
+          .catch(err => {
+            res.status(500).send("DATABASE ERROR: " + err.message);
+          });
+      } else {
+        res.redirect("/unauthorised");
+      }
     });
 });
 
 router.post("/update/:id/:destinationId", (req, res) => {
-  db.updateActivity(req.params.id, req.body) // update the activity based on activity id and destination id
-    .then(activities => {
-      res.redirect("/activities/" + req.params.destinationId); // take them back to the activities page which will display all the activities
-    })
-    .catch(err => {
-      res.status(500).send("DATABASE ERROR: " + err.message);
+  db.selectDestination(req.params.destinationId) // select the destination by its id
+    .then(destinations => {
+      if (destinations.userId === req.session.passport.user) { // check if logged in user owns this destination
+        db.updateActivity(req.params.id, req.body) // update the activity based on activity id and destination id
+          .then(activities => {
+            res.redirect("/activities/" + req.params.destinationId); // take them back to the activities page which will display all the activities
+          })
+          .catch(err => {
+            res.status(500).send("DATABASE ERROR: " + err.message);
+          });
+      } else {
+        res.redirect("/unauthorised");
+      }
     });
 });
-
-
-
 
 
 module.exports = router;
