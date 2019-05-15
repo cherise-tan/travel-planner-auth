@@ -33,8 +33,8 @@ This is a re-design of my previous travel-planner application, using the Postgre
 * DONE: Authentication - users can register an account and log in
 * DONE: Authorisation - individuals can only see their own trips
 * Authorisation - individuals can only make changes to their own destinations/activities/accommodation
-	* DONE: destination delete
-	* TO DO: destination update, activities CRUD, accommodation CRUD
+	* DONE: destination delete/update, activities R
+	* TO DO: activities CRUD, accommodation CRUD
 * DONE: Redirect to the user's dashboard if a logged-in user visits the home route
 * DONE: Redirect to the user's dashboard if a logged-in user tries to visit the login/register pages
 * DONE: Display content in different layouts, depending on whether or not the user is logged in

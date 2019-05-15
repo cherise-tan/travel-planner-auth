@@ -36,7 +36,7 @@ router.post("/add", (req, res) => {
 router.post("/delete/:id", (req, res) => { // set up delete route
   db.selectDestination(req.params.id)
     .then(destinations => {
-      if (destinations.userId === req.session.passport.user){
+      if (destinations.userId === req.session.passport.user) {
         db.deleteDestination(req.params.id) // delete destination according to id
           .then(destinations => {
             res.redirect("/destinations"); // take them back to the homepage which will display all the information
@@ -56,9 +56,13 @@ router.post("/delete/:id", (req, res) => { // set up delete route
 router.get("/update/:id", (req, res) => { // set up update route
   db.selectDestination(req.params.id) // select the destination by id
     .then(destinations => {
-      res.render("destinations", { // then render the destinations file with data from the selected destination
-        destinations: destinations
-      });
+      if (destinations.userId === req.session.passport.user) { // checks if cookie user id matches the destination user id
+        res.render("destinations", { // then render the destinations file with data from the selected destination
+          destinations: destinations
+        });
+      } else {
+        res.redirect("/unauthorised");
+      }
     })
     .catch(err => {
       res.status(500).send("DATABASE ERROR: " + err.message);
@@ -66,18 +70,24 @@ router.get("/update/:id", (req, res) => { // set up update route
 });
 
 router.post("/update/:id", (req, res) => {
-  db.updateDestination(req.params.id, req.body) // update the destination by its id, passing in the information from the form
+  db.selectDestination(req.params.id)
     .then(destinations => {
-      res.redirect("/destinations"); // take them back to the homepage which will display all the information
+      if (destinations.userId === req.session.passport.user) {
+        db.updateDestination(req.params.id, req.body) // update the destination by its id, passing in the information from the form
+          .then(destinations => {
+            res.redirect("/destinations"); // take them back to the homepage which will display all the information
+          })
+          .catch(err => {
+            res.status(500).send("DATABASE ERROR: " + err.message);
+          });
+      } else {
+        res.redirect("/unauthorised");
+      }
+
     })
     .catch(err => {
       res.status(500).send("DATABASE ERROR: " + err.message);
     });
 });
-
-
-
-
-
 
 module.exports = router;

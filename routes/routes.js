@@ -13,8 +13,12 @@ router.get("/", (req, res) => {
   if (req.user){ // redirect user to their destinations page if they are logged in
     res.redirect("/destinations");
   } else {
-      res.render("welcome");
+      res.render("welcome", {layout: "home.hbs"});
   }
+});
+
+router.get("/unauthorised", (req, res) => {
+  res.render("unauthorised");
 });
 
 // export the router so we can use it elsewhere if needed (i.e. within the express module)
