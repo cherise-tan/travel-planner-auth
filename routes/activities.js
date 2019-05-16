@@ -50,7 +50,6 @@ router.post("/add/:id", (req, res) => {
 });
 
 router.post("/delete/:id", (req, res) => {
-
   db.getDestinationAndActivity(req.params.id) // Look up destination and activity by activity id, and join them
     .then(destinationAndActivity => {
       if (destinationAndActivity.userId === req.session.passport.user) {
@@ -67,7 +66,7 @@ router.post("/delete/:id", (req, res) => {
     });
 });
 
-router.get("/update/:id", (req, res) => {
+router.post("/update/:id", (req, res) => {
   db.getDestinationAndActivity(req.params.id) // Look up destination and activity by activity id, and join them
     .then(destinationAndActivity => {
       if (destinationAndActivity.userId === req.session.passport.user) {

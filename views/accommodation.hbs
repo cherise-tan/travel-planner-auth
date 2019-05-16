@@ -86,7 +86,7 @@
               </div>
               <div class="col px-0">
 
-                <form action="/accommodation/delete/{{accommodationId}}/{{destinationId}}" method="post">
+                <form action="/accommodation/delete/{{accommodationId}}" method="post">
                   <button type="submit" value="submit" class="btn btn-link ">Delete Accommodation</button>
                 </form>
 
@@ -94,7 +94,7 @@
             </div>
 
             <div class=" collapse silver p-1 m-1" id="collapseUpdateForm{{accommodationId}}">
-              <form class="pt-4 px-2" action="/accommodation/update/{{accommodationId}}/{{destinationId}}" method="post">
+              <form class="pt-4 px-2" action="/accommodation/update/{{accommodationId}}" method="post">
                 <h5>Name</h5>
                 <input type="text" name="name" placeholder="Name Of Attraction" value="{{name}}" class="mx-auto mb-3 wide-text-field" required>
                 <h5>Address</h5>

@@ -46,13 +46,31 @@ router.post("/add/:id", (req, res) => {
     });
 });
 
-router.post("/delete/:id/:destinationId", (req, res) => {
-  db.selectDestination(req.params.destinationId) // select the destination by its id
-    .then(destinations => {
-      if (destinations.userId === req.session.passport.user) { // check if logged in user owns this destination
-        db.deleteAccommodation(req.params.id) // delete the accommodation based on id
+router.post("/delete/:id", (req, res) => {
+  db.getDestinationAndAccommodation(req.params.id) // Look up destination and activity by activity id, and join them
+    .then(destinationAndAccommodation => {
+      if (destinationAndAccommodation.userId === req.session.passport.user) {
+          db.deleteAccommodation(req.params.id) // delete the accommodation based on id
+            .then(accommodations => {
+              res.redirect("/accommodation/" + destinationAndAccommodation.destinationId); // take them back to the accommodation page which will display all the accommodations
+            })
+            .catch(err => {
+              res.status(500).send("DATABASE ERROR: " + err.message);
+            });
+
+      } else {
+        res.redirect("/unauthorised");
+      }
+    });
+});
+
+router.post("/update/:id", (req, res) => {
+  db.getDestinationAndAccommodation(req.params.id) // Look up destination and activity by activity id, and join them
+    .then(destinationAndAccommodation => {
+      if (destinationAndAccommodation.userId === req.session.passport.user) {
+        db.updateAccommodation(req.params.id, req.body) // update the activity based on activity id and destination id
           .then(accommodations => {
-            res.redirect("/accommodation/" + req.params.destinationId); // take them back to the accommodation page which will display all the accommodations
+            res.redirect("/accommodation/" + destinationAndAccommodation.destinationId); // take them back to the activities page which will display all the activities
           })
           .catch(err => {
             res.status(500).send("DATABASE ERROR: " + err.message);
@@ -63,22 +81,7 @@ router.post("/delete/:id/:destinationId", (req, res) => {
     });
 });
 
-router.post("/update/:id/:destinationId", (req, res) => {
-  db.selectDestination(req.params.destinationId) // select the destination by its id
-    .then(destinations => {
-      if (destinations.userId === req.session.passport.user) { // check if logged in user owns this destination
-        db.updateAccommodation(req.params.id, req.body) // update the activity based on activity id and destination id
-          .then(accommodations => {
-            res.redirect("/accommodation/" + req.params.destinationId); // take them back to the accommodation page which will display all the accommodations
-          })
-          .catch(err => {
-            res.status(500).send("DATABASE ERROR: " + err.message);
-          });
-      } else {
-        res.redirect("/unauthorised");
-      }
-    });
-});
+
 
 
 module.exports = router;
