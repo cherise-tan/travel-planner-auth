@@ -11,6 +11,10 @@ module.exports = function(passport) {
     new LocalStrategy({
       usernameField: "email"
     }, (email, password, done) => {
+
+      // Change email to lowercase -> make email not case-sensitive
+      email = email.toLowerCase();
+
       // match user
       db.getUser(email)
         .then(user => {

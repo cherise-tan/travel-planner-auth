@@ -22,10 +22,12 @@ router.post("/register", (req, res) => {
   // Get variables from the form
   const {
     name,
-    email,
     password,
     password2
   } = req.body;
+
+  const formEmail = req.body.email;
+  const email = formEmail.toLowerCase(); // Change stored email to lowercase
 
   let errors = [];
 

@@ -37,6 +37,7 @@ This is a re-design of my previous travel-planner application, using the Postgre
 * DONE: Redirect to the user's dashboard if a logged-in user tries to visit the login/register pages
 * DONE: Display content in different layouts, depending on whether or not the user is logged in
 * DONE: Use database table joins to allow further protection of activities and accommodations routes (include only one express route parameter per route)
+* DONE: User login/registration email should not be case-sensitive
 * DONE: Update and test instructions
 
 ## Learning
