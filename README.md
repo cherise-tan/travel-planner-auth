@@ -36,10 +36,12 @@ This is a re-design of my previous travel-planner application, using the Postgre
 * DONE: Redirect to the user's dashboard if a logged-in user visits the home route
 * DONE: Redirect to the user's dashboard if a logged-in user tries to visit the login/register pages
 * DONE: Display content in different layouts, depending on whether or not the user is logged in
+* Use database table joins to allow further protection of activities and accommodations routes (include only one express route parameter per route)
 * Update and test instructions
 
 ## Learning
 * Configuring PostgreSQL so I could use Knex to migrate/seed and perform CRUD actions on my local database
+* Learned how to do database table joins to return information from two different tables simultaneously
 * Learn how to use flash messages: stores message in a session and then displays it after the redirect
 	* Set up middleware for express-session and connect-flash (app.js)
 	* Custom middleware so we can add colours to messages (app.js)

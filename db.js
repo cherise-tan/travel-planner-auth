@@ -25,7 +25,9 @@ module.exports = {
   getAccommodations,
   addAccommodation,
   deleteAccommodation,
-  updateAccommodation
+  updateAccommodation,
+
+  getDestinationAndActivity
 };
 
 // USER QUERIES
@@ -108,6 +110,19 @@ function updateDestination(id, destination, testConn) {
   .where("destinationId", id)
   .update(destination); //update destination according to id
 }
+
+// JOINS
+function getDestinationAndActivity(id, testConn) {
+  const conn = testConn || connection;
+  return conn("activities")
+  .where("activityId", id)
+  .join("destinations", "activities.destinationId", "=", "destinations.destinationId")
+  .first();
+}
+
+
+
+
 
 // ACTIVITY QUERIES
 function getActivities(id, testConn) {

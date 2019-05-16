@@ -49,13 +49,14 @@ router.post("/add/:id", (req, res) => {
     });
 });
 
-router.post("/delete/:id/:destinationId", (req, res) => {
-  db.selectDestination(req.params.destinationId) // select the destination by its id
-    .then(destinations => {
-      if (destinations.userId === req.session.passport.user) { // check if logged in user owns this destination
+router.post("/delete/:id", (req, res) => {
+
+  db.getDestinationAndActivity(req.params.id) // Look up destination and activity by activity id, and join them
+    .then(destinationAndActivity => {
+      if (destinationAndActivity.userId === req.session.passport.user) {
         db.deleteActivity(req.params.id) // delete the activity based on id
-          .then(destinations => {
-            res.redirect("/activities/" + req.params.destinationId); // take them back to the activities page which will display all the activities
+          .then(activities => {
+            res.redirect("/activities/" + destinationAndActivity.destinationId); // take them back to the activities page which will display all the activities
           })
           .catch(err => {
             res.status(500).send("DATABASE ERROR: " + err.message);
@@ -66,13 +67,13 @@ router.post("/delete/:id/:destinationId", (req, res) => {
     });
 });
 
-router.post("/update/:id/:destinationId", (req, res) => {
-  db.selectDestination(req.params.destinationId) // select the destination by its id
-    .then(destinations => {
-      if (destinations.userId === req.session.passport.user) { // check if logged in user owns this destination
+router.get("/update/:id", (req, res) => {
+  db.getDestinationAndActivity(req.params.id) // Look up destination and activity by activity id, and join them
+    .then(destinationAndActivity => {
+      if (destinationAndActivity.userId === req.session.passport.user) {
         db.updateActivity(req.params.id, req.body) // update the activity based on activity id and destination id
           .then(activities => {
-            res.redirect("/activities/" + req.params.destinationId); // take them back to the activities page which will display all the activities
+            res.redirect("/activities/" + destinationAndActivity.destinationId); // take them back to the activities page which will display all the activities
           })
           .catch(err => {
             res.status(500).send("DATABASE ERROR: " + err.message);
