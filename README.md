@@ -37,7 +37,7 @@ This is a re-design of my previous travel-planner application, using the Postgre
 * DONE: Redirect to the user's dashboard if a logged-in user tries to visit the login/register pages
 * DONE: Display content in different layouts, depending on whether or not the user is logged in
 * DONE: Use database table joins to allow further protection of activities and accommodations routes (include only one express route parameter per route)
-* Update and test instructions
+* DONE: Update and test instructions
 
 ## Learning
 * Configuring PostgreSQL so I could use Knex to migrate/seed and perform CRUD actions on my local database
