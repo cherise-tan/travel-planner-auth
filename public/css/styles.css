@@ -1,96 +1,92 @@
 /* COLOURS */
-body{
+body {
   background-color: #5588a3;
-
 }
 
-
-
-.light-background{
-    background-color: #e8e8e8;
+.light-background {
+  background-color: #e8e8e8;
 }
 
-.silver{
+.silver {
   background-color: silver;
 }
 
-.grey{
+.grey {
   color: grey;
 }
 
 /* ICONS */
-.fa-plus-circle{
+.fa-plus-circle {
   padding: 0 0.25rem;
   margin-bottom: 0;
 }
 
 /* BUTTONS */
-.btn{
+.btn {
   background-color: #145374;
 }
 
-.btn-link{
-  background:none !important;
-  padding:0!important;
+.btn-link {
+  background: none !important;
+  padding: 0 !important;
   border: none;
 }
 
 /* NAVBAR */
-.navbar-dark{
+.navbar-dark {
   background-color: #145374;
 }
 
 /* DESTINATION CARDS */
-.body-container{
+.body-container {
   margin-top: 8rem;
   margin-bottom: 4rem;
 }
 
-.destination-card{
+.destination-card {
   width: 20rem;
   text-align: center;
 }
 
-.img-size{
+.img-size {
   width: 100%;
   height: 13rem;
   object-fit: cover;
 }
 
 /* ADD/UPDATE TRIP FORM */
-.add-trip-col{
+.add-trip-col {
   text-align: center;
 }
 
-.wide-text-field{
+.wide-text-field {
   width: 100%;
   min-width: 15rem;
 }
 
 /* ACTIVITY CARDS */
-.activity-card{
+.activity-card {
   width: 20rem;
   text-align: center;
   min-height: 20rem;
 }
 
-@media only screen and (max-width: 991px){
+@media only screen and (max-width: 991px) {
   #navigation-bar {
     height: 80px;
   }
 
-.body-container {
-  margin-top: 3rem;
-}
+  .body-container {
+    margin-top: 3rem;
+  }
 
-.row{
-  max-width: 90vw;
-  margin: auto;
-}
-
-  .card{
-    max-width:80vw;
+  .row {
+    max-width: 90vw;
     margin: auto;
+  }
 
+  .card {
+    max-width: 80vw;
+    margin: auto;
   }
 }
