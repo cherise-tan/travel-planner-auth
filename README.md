@@ -1,6 +1,8 @@
 # travel-planner-auth
 This is a re-design of my previous travel-planner application, using the PostgreSQL database and Passport for authentication and authorisation.
 
+The app has been deployed to Heroku, and can be accessed here: https://tripstar.herokuapp.com
+
 ## Instructions
 1. Navigate to the projects directory and type 'npm install' into the terminal, to install all of the packages
 2. Create PostgreSQL database using the command line
@@ -40,7 +42,7 @@ This is a re-design of my previous travel-planner application, using the Postgre
 * DONE: User login/registration email should not be case-sensitive
 * DONE: Update and test instructions
 * DONE: host app on Heroku
-* Make app mobile responsive
+* DONE: Make app mobile responsive
 
 ## Learning
 * Configuring PostgreSQL so I could use Knex to migrate/seed and perform CRUD actions on my local database
@@ -51,6 +53,10 @@ This is a re-design of my previous travel-planner application, using the Postgre
 	* Create flash message (e.g. ``` req.flash("successMsg", "You are now registered and can log in"); ``` (app.js))
 * Authentication + Authorisation using bcrypt and passport (see below)
 * Rendering views in different layouts, depending on whether or not the user is logged in
+* Hosting app on Heroku with PostgreSQL database
+	* Helpful websites:
+		* https://codeselfstudy.com/blog/deploy-node-postgres-heroku/
+		* https://medium.com/@vapurrmaid/getting-started-with-heroku-postgres-and-pgadmin-run-on-part-2-90d9499ed8fb
 
 ## Authentication and Authorisation
 * Helpful youtube video by Traversy Media (node, express, mongodb/mongoose, ejs, passport): https://www.youtube.com/watch?v=6FOq4cUdH8k
