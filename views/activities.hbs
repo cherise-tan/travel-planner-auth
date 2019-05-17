@@ -15,34 +15,34 @@
 
         <div class=" collapse silver py-3 m-4" id="collapseForm">
           <form class="pt-4" action="/activities/add/{{destinationId}}" method="post">
-            <div class="mx-auto px-4 py-2">
+            <div class="row mx-auto px-4 py-2">
               <div class="col-md-4 add-trip-col my-auto">
                 <h5>Name</h5>
               </div>
-              <div class="col-md-8 my-auto add-trip-col ">
+              <div class="col-md-8 my-auto add-trip-col p-0">
                 <input type="text" name="name" placeholder="Name Of Attraction" class="m-1 wide-text-field" required>
               </div>
             </div>
 
-            <div class="mx-auto px-4 py-2">
+            <div class="row mx-auto px-4 py-2">
               <div class="col-md-4 add-trip-col  my-auto">
                 <h5>Website</h5>
               </div>
-              <div class="col-md-8 my-auto add-trip-col ">
+              <div class="col-md-8 my-auto add-trip-col p-0">
                 <input type="url" pattern="https?://.+" placeholder="Website" class="m-1 wide-text-field">
               </div>
             </div>
 
-            <div class="mx-auto px-4 py-2">
+            <div class="row mx-auto px-4 py-2">
               <div class="col-md-4 add-trip-col  my-auto">
                 <h5>Notes</h5>
               </div>
-              <div class="col-md-8 my-auto add-trip-col ">
+              <div class="col-md-8 my-auto add-trip-col p-0">
                 <textarea rows="3" name="notes" placeholder="Notes" class="m-1 wide-text-field"></textarea>
               </div>
             </div>
 
-            <div class="mx-auto">
+            <div class="row">
               <button type="submit" value="submit" class="btn btn-dark btn-lg mx-auto my-3">Add</button>
             </div>
           </form>
