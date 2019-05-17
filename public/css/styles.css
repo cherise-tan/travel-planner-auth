@@ -1,7 +1,10 @@
 /* COLOURS */
 body{
   background-color: #5588a3;
+
 }
+
+
 
 .light-background{
     background-color: #e8e8e8;
@@ -76,8 +79,18 @@ body{
     height: 80px;
   }
 
+.body-container {
+  margin-top: 3rem;
+}
+
+.row{
+  max-width: 90vw;
+  margin: auto;
+}
+
   .card{
-    width:80vw;
+    max-width:80vw;
     margin: auto;
+
   }
 }
