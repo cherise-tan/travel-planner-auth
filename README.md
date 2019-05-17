@@ -39,6 +39,8 @@ This is a re-design of my previous travel-planner application, using the Postgre
 * DONE: Use database table joins to allow further protection of activities and accommodations routes (include only one express route parameter per route)
 * DONE: User login/registration email should not be case-sensitive
 * DONE: Update and test instructions
+* DONE: host app on Heroku
+* Make app mobile responsive
 
 ## Learning
 * Configuring PostgreSQL so I could use Knex to migrate/seed and perform CRUD actions on my local database

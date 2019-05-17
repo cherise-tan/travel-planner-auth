@@ -70,3 +70,14 @@ body{
   text-align: center;
   min-height: 20rem;
 }
+
+@media only screen and (max-width: 991px){
+  #navigation-bar {
+    height: 80px;
+  }
+
+  .card{
+    width:80vw;
+    margin: auto;
+  }
+}
