@@ -23,7 +23,6 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex("users").insert(usersData);
     })
-
     .then(() => {
       let destinationPromises = [];
       destinationsData.forEach((destination) => {
@@ -32,8 +31,6 @@ exports.seed = function(knex, Promise) {
       });
       return Promise.all(destinationPromises);
     })
-
-
     .then(() => {
       let activityPromises = [];
       activitiesData.forEach((activity) => {
@@ -56,7 +53,6 @@ const createDestination = (knex, destination, user) => {
       return knex("users").where("name", user).first()
       .then((userRecord) => {
         return knex('destinations').insert({
-
           imageUrl: destination.imageUrl,
           city: destination.city,
           country: destination.country,
@@ -78,9 +74,6 @@ const createDestination = (knex, destination, user) => {
         });
       });
 };
-
-
-
 
 const createActivity = (knex, activity, destination) => {
   return knex("destinations").where('city', destination).first()

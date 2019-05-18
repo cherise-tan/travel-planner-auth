@@ -4,9 +4,7 @@ function findImage() {
   var imageUrl = document.getElementById("ImageUrl"); // get the image-url object and define it as 'imageUrl'
 
   var baseUrl = "https://source.unsplash.com/weekly?"; // define the base of our url
-
   var countryValue = country.value;
-
   var imageUrlValue = countryValue;
 
   imageUrl.value = baseUrl + imageUrlValue; // set the 'value' of our imageUrl to be our base url + country name

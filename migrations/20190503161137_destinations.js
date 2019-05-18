@@ -1,7 +1,6 @@
 // jshint esversion:6
 
 // Sets up the migrations -> tells the database what tables it needs to create, including association between different tables
-
 exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable("users", (table) => { // create the accommodations table

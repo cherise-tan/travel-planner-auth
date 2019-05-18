@@ -5,15 +5,8 @@
         <div class="card card-body p-5">
           <h1 class="text-center mb-3"><i class="fas fa-user-plus"></i> Register</h1>
 
-
-
-
-
-
-
           {{#unsuccessfulLogin}}
           {{> messages}}
-
             <form action="/users/register" method="POST">
               <div class="form-group">
                 <label for="name">Name</label>
@@ -37,12 +30,15 @@
 
             </form>
           {{/unsuccessfulLogin}}
+
           <p class=" mt-4">Have An Account? <a href="/users/login">Login</a></p>
         </div>
       </div>
     </div>
   </div>
+
 {{else}}
+
   <div class="container body-container px-0">
     <div class="row mt-5">
       <div class="col-md-6 m-auto">
@@ -65,13 +61,12 @@
               <label for="password2">Confirm Password</label>
               <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password" required />
             </div>
-            <button type="submit" class="btn btn-secondary btn-block mt-4 py-2">
-              Register
-            </button>
+            <button type="submit" class="btn btn-secondary btn-block mt-4 py-2">Register</button>
           </form>
           <p class=" mt-4">Have An Account? <a href="/users/login">Login</a></p>
         </div>
       </div>
     </div>
   </div>
+  
 {{/if}}

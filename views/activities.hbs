@@ -3,7 +3,6 @@
 
     {{#destinations}}
       <div class=" light-background py-3">
-
         <div class="row mx-auto p-4">
           <div class="col-md-8 my-auto">
             <h1 class="mx-auto add-trip-col">{{city}}, {{country}}</h1>
@@ -12,7 +11,6 @@
             <a class="mx-auto add-trip-col nav-link h5 mb-0" data-toggle="collapse" href="#collapseForm" role="button">Add Activity<i class=" fas fa-plus-circle"></i></a>
           </div>
         </div>
-
         <div class=" collapse silver py-3 m-4" id="collapseForm">
           <form class="pt-4" action="/activities/add/{{destinationId}}" method="post">
             <div class="row mx-auto px-4 py-2">
@@ -23,7 +21,6 @@
                 <input type="text" name="name" placeholder="Name Of Attraction" class="m-1 wide-text-field" required>
               </div>
             </div>
-
             <div class="row mx-auto px-4 py-2">
               <div class="col-md-4 add-trip-col  my-auto">
                 <h5>Website</h5>
@@ -32,7 +29,6 @@
                 <input type="url" pattern="https?://.+" placeholder="Website" class="m-1 wide-text-field">
               </div>
             </div>
-
             <div class="row mx-auto px-4 py-2">
               <div class="col-md-4 add-trip-col  my-auto">
                 <h5>Notes</h5>
@@ -41,13 +37,11 @@
                 <textarea rows="3" name="notes" placeholder="Notes" class="m-1 wide-text-field"></textarea>
               </div>
             </div>
-
             <div class="row">
               <button type="submit" value="submit" class="btn btn-dark btn-lg mx-auto my-3">Add</button>
             </div>
           </form>
         </div>
-
       </div>
     {{/destinations}}
 
@@ -60,15 +54,12 @@
     {{#each activities}}
       <div class="col-lg-4 col-md-6 px-0">
         <div class="card py-2 mb-5 mx-auto activity-card light-background">
-
           <div class="p-3 my-auto">
             <a class="text-dark h2" href="{{website}}" target="_blank">{{name}}</a>
           </div>
-
           <div class="card-body">
             <p class="card-text">{{notes}}</p>
           </div>
-
           <div class="px-3 pb-4">
             <div class="row mx-auto">
               <div class="col px-0">
@@ -80,7 +71,6 @@
                 </form>
               </div>
             </div>
-
             <div class=" collapse silver p-1 m-1" id="collapseUpdateForm{{activityId}}">
               <form class="pt-4 px-2" action="/activities/update/{{activityId}}" method="post">
                 <h5>Name</h5>
@@ -95,7 +85,6 @@
               </form>
             </div>
           </div>
-
         </div>
       </div>
     {{/each}}

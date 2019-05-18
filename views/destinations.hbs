@@ -1,12 +1,10 @@
-
-
 {{#if destinations}}
   <link rel="stylesheet" href="/css/styles.css">
+
   {{#destinations}}
     <div class="container body-container container-fluid">
       <div class="light-background py-4 px-2">
         <form class="" action="/destinations/update/{{destinationId}}" method="post">
-
           <div class="row mx-auto pb-3">
             <div class="col py-2 add-trip-col">
               <h4 class="pt-3 pb-2">Destination</h4>
@@ -18,7 +16,6 @@
               <input type="url" pattern="https?://.+" name="imageUrl" value="{{imageUrl}}" class="m-1 wide-text-field" required>
             </div>
           </div>
-
           <div class="row mx-auto">
             <div class="col pb-2 add-trip-col m-2 silver">
               <h5 class="pt-3 pb-1">Inbound Trip</h5>
@@ -32,7 +29,6 @@
               <input type="date" name="inboundArrivalDate" placeholder="Date of Arrival" value="{{inboundArrivalDate}}" class="m-1 grey">
               <input type="time" name="inboundArrivalTime" placeholder="Time of Arrival" value="{{inboundArrivalTime}}" class="m-1 grey">
             </div>
-
             <div class="col pb-2 add-trip-col m-2 silver">
               <h5 class="pt-3 pb-1">Outbound Trip</h5>
               <input type="text" name="toCity" placeholder="To City" value="{{toCity}}" class="m-1">
@@ -46,11 +42,9 @@
               <input type="time" name="outboundArrivalTime" placeholder="Time of Arrival" value="{{outboundArrivalTime}}" class="m-1 grey">
             </div>
           </div>
-
           <div class="row">
             <button type="submit" value="submit" class=" btn btn-dark btn-lg mx-auto my-4">Update Trip</button>
           </div>
-
         </form>
       </div>
     </div>
@@ -61,21 +55,18 @@
   <div class="container body-container container-fluid">
     <div class="light-background py-4 px-2">
       <form class="" action="/destinations/add" method="post">
-
         <div class="row mx-auto pb-3">
           <div class="col py-2 add-trip-col">
             <h4 class="pt-3 pb-2">Destination</h4>
             <input type="text" name="city" placeholder="City" class="m-1 wide-text-field" required>
             <input type="text" id="Country" name="country" placeholder="Country" class="m-1 wide-text-field" required>
           </div>
-
           <div class="col py-2 add-trip-col ">
             <h4 class="pt-3 pb-2">Image</h4>
             <input type="url" pattern="https?://.+" id="ImageUrl" name="imageUrl" placeholder="Enter Image URL" class="m-1 wide-text-field" required>
             <button class="btn  btn-dark btn-medium mx-auto" onClick="findImage()" type="button">Insert Default Image (Country-Specific)</button>
           </div>
         </div>
-
         <div class="row mx-auto">
           <div class="col pb-2 add-trip-col m-2 silver">
             <h5 class="pt-3 pb-1">Inbound Trip</h5>
@@ -102,11 +93,9 @@
             <input type="time" name="outboundArrivalTime" placeholder="Time of Arrival" class="m-1 grey">
           </div>
         </div>
-
         <div class="row">
           <button type="submit" value="submit" class=" btn btn-dark btn-lg mx-auto my-4">Add Trip</button>
         </div>
-
       </form>
     </div>
   </div>
