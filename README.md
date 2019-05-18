@@ -42,6 +42,7 @@ The app has been deployed to Heroku, and can be accessed here: https://tripstar.
 * DONE: User login/registration email should not be case-sensitive
 * DONE: Update and test instructions
 * DONE: Deploy app to Heroku
+* DONE: Separate concerns -> split different database queries into different files
 
 ## Learning
 * Configuring PostgreSQL so I could use Knex to migrate/seed and perform CRUD actions on my local database

@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
 // Require the db file so functions can be called from it
-const db = require("../db");
+const db = require("../db/users");
 
 // Register page
 router.get("/register", (req, res) => {

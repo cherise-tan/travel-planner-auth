@@ -4,7 +4,8 @@ const express = require("express");
 const router = express.Router();
 
 // Require the db file so functions can be called from it
-const db = require("../db");
+const db = require("../db/activities");
+const destinationdb = require("../db/destinations");
 
 // Pull in ensureAuthenticated to protect routes
 const {
@@ -13,7 +14,7 @@ const {
 
 // ACTIVITIES ROUTES
 router.get("/:id", (req, res) => { // set up ACTIVITIES get route, according to the selected destination's id
-  db.selectDestination(req.params.id) // select the destination by its id
+  destinationdb.selectDestination(req.params.id) // select the destination by its id
     .then(destinations => {
       if (destinations.userId === req.session.passport.user) { // check if logged in user owns this destination
         db.getActivities(req.params.id) // then get the activities associated with that destination
@@ -33,7 +34,7 @@ router.get("/:id", (req, res) => { // set up ACTIVITIES get route, according to 
 });
 
 router.post("/add/:id", (req, res) => {
-  db.selectDestination(req.params.id) // select the destination by its id
+  destinationdb.selectDestination(req.params.id) // select the destination by its id
     .then(destinations => {
       if (destinations.userId === req.session.passport.user) { // check if logged in user owns this destination
         db.addActivity(req.body, req.params.id) // add the activity, based on the form information and the destination id

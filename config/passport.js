@@ -4,7 +4,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 
 // Require the db file so functions can be called from it
-const db = require("../db");
+const db = require("../db/users");
 
 module.exports = function(passport) {
   passport.use(

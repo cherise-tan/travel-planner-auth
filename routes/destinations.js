@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 
 // Require the db file so functions can be called from it
-const db = require("../db");
+const db = require("../db/destinations");
 
 // DESTINATIONS ROUTES
 router.get("/", (req, res) => {
