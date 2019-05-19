@@ -43,7 +43,7 @@ The app has been deployed to Heroku, and can be accessed here: https://tripstar.
 * DONE: Update and test instructions
 * DONE: Deploy app to Heroku
 * DONE: Separate concerns -> split different database queries into different files
-* Review CSS style guide
+* Review CSS style guide -> naming conventions
 
 ## Learning
 * Configuring PostgreSQL so I could use Knex to migrate/seed and perform CRUD actions on my local database
