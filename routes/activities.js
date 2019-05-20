@@ -12,14 +12,13 @@ const {
   ensureAuthenticated
 } = require("../config/auth");
 
-// ACTIVITIES ROUTES
-router.get("/:id", (req, res) => { // set up ACTIVITIES get route, according to the selected destination's id
-  destinationdb.selectDestination(req.params.id) // select the destination by its id
+router.get("/:id", (req, res) => { // Set up ACTIVITIES get route, according to the selected destination's id
+  destinationdb.selectDestination(req.params.id) // Select the destination by its id
     .then(destinations => {
-      if (destinations.userId === req.session.passport.user) { // check if logged in user owns this destination
-        db.getActivities(req.params.id) // then get the activities associated with that destination
+      if (destinations.userId === req.session.passport.user) { // Check if logged in user owns this destination
+        db.getActivities(req.params.id) // Then get the activities associated with that destination
           .then(activities => {
-            res.render("activities", { // then render the activities page with information from both destinations and activities tables
+            res.render("activities", { // Then render the activities page with information from both destinations and activities tables
               destinations: destinations,
               activities: activities
             });
@@ -34,12 +33,12 @@ router.get("/:id", (req, res) => { // set up ACTIVITIES get route, according to 
 });
 
 router.post("/add/:id", (req, res) => {
-  destinationdb.selectDestination(req.params.id) // select the destination by its id
+  destinationdb.selectDestination(req.params.id)
     .then(destinations => {
-      if (destinations.userId === req.session.passport.user) { // check if logged in user owns this destination
-        db.addActivity(req.body, req.params.id) // add the activity, based on the form information and the destination id
+      if (destinations.userId === req.session.passport.user) {
+        db.addActivity(req.body, req.params.id)
           .then(activities => {
-            res.redirect("/activities/" + req.params.id); // take them back to the activities page which will display all the activities
+            res.redirect("/activities/" + req.params.id);
           })
           .catch(err => {
             res.status(500).send("DATABASE ERROR: " + err.message);
@@ -51,12 +50,12 @@ router.post("/add/:id", (req, res) => {
 });
 
 router.post("/delete/:id", (req, res) => {
-  db.getDestinationAndActivity(req.params.id) // Look up destination and activity by activity id, and join them
+  db.getDestinationAndActivity(req.params.id) // Look up destination and activity by activity id, and join these tables
     .then(destinationAndActivity => {
       if (destinationAndActivity.userId === req.session.passport.user) {
-        db.deleteActivity(req.params.id) // delete the activity based on id
+        db.deleteActivity(req.params.id) // Delete the activity based on id
           .then(activities => {
-            res.redirect("/activities/" + destinationAndActivity.destinationId); // take them back to the activities page which will display all the activities
+            res.redirect("/activities/" + destinationAndActivity.destinationId); // Take them back to the activities page
           })
           .catch(err => {
             res.status(500).send("DATABASE ERROR: " + err.message);
@@ -68,12 +67,12 @@ router.post("/delete/:id", (req, res) => {
 });
 
 router.post("/update/:id", (req, res) => {
-  db.getDestinationAndActivity(req.params.id) // Look up destination and activity by activity id, and join them
+  db.getDestinationAndActivity(req.params.id)
     .then(destinationAndActivity => {
       if (destinationAndActivity.userId === req.session.passport.user) {
-        db.updateActivity(req.params.id, req.body) // update the activity based on activity id and destination id
+        db.updateActivity(req.params.id, req.body)
           .then(activities => {
-            res.redirect("/activities/" + destinationAndActivity.destinationId); // take them back to the activities page which will display all the activities
+            res.redirect("/activities/" + destinationAndActivity.destinationId);
           })
           .catch(err => {
             res.status(500).send("DATABASE ERROR: " + err.message);

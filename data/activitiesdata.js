@@ -1,4 +1,4 @@
-// this supplies the seed activities
+// This supplies the seed activities
 module.exports = [
   {
     city: "Amsterdam",

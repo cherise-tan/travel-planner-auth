@@ -1,4 +1,4 @@
-// this supplies the seed destinations
+// This supplies the seed destinations
 module.exports = [
   {
     userName: "Cherise",

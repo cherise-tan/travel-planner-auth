@@ -12,10 +12,10 @@ module.exports = function(passport) {
       usernameField: "email"
     }, (email, password, done) => {
 
-      // Change email to lowercase -> make email not case-sensitive
+      // Change email to lowercase -> email should not be case-sensitive
       email = email.toLowerCase();
 
-      // match user
+      // Check if user exists in the database
       db.getUser(email)
         .then(user => {
           if (!user) {
@@ -23,7 +23,7 @@ module.exports = function(passport) {
               message: "That email is not registered"
             });
           } else {
-            // match password
+            // Match the user's password
             bcrypt.compare(password, user.password, (err, isMatch) => {
               if(err) throw err;
               if(isMatch) {

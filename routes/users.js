@@ -1,23 +1,25 @@
 // jshint esversion:6
 
+// Set up express
 const express = require("express");
 const router = express.Router();
+
+// Set up passport and bcrypt for authentication and authorisation
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
 // Require the db file so functions can be called from it
 const db = require("../db/users");
 
-// Register page
 router.get("/register", (req, res) => {
-  if (req.user){ // redirect user to their destinations page if they are logged in
+  if (req.user){ // Redirect user to their destinations page if they are logged in
     res.redirect("/destinations");
   } else {
-    res.render("register", {layout: "home.hbs"});
+    res.render("register", {layout: "home.hbs"}); // Otherwise render the 'register' page
   }
 });
 
-// Register handle
+// Handle registration
 router.post("/register", (req, res) => {
   // Get variables from the form
   const {
@@ -25,10 +27,12 @@ router.post("/register", (req, res) => {
     password,
     password2
   } = req.body;
-
   const formEmail = req.body.email;
-  const email = formEmail.toLowerCase(); // Change stored email to lowercase
 
+  // Change stored email to lowercase
+  const email = formEmail.toLowerCase();
+
+  // Set up errors array
   let errors = [];
 
   // Check password is 6+ characters
@@ -45,9 +49,8 @@ router.post("/register", (req, res) => {
     });
   }
 
-  // Re-render the register page if validation fails
   if (errors.length > 0) {
-    // Validation failed
+    // Validation fails if any of the above requirements fails
     var unsuccessfulLogin = {
       errors,
       name,
@@ -55,17 +58,17 @@ router.post("/register", (req, res) => {
       password,
       password2
     };
+    // Re-render the registration page, passing in 'errors' to inform the user what went wrong
     res.render("register",  {
       unsuccessfulLogin: unsuccessfulLogin,
       layout: "home.hbs"
     });
   } else {
-    // Validation passed
-    // Check whether email is unique
+    // If validation passes, then check whether email is unique
     db.getUser(email)
       .then(users => {
         if (users) {
-          // User exists
+          // If an email already exists in the database, send an error and re-render the registration page
           errors.push({
             msg: "Email is already registered"
           });
@@ -81,6 +84,7 @@ router.post("/register", (req, res) => {
             layout: "home.hbs"
           });
         } else {
+          // If an email is unique, proceed with inserting the new user into the database
           const newUser = {
             name,
             email,
@@ -108,17 +112,17 @@ router.post("/register", (req, res) => {
   }
 });
 
-// Login page
 router.get("/login", (req, res) => {
-  if (req.user){ // redirect user to their destinations page if they are logged in
+  if (req.user){ // Redirect user to their destinations page if they are logged in
     res.redirect("/destinations");
   } else {
     res.render("login", {layout: "home.hbs"});
   }
 });
 
-// Login handle
+//Handle login
 router.post("/login", (req, res, next) => {
+  // Use password to authenticate user, and redirect to the appropriate page depending on the response
   passport.authenticate('local', {
     successRedirect: "/destinations/",
     failureRedirect: "/users/login",
@@ -126,7 +130,7 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-// Logout handle
+// Handle logout
 router.get("/logout", (req, res) => {
   req.logout();
   req.flash("successMsg", "You have been logged out");

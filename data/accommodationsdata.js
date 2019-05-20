@@ -1,4 +1,4 @@
-// this supplies the seed accommodations
+// This supplies the seed accommodations
 module.exports = [
   {
     city: "Amsterdam",

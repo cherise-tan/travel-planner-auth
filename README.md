@@ -40,10 +40,7 @@ The app has been deployed to Heroku, and can be accessed here: https://tripstar.
 * DONE: Display content in different layouts, depending on whether or not the user is logged in
 * DONE: Use database table joins to allow further protection of activities and accommodations routes (include only one express route parameter per route)
 * DONE: User login/registration email should not be case-sensitive
-* DONE: Update and test instructions
 * DONE: Deploy app to Heroku
-* DONE: Separate concerns -> split different database queries into different files
-* Review CSS style guide -> naming conventions
 
 ## Learning
 * Configuring PostgreSQL so I could use Knex to migrate/seed and perform CRUD actions on my local database

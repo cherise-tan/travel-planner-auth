@@ -1,3 +1,5 @@
+// This supplies the seed users
+
 module.exports = [
   {
     name: "Cherise",

@@ -1,11 +1,9 @@
 // jshint esversion:6
 
-//requiring necessary modules into express
-const environment = process.env.NODE_ENV || 'development';    // if something else isn't setting ENV, use development
-const config = require('../knexfile')[environment];    // require environment's settings from knexfile
-const connection = require('knex')(config);        // connect to DB via knex using environment's settings
+const environment = process.env.NODE_ENV || 'development';
+const config = require('../knexfile')[environment];
+const connection = require('knex')(config);
 
-// export functions so they can be used in routes.js
 module.exports = {
   getDestinations,
   addDestinations,
@@ -14,19 +12,18 @@ module.exports = {
   updateDestination
 };
 
-
-function getDestinations(id, testConn) { // gets destination by user id
+function getDestinations(id, testConn) { // Select destination/s by User ID
   const conn = testConn || connection;
   return conn("destinations")
   .select()
   .where("userId", id);
 }
 
-function selectDestination(id, testConn) {// gets destination by destination id
+function selectDestination(id, testConn) {// Select destination by Destination ID
   const conn = testConn || connection;
   return conn("destinations")
   .where("destinationId", id)
-  .first(); // select the first destination by that id from the database
+  .first();
 }
 
 function addDestinations(destination, userId, testConn) {
@@ -51,19 +48,19 @@ function addDestinations(destination, userId, testConn) {
     outboundArrivalDate: destination.outboundArrivalDate,
     outboundArrivalTime: destination.outboundArrivalTime,
     userId: userId
-  }); // insert a destination into the destinations table
+  });
 }
 
 function deleteDestination(id, testConn) {
   const conn = testConn || connection;
   return conn("destinations")
   .where("destinationId", id)
-  .delete(); // delete destination from the database according to id
+  .delete();
 }
 
 function updateDestination(id, destination, testConn) {
   const conn = testConn || connection;
   return conn("destinations")
   .where("destinationId", id)
-  .update(destination); //update destination according to id
+  .update(destination); 
 }

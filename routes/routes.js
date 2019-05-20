@@ -1,16 +1,16 @@
 // jshint esversion: 6
 
-// use the express package
+// Use the express package
 const express = require("express");
 
-// set up express router
+// Set up express router
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  if (req.user){ // redirect user to their destinations page if they are logged in
+  if (req.user){ // Redirect user to their destinations page if they are logged in
     res.redirect("/destinations");
   } else {
-    res.render("welcome", {layout: "home.hbs"});
+    res.render("welcome", {layout: "home.hbs"}); // Otherwise render the 'welcome' page, where they can login/register
   }
 });
 
@@ -18,5 +18,5 @@ router.get("/unauthorised", (req, res) => {
   res.render("unauthorised");
 });
 
-// export the router so we can use it elsewhere if needed (i.e. within the express module)
+// Export the router so we can use it elsewhere
 module.exports = router;
