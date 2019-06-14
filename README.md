@@ -1,5 +1,5 @@
 # travel-planner-auth
-This is a re-design of my previous travel-planner application, using the PostgreSQL database and Passport for authentication and authorisation.
+A travel-planner application built using PostgreSQL and Passport.js.
 
 The app has been deployed to Heroku, and can be accessed here: https://tripstar.herokuapp.com
 
@@ -28,7 +28,16 @@ The app has been deployed to Heroku, and can be accessed here: https://tripstar.
 6. Users can register an account and log in to view their planned trips
 7. Destinations, activities and accommodation can be added/viewed/updated/deleted (CRUD)
 
-## To Do
+## Planning
+### Database Information
+* Destination: Image (required), City name (required), Country name (required), Dates, Arrival info, Departure info
+* Activities: Name (required), Website, Notes
+* Accommodation: Name (required), Address, Website, Notes
+
+### Colour Palette
+* https://colorhunt.co/palette/144191 
+
+### To Do
 * DONE: "Accommodation" section (separate table in database) - due to potential one-to-many relationship
 * DONE: "Activities" section (separate table in database) - due to one-to-many relationship
 * DONE: API search to find an image of the city, if the user doesn't provide one themselves
@@ -43,20 +52,29 @@ The app has been deployed to Heroku, and can be accessed here: https://tripstar.
 * DONE: Deploy app to Heroku
 
 ## Learning
-* Configuring PostgreSQL so I could use Knex to migrate/seed and perform CRUD actions on my local database
-* Learned how to do database table joins to return information from two different tables simultaneously
+* Using express router (an isolated instance of middleware and routes - can be used as an argument to an "app.use()" method - can add middleware and HTTP method routes to the router object)
+* Using express route parameters to query the database
+* Using the Unsplash Source API + JavaScript to search and display an image based on the user's chosen country input
+* Using Handlebars.js to set up a main template to render many page layouts, and also to display database information
 * Learn how to use flash messages: stores message in a session and then displays it after the redirect
 	* Set up middleware for express-session and connect-flash (app.js)
 	* Custom middleware so we can add colours to messages (app.js)
 	* Create flash message (e.g. ``` req.flash("successMsg", "You are now registered and can log in"); ``` (app.js))
-* Authentication + Authorisation using bcrypt and passport (see below)
-* Rendering views in different layouts, depending on whether or not the user is logged in
 * Hosting app on Heroku with PostgreSQL database
 	* Helpful websites:
 		* https://codeselfstudy.com/blog/deploy-node-postgres-heroku/
 		* https://medium.com/@vapurrmaid/getting-started-with-heroku-postgres-and-pgadmin-run-on-part-2-90d9499ed8fb
 
-## Authentication and Authorisation
+### Databases (using PostgreSQL and Knex.js)
+* Configuring PostgreSQL so I could use Knex.js to migrate/seed and perform CRUD actions on my local database
+* Using Knex.js to set up and interact with the database
+	* Migrations: allow database chnges/updates via generated scripts (e.g. creating/dropping tables, updating a table with new columns)
+	* Good info about Migrations and Seeds: https://gist.github.com/NigelEarle/70db130cc040cc2868555b29a0278261
+* Using Knex.js to create tables with a one-to-many relationship (using migrations + seeding) using foreign keys
+	* This article was very helpful: https://medium.com/@jaeger.rob/seed-knex-postgresql-database-with-json-data-3677c6e7c9bc
+* Learned how to do database table joins to return information from two different tables simultaneously
+
+### Authentication and Authorisation (using bcrypt.js and Passport.js)
 * Helpful youtube video by Traversy Media (node, express, mongodb/mongoose, ejs, passport): https://www.youtube.com/watch?v=6FOq4cUdH8k
 
 ### Setup
