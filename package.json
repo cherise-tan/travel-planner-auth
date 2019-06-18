@@ -2,7 +2,7 @@
   "name": "travel-planner",
   "version": "1.0.0",
   "description": "A trip planner for future travels",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "https://github.com/cherise-tan/travel-planner.git",
   "author": "Cherise <cherisetan@live.com>",
   "license": "MIT",
