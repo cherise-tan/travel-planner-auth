@@ -1,5 +1,3 @@
-// jshint esversion:6
-
 // Require the 'app.js' file
 const app = require("./app");
 
