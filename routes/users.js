@@ -15,7 +15,7 @@ router.get("/register", (req, res) => {
   if (req.user){ // Redirect user to their destinations page if they are logged in
     res.redirect("/destinations");
   } else {
-    res.render("register", {layout: "home.hbs"}); // Otherwise render the 'register' page
+    res.render("register", {layout: "loggedout.hbs"}); // Otherwise render the 'register' page
   }
 });
 
@@ -61,7 +61,7 @@ router.post("/register", (req, res) => {
     // Re-render the registration page, passing in 'errors' to inform the user what went wrong
     res.render("register",  {
       unsuccessfulLogin: unsuccessfulLogin,
-      layout: "home.hbs"
+      layout: "loggedout.hbs"
     });
   } else {
     // If validation passes, then check whether email is unique
@@ -81,7 +81,7 @@ router.post("/register", (req, res) => {
           };
           res.render("register", {
             unsuccessfulLogin: unsuccessfulLogin,
-            layout: "home.hbs"
+            layout: "loggedout.hbs"
           });
         } else {
           // If an email is unique, proceed with inserting the new user into the database
@@ -116,7 +116,7 @@ router.get("/login", (req, res) => {
   if (req.user){ // Redirect user to their destinations page if they are logged in
     res.redirect("/destinations");
   } else {
-    res.render("login", {layout: "home.hbs"});
+    res.render("login", {layout: "loggedout.hbs"});
   }
 });
 

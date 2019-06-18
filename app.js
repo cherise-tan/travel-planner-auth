@@ -18,7 +18,7 @@ app.use(session({ // Setup for express session
 
 // Middleware setup for handlebars
 app.set('views', './views');
-app.engine("hbs", hbs({defaultLayout: "dashboard", extname: ".hbs" }));
+app.engine("hbs", hbs({defaultLayout: "loggedin", extname: ".hbs" }));
 app.set("view engine", "hbs");
 
 // Middleware setup for passport
