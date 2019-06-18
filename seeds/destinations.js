@@ -1,10 +1,8 @@
-// jshint esversion:6
-
 // Require the following data files so they can be used in our seed
-const activitiesData = require("../data/activitiesdata.js");
-const destinationsData = require("../data/destinationsdata.js");
-const accommodationsData = require("../data/accommodationsdata.js");
 const usersData = require("../data/usersdata.js");
+const destinationsData = require("../data/destinationsdata.js");
+const activitiesData = require("../data/activitiesdata.js");
+const accommodationsData = require("../data/accommodationsdata.js");
 
 exports.seed = function(knex, Promise) {
   // First delete ALL existing entries across all four tables
