@@ -1,5 +1,3 @@
-// jshint esversion:6
-
 // Set up 'ensureAuthenticated' middleware
 module.exports = {
   ensureAuthenticated: function(req, res, next) {

@@ -1,9 +1,7 @@
-// jshint esversion:6
-
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 
-// Require the db file so functions can be called from it
+// Require the users db file so functions can be called from it
 const db = require("../db/users");
 
 module.exports = function(passport) {

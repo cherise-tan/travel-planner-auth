@@ -1,3 +1,4 @@
+// Require the dotenv file - containing secret information
 require('dotenv').config();
 
 module.exports = {
