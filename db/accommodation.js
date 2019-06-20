@@ -1,5 +1,3 @@
-// jshint esversion:6
-
 // Set up knex
 const environment = process.env.NODE_ENV || 'development';    // // If something else isn't setting ENV, use development
 const config = require('../knexfile')[environment];    // Require environment's settings from knexfile
