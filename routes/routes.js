@@ -1,5 +1,3 @@
-// jshint esversion: 6
-
 // Use the express package
 const express = require("express");
 

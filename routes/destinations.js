@@ -1,9 +1,7 @@
-// jshint esversion:6
-
 const express = require("express");
 const router = express.Router();
 
-// Require the db file so functions can be called from it
+// Require the db file so database queries (as functions) can be called from it
 const db = require("../db/destinations");
 
 router.get("/", (req, res) => {
@@ -44,7 +42,7 @@ router.post("/delete/:id", (req, res) => {
             res.status(500).send("DATABASE ERROR: " + err.message);
           });
       } else {
-        res.redirect("/destinations");
+        res.redirect("/unauthorised");
       }
     })
     .catch(err => {

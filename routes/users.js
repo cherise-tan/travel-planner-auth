@@ -1,5 +1,3 @@
-// jshint esversion:6
-
 // Set up express
 const express = require("express");
 const router = express.Router();
@@ -32,7 +30,7 @@ router.post("/register", (req, res) => {
   // Change stored email to lowercase
   const email = formEmail.toLowerCase();
 
-  // Set up errors array
+  // Set up errors array -> for VALIDATION
   let errors = [];
 
   // Check password is 6+ characters
