@@ -20,7 +20,13 @@ function getAccommodations(id) {
 
 function addAccommodation(accommodation, destinationId) {
   return connection("accommodations")
-  .insert({name: accommodation.name, address:accommodation.address, website:accommodation.website, notes:accommodation.notes, destinationId: destinationId});
+  .insert({
+    name: accommodation.name, 
+    address:accommodation.address, 
+    website:accommodation.website, 
+    notes:accommodation.notes, 
+    destinationId: destinationId
+  });
 }
 
 function deleteAccommodation(id) {
@@ -32,7 +38,12 @@ function deleteAccommodation(id) {
 function updateAccommodation(id, accommodation) {
   return connection("accommodations")
   .where("accommodationId", id)
-  .update({name: accommodation.name, address:accommodation.address, website:accommodation.website, notes:accommodation.notes});
+  .update({
+    name: accommodation.name, 
+    address:accommodation.address, 
+    website:accommodation.website, 
+    notes:accommodation.notes
+  });
 }
 
 function getDestinationAndAccommodation(id) {

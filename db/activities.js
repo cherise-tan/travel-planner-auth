@@ -18,7 +18,12 @@ function getActivities(id) {
 
 function addActivity(activity, destinationId) {
   return connection("activities")
-  .insert({name: activity.name, website:activity.website, notes:activity.notes, destinationId: destinationId});
+  .insert({
+    name: activity.name, 
+    website:activity.website, 
+    notes:activity.notes, 
+    destinationId: destinationId
+  });
 }
 
 function deleteActivity(id) {
@@ -30,7 +35,11 @@ function deleteActivity(id) {
 function updateActivity(id, activity) {
   return connection("activities")
   .where("activityId", id)
-  .update({name: activity.name, website:activity.website, notes:activity.notes});
+  .update({
+    name: activity.name, 
+    website:activity.website, 
+    notes:activity.notes
+  });
 }
 
 function getDestinationAndActivity(id) {

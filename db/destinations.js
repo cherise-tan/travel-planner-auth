@@ -16,7 +16,7 @@ function getDestinations(id) { // Select destination/s by User ID
   .where("userId", id);
 }
 
-function selectDestination(id) {// Select destination by Destination ID
+function selectDestination(id) { // Select destination by Destination ID
   return connection("destinations")
   .where("destinationId", id)
   .first();
