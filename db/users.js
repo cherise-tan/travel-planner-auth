@@ -8,24 +8,21 @@ module.exports = {
   addUser
 };
 
-function getUser(email, testConn) {
-  const conn = testConn || connection;
-  return conn("users")
+function getUser(email) {
+  return connection("users")
   .select()
   .where("email", email)
   .first();
 }
 
-function getUserById(id, testConn) {
-  const conn = testConn || connection;
-  return conn("users")
+function getUserById(id) {
+  return connection("users")
   .select()
   .where("userId", id)
   .first();
 }
 
-function addUser(user, testConn) {
-  const conn = testConn || connection;
-  return conn("users")
+function addUser(user) {
+  return connection("users")
   .insert(user);
 }

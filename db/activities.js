@@ -10,36 +10,31 @@ module.exports = {
   getDestinationAndActivity
 };
 
-function getActivities(id, testConn) {
-  const conn = testConn || connection;
-  return conn("activities")
+function getActivities(id) {
+  return connection("activities")
   .where("destinationId", id)
   .select();
 }
 
-function addActivity(activity, destinationId, testConn) {
-  const conn = testConn || connection;
-  return conn("activities")
+function addActivity(activity, destinationId) {
+  return connection("activities")
   .insert({name: activity.name, website:activity.website, notes:activity.notes, destinationId: destinationId});
 }
 
-function deleteActivity(id, testConn) {
-  const conn = testConn || connection;
-  return conn("activities")
+function deleteActivity(id) {
+  return connection("activities")
   .where("activityId", id)
   .delete();
 }
 
-function updateActivity(id, activity, testConn) {
-  const conn = testConn || connection;
-  return conn("activities")
+function updateActivity(id, activity) {
+  return connection("activities")
   .where("activityId", id)
   .update({name: activity.name, website:activity.website, notes:activity.notes});
 }
 
-function getDestinationAndActivity(id, testConn) {
-  const conn = testConn || connection;
-  return conn("activities")
+function getDestinationAndActivity(id) {
+  return connection("activities")
   .where("activityId", id)
   .join("destinations", "activities.destinationId", "=", "destinations.destinationId")
   .first();

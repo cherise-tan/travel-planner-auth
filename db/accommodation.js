@@ -12,36 +12,31 @@ module.exports = {
   getDestinationAndAccommodation
 };
 
-function getAccommodations(id, testConn) {
-  const conn = testConn || connection;
-  return conn("accommodations")
+function getAccommodations(id) {
+  return connection("accommodations")
   .where("destinationId", id)
   .select();
 }
 
-function addAccommodation(accommodation, destinationId, testConn) {
-  const conn = testConn || connection;
-  return conn("accommodations")
+function addAccommodation(accommodation, destinationId) {
+  return connection("accommodations")
   .insert({name: accommodation.name, address:accommodation.address, website:accommodation.website, notes:accommodation.notes, destinationId: destinationId});
 }
 
-function deleteAccommodation(id, testConn) {
-  const conn = testConn || connection;
-  return conn("accommodations")
+function deleteAccommodation(id) {
+  return connection("accommodations")
   .where("accommodationId", id)
   .delete();
 }
 
-function updateAccommodation(id, accommodation, testConn) {
-  const conn = testConn || connection;
-  return conn("accommodations")
+function updateAccommodation(id, accommodation) {
+  return connection("accommodations")
   .where("accommodationId", id)
   .update({name: accommodation.name, address:accommodation.address, website:accommodation.website, notes:accommodation.notes});
 }
 
-function getDestinationAndAccommodation(id, testConn) {
-  const conn = testConn || connection;
-  return conn("accommodations")
+function getDestinationAndAccommodation(id) {
+  return connection("accommodations")
   .where("accommodationId", id)
   .join("destinations", "accommodations.destinationId", "=", "destinations.destinationId")
   .first();

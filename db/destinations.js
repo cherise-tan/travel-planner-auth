@@ -10,23 +10,20 @@ module.exports = {
   updateDestination
 };
 
-function getDestinations(id, testConn) { // Select destination/s by User ID
-  const conn = testConn || connection;
-  return conn("destinations")
+function getDestinations(id) { // Select destination/s by User ID
+  return connection("destinations")
   .select()
   .where("userId", id);
 }
 
-function selectDestination(id, testConn) {// Select destination by Destination ID
-  const conn = testConn || connection;
-  return conn("destinations")
+function selectDestination(id) {// Select destination by Destination ID
+  return connection("destinations")
   .where("destinationId", id)
   .first();
 }
 
-function addDestinations(destination, userId, testConn) {
-  const conn = testConn || connection;
-  return conn("destinations")
+function addDestinations(destination, userId) {
+  return connection("destinations")
   .insert({
     imageUrl: destination.imageUrl,
     city: destination.city,
@@ -49,16 +46,14 @@ function addDestinations(destination, userId, testConn) {
   });
 }
 
-function deleteDestination(id, testConn) {
-  const conn = testConn || connection;
-  return conn("destinations")
+function deleteDestination(id) {
+  return connection("destinations")
   .where("destinationId", id)
   .delete();
 }
 
-function updateDestination(id, destination, testConn) {
-  const conn = testConn || connection;
-  return conn("destinations")
+function updateDestination(id, destination) {
+  return connection("destinations")
   .where("destinationId", id)
   .update(destination); 
 }
