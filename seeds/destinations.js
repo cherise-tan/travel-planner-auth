@@ -48,29 +48,29 @@ exports.seed = function(knex, Promise) {
 };
 
 const createDestination = (knex, destination, user) => {
-      return knex("users").where("name", user).first()
-      .then((userRecord) => {
-        return knex('destinations').insert({
-          imageUrl: destination.imageUrl,
-          city: destination.city,
-          country: destination.country,
-          fromCity: destination.fromCity,
-          fromCountry: destination.fromCountry,
-          inboundDepartureDate: destination.inboundDepartureDate,
-          inboundDepartureTime: destination.inboundDepartureTime,
-          inboundTransport: destination.inboundTransport,
-          inboundArrivalDate: destination.inboundArrivalDate,
-          inboundArrivalTime: destination.inboundArrivalTime,
-          toCity: destination.toCity,
-          toCountry: destination.toCountry,
-          outboundDepartureDate: destination.outboundDepartureDate,
-          outboundDepartureTime: destination.outboundDepartureTime,
-          outboundTransport: destination.outboundTransport,
-          outboundArrivalDate: destination.outboundArrivalDate,
-          outboundArrivalTime: destination.outboundArrivalTime,
-          userId: userRecord.userId
-        });
+  return knex("users").where("name", user).first()
+    .then((userRecord) => {
+      return knex('destinations').insert({
+        imageUrl: destination.imageUrl,
+        city: destination.city,
+        country: destination.country,
+        fromCity: destination.fromCity,
+        fromCountry: destination.fromCountry,
+        inboundDepartureDate: destination.inboundDepartureDate,
+        inboundDepartureTime: destination.inboundDepartureTime,
+        inboundTransport: destination.inboundTransport,
+        inboundArrivalDate: destination.inboundArrivalDate,
+        inboundArrivalTime: destination.inboundArrivalTime,
+        toCity: destination.toCity,
+        toCountry: destination.toCountry,
+        outboundDepartureDate: destination.outboundDepartureDate,
+        outboundDepartureTime: destination.outboundDepartureTime,
+        outboundTransport: destination.outboundTransport,
+        outboundArrivalDate: destination.outboundArrivalDate,
+        outboundArrivalTime: destination.outboundArrivalTime,
+        userId: userRecord.userId
       });
+    });
 };
 
 const createActivity = (knex, activity, destination) => {
