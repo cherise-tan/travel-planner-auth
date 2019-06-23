@@ -26,6 +26,14 @@ function addActivity(activity, destinationId) {
   });
 }
 
+// Get destination and activity (join) -> to check if user is authorised to change the selected content
+function getDestinationAndActivity(id) {
+  return connection("activities")
+  .where("activityId", id)
+  .join("destinations", "activities.destinationId", "=", "destinations.destinationId")
+  .first();
+}
+
 function deleteActivity(id) {
   return connection("activities")
   .where("activityId", id)
@@ -35,16 +43,5 @@ function deleteActivity(id) {
 function updateActivity(id, activity) {
   return connection("activities")
   .where("activityId", id)
-  .update({
-    name: activity.name, 
-    website:activity.website, 
-    notes:activity.notes
-  });
-}
-
-function getDestinationAndActivity(id) {
-  return connection("activities")
-  .where("activityId", id)
-  .join("destinations", "activities.destinationId", "=", "destinations.destinationId")
-  .first();
+  .update(activity);
 }

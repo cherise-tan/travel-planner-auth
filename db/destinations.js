@@ -4,8 +4,8 @@ const connection = require('knex')(config);
 
 module.exports = {
   getDestinations,
-  addDestinations,
   selectDestination,
+  addDestinations,
   deleteDestination,
   updateDestination
 };

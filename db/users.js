@@ -8,14 +8,14 @@ module.exports = {
   addUser
 };
 
-function getUser(email) {
+function getUser(email) { // Select user by email
   return connection("users")
   .select()
   .where("email", email)
   .first();
 }
 
-function getUserById(id) {
+function getUserById(id) { // Select user by id
   return connection("users")
   .select()
   .where("userId", id)

@@ -29,6 +29,14 @@ function addAccommodation(accommodation, destinationId) {
   });
 }
 
+// Get destination and accommodation (join) -> to check if user is authorised to change the selected content
+function getDestinationAndAccommodation(id) {
+  return connection("accommodations")
+  .where("accommodationId", id)
+  .join("destinations", "accommodations.destinationId", "=", "destinations.destinationId")
+  .first();
+}
+
 function deleteAccommodation(id) {
   return connection("accommodations")
   .where("accommodationId", id)
@@ -38,17 +46,5 @@ function deleteAccommodation(id) {
 function updateAccommodation(id, accommodation) {
   return connection("accommodations")
   .where("accommodationId", id)
-  .update({
-    name: accommodation.name, 
-    address:accommodation.address, 
-    website:accommodation.website, 
-    notes:accommodation.notes
-  });
-}
-
-function getDestinationAndAccommodation(id) {
-  return connection("accommodations")
-  .where("accommodationId", id)
-  .join("destinations", "accommodations.destinationId", "=", "destinations.destinationId")
-  .first();
+  .update(accommodation);
 }
