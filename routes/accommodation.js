@@ -5,9 +5,6 @@ const router = express.Router();
 const db = require("../db/accommodation");
 const destinationdb = require("../db/destinations");
 
-// Pull in ensureAuthenticated to protect routes
-const { ensureAuthenticated} = require("../config/auth");
-
 router.get("/:id", (req, res) => { // Set up accommodations get route, according to the selected destination's id
   destinationdb.selectDestination(req.params.id) // Select the destination by its id
     .then(destinations => {
