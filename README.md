@@ -76,6 +76,7 @@ The app has been deployed to Heroku, and can be accessed here: https://tripstar.
 
 ### Authentication and Authorisation (using bcrypt.js and Passport.js)
 * Helpful youtube video by Traversy Media (node, express, mongodb/mongoose, ejs, passport): https://www.youtube.com/watch?v=6FOq4cUdH8k
+* Great article explaing Passport.js workflow http://toon.io/understanding-passportjs-authentication-flow/
 
 ### Setup
 * Install dependencies: bcryptjs, passport, passport-local, connect-flash, express-session, (express)

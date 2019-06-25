@@ -28,14 +28,14 @@ app.set("view engine", "hbs");
 require("./config/passport")(passport); // Require passport config file, passing 'passport' as an argument
 
 app.use(passport.initialize()); // Initialises the authentication module
-app.use(passport.session()); // Allows use of persistent login sessions (via session cookie)
+app.use(passport.session()); // Loads the user object onto 'req.user' if a serialized user object is found
 
 const {ensureAuthenticated} = require("./config/auth"); // Pull in 'ensureAuthenticated' to protect routes
 
 // Set up connect flash
 app.use(flash());
 
-app.use((req, res, next) => { // Global variables for flash (allows colours)
+app.use((req, res, next) => { // Create variables for flash (allows use on the front-end - can display in 'views' with handlebars)
   res.locals.successMsg = req.flash("successMsg");
   res.locals.errorMsg = req.flash("errorMsg");
   res.locals.error = req.flash("error");
