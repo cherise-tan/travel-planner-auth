@@ -10,10 +10,10 @@ const passport = require("passport");
 const db = require("../db/users");
 
 router.get("/register", (req, res) => {
-  if (req.user){ // Redirect user to their destinations page if they are logged in
+  if (req.user) { // Redirect user to their destinations page if they are logged in (req.session has a 'user')
     res.redirect("/destinations");
   } else {
-    res.render("register", {layout: "loggedout.hbs"}); // Otherwise render the 'register' page
+    res.render("register", { layout: "loggedout.hbs" }); // Otherwise render the 'register' page
   }
 });
 
@@ -57,7 +57,7 @@ router.post("/register", (req, res) => {
       password2
     };
     // Re-render the registration page, passing in 'errors' to inform the user what went wrong
-    res.render("register",  {
+    res.render("register", {
       unsuccessfulLogin: unsuccessfulLogin,
       layout: "loggedout.hbs"
     });
@@ -90,14 +90,14 @@ router.post("/register", (req, res) => {
           };
 
           // Hash password
-          bcrypt.genSalt(10, (err, salt) =>
-            bcrypt.hash(password, salt, (err, hash) => {
+          bcrypt.genSalt(10, (err, salt) => // Generate a salt
+            bcrypt.hash(password, salt, (err, hash) => { // Hash the password with the salt
               if (err) throw err;
               // Set password to hashed
               newUser.password = hash;
               // Save the user
               db.addUser(newUser)
-                .then(users => {
+                .then(() => {
                   req.flash("successMsg", "You are now registered and can log in");
                   res.redirect("/users/login");
                 })
@@ -111,10 +111,10 @@ router.post("/register", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  if (req.user){ // Redirect user to their destinations page if they are logged in
+  if (req.user) { // Redirect user to their destinations page if they are logged in
     res.redirect("/destinations");
   } else {
-    res.render("login", {layout: "loggedout.hbs"});
+    res.render("login", { layout: "loggedout.hbs" });
   }
 });
 
@@ -122,7 +122,7 @@ router.get("/login", (req, res) => {
 router.post("/login", (req, res, next) => {
   // Use password to authenticate user, and redirect to the appropriate page depending on the response
   passport.authenticate('local', {
-    successRedirect: "/destinations/",
+    successRedirect: "/destinations",
     failureRedirect: "/users/login",
     failureFlash: true
   })(req, res, next);

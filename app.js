@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true })); // Allows parsing of requests (
 app.use(express.static("public")); // Serve static files from the 'public' directory
 
 app.use(session({ // Setup for express session
-  secret: process.env.SECRET, // The 'secret' is used as the SALT for the session's hash function
+  secret: process.env.SECRET, // The 'secret' is used for signing and/or encrypting cookies set by the application to maintain session state
   resave: true,
   saveUninitialized: true
 }));
