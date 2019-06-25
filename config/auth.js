@@ -1,6 +1,6 @@
 // Set up 'ensureAuthenticated' middleware
 module.exports = {
-  ensureAuthenticated: function(req, res, next) {
+  ensureAuthenticated: (req, res, next) => {
     if (req.isAuthenticated()){
       return next();
     }

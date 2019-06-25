@@ -5,27 +5,30 @@ const hbs = require("express-handlebars");
 const passport = require("passport");
 const flash = require("connect-flash");
 
+// Require the .env file (containing secret information)
+require('dotenv').config();
+
 // Set up express
-const app = express(); // Save express() as a variable for ongoing use
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public")); 
+const app = express(); // Create the express application -> named 'app'
+app.use(express.urlencoded({ extended: true })); // Allows parsing of requests (POST) - based off body-parser
+app.use(express.static("public")); // Serve static files from the 'public' directory
 
 app.use(session({ // Setup for express session
-  secret: 'secret',
+  secret: process.env.SECRET, // The 'secret' is used as the SALT for the session's hash function
   resave: true,
   saveUninitialized: true
 }));
 
 // Middleware setup for handlebars
-app.set('views', './views');
+app.set('views', './views'); // Point to the 'views' folder - contains handlebars files
 app.engine("hbs", hbs({defaultLayout: "loggedin", extname: ".hbs" }));
 app.set("view engine", "hbs");
 
 // Middleware setup for passport
-require("./config/passport")(passport); // Require passport configuration
+require("./config/passport")(passport); // Require passport config file, passing 'passport' as an argument
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize()); // Initialises the authentication module
+app.use(passport.session()); // Allows use of persistent login sessions (via session cookie)
 
 const {ensureAuthenticated} = require("./config/auth"); // Pull in 'ensureAuthenticated' to protect routes
 
@@ -49,7 +52,7 @@ const accommodationRoutes = require("./routes/accommodation");
 // Set up routes
 app.use("/", routes);
 app.use("/users", usersRoutes);
-app.use("/destinations", ensureAuthenticated, destinationRoutes);
+app.use("/destinations", ensureAuthenticated, destinationRoutes); // User will be redirected to 'login' if not authenticated
 app.use("/accommodation", ensureAuthenticated, accommodationRoutes);
 app.use("/activities", ensureAuthenticated, activitiesRoutes);
 
