@@ -1,9 +1,10 @@
-{{#if unsuccessfulLogin}}
 <div class="container body-container px-0">
   <div class="row mt-5">
     <div class="col-md-6 m-auto">
       <div class="card card-body p-5">
         <h1 class="text-center mb-3"><i class="fas fa-user-plus"></i> Register</h1>
+
+        {{#if unsuccessfulLogin}}
 
         {{#unsuccessfulLogin}}
         {{> messages}}
@@ -28,23 +29,11 @@
           <button type="submit" class="btn btn-secondary btn-block my-2 py-2">
             Register
           </button>
-
         </form>
         {{/unsuccessfulLogin}}
 
-        <p class=" mt-4">Have An Account? <a href="/users/login">Login</a></p>
-      </div>
-    </div>
-  </div>
-</div>
+        {{else}}
 
-{{else}}
-
-<div class="container body-container px-0">
-  <div class="row mt-5">
-    <div class="col-md-6 m-auto">
-      <div class="card card-body p-5">
-        <h1 class="text-center mb-3"><i class="fas fa-user-plus"></i> Register</h1>
         <form action="/users/register" method="POST">
           <div class="form-group">
             <label for="name">Name</label>
@@ -66,10 +55,11 @@
           </div>
           <button type="submit" class="btn btn-secondary btn-block mt-4 py-2">Register</button>
         </form>
+
+        {{/if}}
+
         <p class=" mt-4">Have An Account? <a href="/users/login">Login</a></p>
       </div>
     </div>
   </div>
 </div>
-
-{{/if}}
