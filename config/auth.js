@@ -1,7 +1,7 @@
 // Set up 'ensureAuthenticated' middleware
 module.exports = {
   ensureAuthenticated: (req, res, next) => {
-    if (req.isAuthenticated()){
+    if (req.isAuthenticated()) {
       return next();
     }
     req.flash("errorMsg", "Please log in to view this resource");

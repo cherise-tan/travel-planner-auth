@@ -17,15 +17,15 @@ module.exports = (passport) => {
       db.getUser(email)
         .then(user => {
           if (!user) {
-            return done(null, false, {message: "That email is not registered"}); // 'false' indicates authentication failure
+            return done(null, false, { message: "That email is not registered" }); // 'false' indicates authentication failure
           } else {
             // Match the user's password
             bcrypt.compare(password, user.password, (err, isMatch) => {
-              if(err) throw err;
-              if(isMatch) {
+              if (err) throw err;
+              if (isMatch) {
                 return done(null, user); // Supplies passport with the authenticated user
-              } else{
-                return done(null, false, {message: "Password incorrect"});
+              } else {
+                return done(null, false, { message: "Password incorrect" });
               }
             });
           }
@@ -40,6 +40,6 @@ module.exports = (passport) => {
 
   passport.deserializeUser((id, done) => {
     db.getUserById(id)
-    .then((user) => {done(null, user);}); // Searches db for the full user profile and attaches it to 'req.user'
+      .then((user) => { done(null, user); }); // Searches db for the full user profile and attaches it to 'req.user'
   });
 };

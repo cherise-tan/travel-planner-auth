@@ -1,5 +1,5 @@
 // Sets up the migrations -> tells the database what tables to create, including associations between them
-exports.up = function(knex, Promise) {
+exports.up = function (knex, Promise) {
   return Promise.all([
     knex.schema.createTable("users", (table) => { // Create the 'users' table
       table.increments("userId").primary(); // Sets up the primary id which will auto-increment
@@ -32,7 +32,7 @@ exports.up = function(knex, Promise) {
       table.string("outboundArrivalTime");
       // FOREIGN KEY
       table.integer("userId").unsigned()
-      table.foreign("userId") 
+      table.foreign("userId")
         .references("users.userId"); // Foreign key references the user id
     }),
     knex.schema.createTable("activities", (table) => { // Create the 'activities' table
@@ -52,13 +52,13 @@ exports.up = function(knex, Promise) {
       table.string("notes");
       table.integer("destinationId").unsigned()
       table.foreign("destinationId") // Sets up the foreign key
-      .references("destinations.destinationId"); // Foreign key references the destination id
+        .references("destinations.destinationId"); // Foreign key references the destination id
     })
   ]);
 };
 
 // If we roll back the migration (exports.down), all tables will be deleted
-exports.down = function(knex, Promise) {
+exports.down = function (knex, Promise) {
   return Promise.all([
     knex.schema.dropTable("activities"),
     knex.schema.dropTable("accommodations"),

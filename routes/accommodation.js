@@ -43,13 +43,13 @@ router.post("/delete/:id", (req, res) => {
   db.getDestinationAndAccommodation(req.params.id) // Look up destination and accommodation by accommodation id, and join these tales
     .then(destinationAndAccommodation => {
       if (destinationAndAccommodation.userId === req.session.passport.user) {
-          db.deleteAccommodation(req.params.id) // Delete the accommodation based on id
-            .then(accommodations => {
-              res.redirect("/accommodation/" + destinationAndAccommodation.destinationId); // take them back to the accommodation page
-            })
-            .catch(err => {
-              res.status(500).send("DATABASE ERROR: " + err.message);
-            });
+        db.deleteAccommodation(req.params.id) // Delete the accommodation based on id
+          .then(accommodations => {
+            res.redirect("/accommodation/" + destinationAndAccommodation.destinationId); // take them back to the accommodation page
+          })
+          .catch(err => {
+            res.status(500).send("DATABASE ERROR: " + err.message);
+          });
 
       } else {
         res.redirect("/unauthorised");

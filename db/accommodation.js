@@ -14,37 +14,37 @@ module.exports = {
 
 function getAccommodations(id) {
   return connection("accommodations")
-  .where("destinationId", id)
-  .select();
+    .where("destinationId", id)
+    .select();
 }
 
 function addAccommodation(accommodation, destinationId) {
   return connection("accommodations")
-  .insert({
-    name: accommodation.name, 
-    address:accommodation.address, 
-    website:accommodation.website, 
-    notes:accommodation.notes, 
-    destinationId: destinationId
-  });
+    .insert({
+      name: accommodation.name,
+      address: accommodation.address,
+      website: accommodation.website,
+      notes: accommodation.notes,
+      destinationId: destinationId
+    });
 }
 
 // Get destination and accommodation (join) -> to check if user is authorised to change the selected content
 function getDestinationAndAccommodation(id) {
   return connection("accommodations")
-  .where("accommodationId", id)
-  .join("destinations", "accommodations.destinationId", "=", "destinations.destinationId")
-  .first();
+    .where("accommodationId", id)
+    .join("destinations", "accommodations.destinationId", "=", "destinations.destinationId")
+    .first();
 }
 
 function deleteAccommodation(id) {
   return connection("accommodations")
-  .where("accommodationId", id)
-  .delete();
+    .where("accommodationId", id)
+    .delete();
 }
 
 function updateAccommodation(id, accommodation) {
   return connection("accommodations")
-  .where("accommodationId", id)
-  .update(accommodation);
+    .where("accommodationId", id)
+    .update(accommodation);
 }

@@ -72,7 +72,7 @@ router.post("/update/:id", (req, res) => {
       if (destinations.userId === req.session.passport.user) {
         db.updateDestination(req.params.id, req.body)
           .then(destinations => {
-            res.redirect("/destinations"); 
+            res.redirect("/destinations");
           })
           .catch(err => {
             res.status(500).send("DATABASE ERROR: " + err.message);

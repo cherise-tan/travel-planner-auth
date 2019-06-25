@@ -11,7 +11,7 @@ module.exports = {
       database: process.env.DB,
       charset: 'utf8'
     },
-      migrations: {
+    migrations: {
       directory: './migrations'
     },
     seeds: {

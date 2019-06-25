@@ -21,7 +21,7 @@ app.use(session({ // Setup for express session
 
 // Middleware setup for handlebars
 app.set('views', './views'); // Point to the 'views' folder - contains handlebars files
-app.engine("hbs", hbs({defaultLayout: "loggedin", extname: ".hbs" }));
+app.engine("hbs", hbs({ defaultLayout: "loggedin", extname: ".hbs" }));
 app.set("view engine", "hbs");
 
 // Middleware setup for passport
@@ -30,7 +30,7 @@ require("./config/passport")(passport); // Require passport config file, passing
 app.use(passport.initialize()); // Initialises the authentication module
 app.use(passport.session()); // Loads the user object onto 'req.user' if a serialized user object is found
 
-const {ensureAuthenticated} = require("./config/auth"); // Pull in 'ensureAuthenticated' to protect routes
+const { ensureAuthenticated } = require("./config/auth"); // Pull in 'ensureAuthenticated' to protect routes
 
 // Set up connect flash
 app.use(flash());

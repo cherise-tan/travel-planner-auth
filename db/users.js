@@ -10,19 +10,19 @@ module.exports = {
 
 function getUser(email) { // Select user by email
   return connection("users")
-  .select()
-  .where("email", email)
-  .first();
+    .select()
+    .where("email", email)
+    .first();
 }
 
 function getUserById(id) { // Select user by id
   return connection("users")
-  .select()
-  .where("userId", id)
-  .first();
+    .select()
+    .where("userId", id)
+    .first();
 }
 
 function addUser(user) {
   return connection("users")
-  .insert(user);
+    .insert(user);
 }

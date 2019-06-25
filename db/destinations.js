@@ -12,48 +12,48 @@ module.exports = {
 
 function getDestinations(id) { // Select destination/s by User ID
   return connection("destinations")
-  .select()
-  .where("userId", id);
+    .select()
+    .where("userId", id);
 }
 
 function selectDestination(id) { // Select destination by Destination ID
   return connection("destinations")
-  .where("destinationId", id)
-  .first();
+    .where("destinationId", id)
+    .first();
 }
 
 function addDestinations(destination, userId) {
   return connection("destinations")
-  .insert({
-    imageUrl: destination.imageUrl,
-    city: destination.city,
-    country: destination.country,
-    fromCity: destination.fromCity,
-    fromCountry: destination.fromCountry,
-    inboundDepartureDate: destination.inboundDepartureDate,
-    inboundDepartureTime: destination.inboundDepartureTime,
-    inboundTransport: destination.inboundTransport,
-    inboundArrivalDate: destination.inboundArrivalDate,
-    inboundArrivalTime: destination.inboundArrivalTime,
-    toCity: destination.toCity,
-    toCountry: destination.toCountry,
-    outboundDepartureDate: destination.outboundDepartureDate,
-    outboundDepartureTime: destination.outboundDepartureTime,
-    outboundTransport: destination.outboundTransport,
-    outboundArrivalDate: destination.outboundArrivalDate,
-    outboundArrivalTime: destination.outboundArrivalTime,
-    userId: userId
-  });
+    .insert({
+      imageUrl: destination.imageUrl,
+      city: destination.city,
+      country: destination.country,
+      fromCity: destination.fromCity,
+      fromCountry: destination.fromCountry,
+      inboundDepartureDate: destination.inboundDepartureDate,
+      inboundDepartureTime: destination.inboundDepartureTime,
+      inboundTransport: destination.inboundTransport,
+      inboundArrivalDate: destination.inboundArrivalDate,
+      inboundArrivalTime: destination.inboundArrivalTime,
+      toCity: destination.toCity,
+      toCountry: destination.toCountry,
+      outboundDepartureDate: destination.outboundDepartureDate,
+      outboundDepartureTime: destination.outboundDepartureTime,
+      outboundTransport: destination.outboundTransport,
+      outboundArrivalDate: destination.outboundArrivalDate,
+      outboundArrivalTime: destination.outboundArrivalTime,
+      userId: userId
+    });
 }
 
 function deleteDestination(id) {
   return connection("destinations")
-  .where("destinationId", id)
-  .delete();
+    .where("destinationId", id)
+    .delete();
 }
 
 function updateDestination(id, destination) {
   return connection("destinations")
-  .where("destinationId", id)
-  .update(destination); 
+    .where("destinationId", id)
+    .update(destination);
 }
