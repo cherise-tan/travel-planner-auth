@@ -19,6 +19,9 @@ router.get("/:id", (req, res) => { // Set up accommodations get route, according
       } else {
         res.redirect("/unauthorised");
       }
+    })
+    .catch(err => {
+      res.status(500).send("DATABASE ERROR: " + err.message);
     });
 });
 
@@ -27,15 +30,15 @@ router.post("/add/:id", (req, res) => {
     .then(destinations => {
       if (destinations.userId === req.session.passport.user) {
         db.addAccommodation(req.body, req.params.id)
-          .then(accommodations => {
+          .then(() => {
             res.redirect("/accommodation/" + req.params.id);
           })
-          .catch(err => {
-            res.status(500).send("DATABASE ERROR: " + err.message);
-          });
       } else {
         res.redirect("/unauthorised");
       }
+    })
+    .catch(err => {
+      res.status(500).send("DATABASE ERROR: " + err.message);
     });
 });
 
@@ -44,16 +47,15 @@ router.post("/delete/:id", (req, res) => {
     .then(destinationAndAccommodation => {
       if (destinationAndAccommodation.userId === req.session.passport.user) {
         db.deleteAccommodation(req.params.id) // Delete the accommodation based on id
-          .then(accommodations => {
+          .then(() => {
             res.redirect("/accommodation/" + destinationAndAccommodation.destinationId); // take them back to the accommodation page
           })
-          .catch(err => {
-            res.status(500).send("DATABASE ERROR: " + err.message);
-          });
-
       } else {
         res.redirect("/unauthorised");
       }
+    })
+    .catch(err => {
+      res.status(500).send("DATABASE ERROR: " + err.message);
     });
 });
 
@@ -62,15 +64,15 @@ router.post("/update/:id", (req, res) => {
     .then(destinationAndAccommodation => {
       if (destinationAndAccommodation.userId === req.session.passport.user) {
         db.updateAccommodation(req.params.id, req.body)
-          .then(accommodations => {
+          .then(() => {
             res.redirect("/accommodation/" + destinationAndAccommodation.destinationId);
           })
-          .catch(err => {
-            res.status(500).send("DATABASE ERROR: " + err.message);
-          });
       } else {
         res.redirect("/unauthorised");
       }
+    })
+    .catch(err => {
+      res.status(500).send("DATABASE ERROR: " + err.message);
     });
 });
 

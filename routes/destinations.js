@@ -38,9 +38,6 @@ router.post("/delete/:id", (req, res) => {
           .then(destinations => {
             res.redirect("/destinations");
           })
-          .catch(err => {
-            res.status(500).send("DATABASE ERROR: " + err.message);
-          });
       } else {
         res.redirect("/unauthorised");
       }
@@ -74,13 +71,9 @@ router.post("/update/:id", (req, res) => {
           .then(() => {
             res.redirect("/destinations");
           })
-          .catch(err => {
-            res.status(500).send("DATABASE ERROR: " + err.message);
-          });
       } else {
         res.redirect("/unauthorised");
       }
-
     })
     .catch(err => {
       res.status(500).send("DATABASE ERROR: " + err.message);

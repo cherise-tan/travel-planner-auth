@@ -30,15 +30,15 @@ router.post("/add/:id", (req, res) => {
     .then(destinations => {
       if (destinations.userId === req.session.passport.user) {
         db.addActivity(req.body, req.params.id)
-          .then(activities => {
+          .then(() => {
             res.redirect("/activities/" + req.params.id);
           })
-          .catch(err => {
-            res.status(500).send("DATABASE ERROR: " + err.message);
-          });
       } else {
         res.redirect("/unauthorised");
       }
+    })
+    .catch(err => {
+      res.status(500).send("DATABASE ERROR: " + err.message);
     });
 });
 
@@ -47,15 +47,15 @@ router.post("/delete/:id", (req, res) => {
     .then(destinationAndActivity => {
       if (destinationAndActivity.userId === req.session.passport.user) {
         db.deleteActivity(req.params.id) // Delete the activity based on id
-          .then(activities => {
+          .then(() => {
             res.redirect("/activities/" + destinationAndActivity.destinationId); // Take them back to the activities page
           })
-          .catch(err => {
-            res.status(500).send("DATABASE ERROR: " + err.message);
-          });
       } else {
         res.redirect("/unauthorised");
       }
+    })
+    .catch(err => {
+      res.status(500).send("DATABASE ERROR: " + err.message);
     });
 });
 
@@ -64,15 +64,15 @@ router.post("/update/:id", (req, res) => {
     .then(destinationAndActivity => {
       if (destinationAndActivity.userId === req.session.passport.user) {
         db.updateActivity(req.params.id, req.body)
-          .then(activities => {
+          .then(() => {
             res.redirect("/activities/" + destinationAndActivity.destinationId);
           })
-          .catch(err => {
-            res.status(500).send("DATABASE ERROR: " + err.message);
-          });
       } else {
         res.redirect("/unauthorised");
       }
+    })
+    .catch(err => {
+      res.status(500).send("DATABASE ERROR: " + err.message);
     });
 });
 

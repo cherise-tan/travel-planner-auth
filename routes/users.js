@@ -101,11 +101,11 @@ router.post("/register", (req, res) => {
                   req.flash("successMsg", "You are now registered and can log in");
                   res.redirect("/users/login");
                 })
-                .catch(err => {
-                  res.status(500).send("DATABASE ERROR: " + err.message);
-                });
             }));
         }
+      })
+      .catch(err => {
+        res.status(500).send("DATABASE ERROR: " + err.message);
       });
   }
 });
