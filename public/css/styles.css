@@ -27,8 +27,8 @@ body {
 }
 
 .btn-link {
-  background: none !important;
-  padding: 0 !important;
+  background: none;
+  padding: 0;
   border: none;
 }
 
