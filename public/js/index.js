@@ -9,5 +9,9 @@ function findImage() {
   var countryValue = country.value;
   var imageUrlValue = countryValue;
 
-  imageUrl.value = baseUrl + imageUrlValue; // set the 'value' of our imageUrl to be our base url + country name
+  if (imageUrlValue == "") {
+    imageUrl.placeholder = "Please enter your destination country"
+  } else {
+    imageUrl.value = baseUrl + imageUrlValue; // set the 'value' of our imageUrl to be our base url + country name
+  }
 }
