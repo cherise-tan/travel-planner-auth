@@ -1,5 +1,6 @@
 // Set up knex
 const environment = process.env.NODE_ENV || 'development';    // // If something else isn't setting ENV, use development
+// NB Heroku node.js apps default to NODE_ENV=production (see knexfile)
 const config = require('../knexfile')[environment];    // Require environment's settings from knexfile
 const connection = require('knex')(config);        // Connect to DB via knex using environment's settings
 
