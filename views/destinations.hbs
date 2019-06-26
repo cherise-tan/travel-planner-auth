@@ -1,5 +1,4 @@
-{{#if destinations}}
-<link rel="stylesheet" href="/css/styles.css">
+{{#if destinations}} {{!-- Displayed when destination is being updated --}}
 
 {{#destinations}}
 <div class="container body-container container-fluid">
@@ -61,7 +60,7 @@
 </div>
 {{/destinations}}
 
-{{else}}
+{{else}} {{!-- Displayed when destination is being added --}}
 
 <div class="container body-container container-fluid">
   <div class="light-background py-4 px-2">
@@ -76,8 +75,8 @@
           <h4 class="pt-3 pb-2">Image</h4>
           <input type="url" pattern="https?://.+" id="ImageUrl" name="imageUrl" placeholder="Enter Image URL"
             class="m-1 wide-text-field" required>
-          <button class="btn  btn-dark btn-medium mx-auto" onClick="findImage()" type="button">Insert Default Image
-            (Country-Specific)</button>
+          <h4 class="my-auto">OR<button class="btn btn-dark btn-medium ml-3" onClick="findImage()" type="button">Insert
+              Default Image of Country</button></h4>
         </div>
       </div>
       <div class="row mx-auto">

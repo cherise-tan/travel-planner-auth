@@ -22,7 +22,7 @@ router.get("/add", (req, res) => {
 
 router.post("/add", (req, res) => {
   db.addDestinations(req.body, req.session.passport.user)
-    .then(destinations => {
+    .then(() => {
       res.redirect("/destinations");
     })
     .catch(err => {
@@ -71,7 +71,7 @@ router.post("/update/:id", (req, res) => {
     .then(destinations => {
       if (destinations.userId === req.session.passport.user) {
         db.updateDestination(req.params.id, req.body)
-          .then(destinations => {
+          .then(() => {
             res.redirect("/destinations");
           })
           .catch(err => {
